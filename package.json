@@ -1,0 +1,11 @@
+{
+  "name": "@pdmdss/telegram-json-types",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+  },
+  "types": "index.d.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
