@@ -93,7 +93,7 @@ export namespace WeatherTyphoon {
       remark: '台風発生' | '台風発生（域外から入る）' | '台風消滅（域外へ出る）' | '台風消滅（温帯低気圧化）' | '台風消滅（熱帯低気圧化）' |
         '台風発生の可能性が小さくなった' | '発表間隔変更（毎時から３時間毎）' | '発表間隔変更（３時間毎から毎時）' | '台風発生予想' | '温帯低気圧化しつつある' | null;
     };
-    forecasts: (A | B)[];
+    forecasts: [A] | [A, ...B[]] | [A, A] | [A, A, ...B[]];
   }
 
   export interface Public extends TelegramJSONMain {
