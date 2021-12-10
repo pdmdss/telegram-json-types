@@ -9,6 +9,8 @@ export namespace EarthquakeInformation {
     version: '1.0.0';
   }
 
+
+
   export interface PublicBodyVXSE51 {
     intensity: {
       maxInt: string;
@@ -113,18 +115,18 @@ export namespace EarthquakeInformation {
     eventId: string;
     serialNo: null;
     infoType: '発表' | '訂正';
-    body: PublicBodyVXSE51;
+    body: PublicBodyVXSE52;
   }
 
   export interface PublicVXSE53 extends TelegramJSONMain {
     _schema: Schema;
     type: '震源・震度に関する情報';
-    title: '震源・震度情報' | '遠地地震に関する像法';
+    title: '震源・震度情報' | '遠地地震に関する情報';
     infoKind: '地震情報';
     eventId: string;
     serialNo: string;
     infoType: '発表' | '訂正';
-    body: PublicBodyVXSE51;
+    body: PublicBodyVXSE53;
   }
 
   export interface Channel extends TelegramJSONMain {

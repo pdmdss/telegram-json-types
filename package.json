@@ -1,8 +1,8 @@
 {
-  "name": "@pdmdss/telegram-json-types",
+  "name": "@dmdata/telegram-json-types",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
+    "publish": "npm publish --access=publish"
   },
   "types": "index.d.ts",
   "keywords": [],
