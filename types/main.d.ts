@@ -1,5 +1,5 @@
 export interface TelegramJSONMain {
-  _originId: string;
+  _originalId: string;
   _schema: {
     type: string;
     version: string;
