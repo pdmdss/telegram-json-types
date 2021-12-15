@@ -131,6 +131,7 @@ export namespace EarthquakeInformation {
 
   export interface Channel extends TelegramJSONMain {
     infoType: '取消';
+    eventId: string;
     body: ChancelBody;
   }
 
