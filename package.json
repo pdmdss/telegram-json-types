@@ -1,6 +1,6 @@
 {
   "name": "@dmdata/telegram-json-types",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "publish": "npm publish --access=publish"
   },
