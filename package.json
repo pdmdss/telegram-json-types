@@ -1,8 +1,7 @@
 {
   "name": "@dmdata/telegram-json-types",
-  "version": "1.0.1",
-  "scripts": {
-  },
+  "version": "1.0.2",
+  "scripts": {},
   "types": "index.d.ts",
   "keywords": [],
   "author": "",
