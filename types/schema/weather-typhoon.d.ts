@@ -8,7 +8,7 @@ export namespace WeatherTyphoon {
     version: '1.0.0';
   }
 
-  type Direction = {
+  export type Direction = {
     type: string;
     unit: string;
     value: string;
@@ -19,67 +19,68 @@ export namespace WeatherTyphoon {
     value: null;
     azimuth: null;
     condition: string;
-  }
+  };
 
-  interface Axis {
+  export type Axis = {
     direction: Direction;
     radius: UnitValue;
   }
 
+  export type RealStateClassification = {
+    category: 'TD' | 'TY' | 'STS' | 'Hurricane' | 'Tropical Storm' | 'LOW' | null;
+    name: '熱帯低気圧' | '台風' | 'ハリケーン' | '発達した熱帯低気圧' | '温帯低気圧' | null;
+    area: '大型' | '超大型' | null;
+    intensity: '強い' | '非常に強い' | '猛烈な' | null;
+  };
+  export type ForecastClassification = Omit<RealStateClassification, 'area'>;
 
-  interface A {
+  export type RealStateCenter = {
+    location: Coordinate;
+    direction: Direction;
+    speed: UnitValue;
+    pressure: UnitValue;
+  };
+  export type ForecastCenter = {
+    probabilityCircle: {
+      basePoint: Coordinate;
+      axes: Axis[];
+    };
+  } & Omit<RealStateCenter, 'location'>;
+
+  export type RealStateWindArea = {
+    strong: Axis[];
+    storm: Axis[];
+  };
+  export type RealStateWind = {
+    average: UnitValue;
+    instantaneous: UnitValue;
+    area: RealStateWindArea;
+  };
+  export type ForecastWindArea = {
+    stormWarning: Axis[];
+  };
+  export type ForecastWind = {
+    average: UnitValue;
+    instantaneous: UnitValue;
+    area: ForecastWindArea;
+  }
+
+  interface RealState {
     type: '実況' | '推定';
     elapsedTime: 'PT0H' | 'PT1H';
     dateTime: string;
-    classification: {
-      category: 'TD' | 'TY' | 'STS' | 'Hurricane' | 'Tropical Storm' | 'LOW' | null;
-      name: '熱帯低気圧' | '台風' | 'ハリケーン' | '発達した熱帯低気圧' | '温帯低気圧' | null;
-      area: '大型' | '超大型' | null;
-      intensity: '強い' | '非常に強い' | '猛烈な' | null;
-    };
-    center: {
-      location: Coordinate;
-      direction: Direction;
-      speed: UnitValue;
-      pressure: UnitValue;
-    };
-    wind?: {
-      average: UnitValue;
-      instantaneous: UnitValue;
-      area: {
-        strong: Axis[];
-        storm: Axis[];
-      };
-    };
+    classification: RealStateClassification;
+    center: RealStateCenter;
+    wind?:RealStateWind;
   }
 
-  interface B {
+  interface Forecast {
     type: '予報' | '延長予報';
     elapsedTime: string;
     dateTime: string;
-    classification: {
-      category: 'TD' | 'TY' | 'STS' | 'Hurricane' | 'Tropical Storm' | 'LOW' | null;
-      name: '熱帯低気圧' | '台風' | 'ハリケーン' | '発達した熱帯低気圧' | '温帯低気圧' | null;
-      intensity?: '強い' | '非常に強い' | '猛烈な' | null;
-    };
-    center: {
-      probabilityCircle: {
-        basePoint: Coordinate;
-        axes: Axis[];
-      };
-      direction: Direction;
-      speed: UnitValue;
-      pressure: UnitValue
-    };
-    wind: {
-      average: UnitValue;
-      instantaneous: UnitValue;
-      area?: {
-        strong?: Axis[];
-        storm?: Axis[];
-        stormWarning?: Axis[];
-      };
-    };
+    classification: ForecastClassification;
+    center: ForecastCenter;
+    wind: ForecastWind;
   }
 
   export interface PublicBody {
@@ -93,7 +94,7 @@ export namespace WeatherTyphoon {
       remark: '台風発生' | '台風発生（域外から入る）' | '台風消滅（域外へ出る）' | '台風消滅（温帯低気圧化）' | '台風消滅（熱帯低気圧化）' |
         '台風発生の可能性が小さくなった' | '発表間隔変更（毎時から３時間毎）' | '発表間隔変更（３時間毎から毎時）' | '台風発生予想' | '温帯低気圧化しつつある' | null;
     };
-    forecasts: [A] | [A, ...B[]] | [A, A] | [A, A, ...B[]];
+    forecasts: [RealState] | [RealState, ...Forecast[]] | [RealState, RealState] | [RealState, RealState, ...Forecast[]];
   }
 
   export interface Public extends TelegramJSONMain {
