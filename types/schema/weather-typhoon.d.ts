@@ -35,7 +35,8 @@ export namespace WeatherTyphoon {
   export type ForecastClassification = Omit<RealStateClassification, 'area'>;
 
   export type RealStateCenter = {
-    location: Coordinate;
+    coordinate: Coordinate;
+    location: string;
     direction: Direction;
     speed: UnitValue;
     pressure: UnitValue;
