@@ -7,9 +7,9 @@ export type Coordinate<Geo = never> = {
   condition: undefined;
   geodeticSystem: Geo;
 } | {
-  latitude: undefined;
-  longitude: undefined;
-  height: undefined;
+  latitude: never;
+  longitude: never;
+  height: never;
   geodeticSystem: never;
   condition: '不明';
 }

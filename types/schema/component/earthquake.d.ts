@@ -15,7 +15,7 @@ type Depth = {
   condition: '７００ｋｍ以上';
 } | {
   value: string;
-  condition: undefined;
+  condition: never;
 });
 type Magnitude = {
   type: 'マグニチュード';
@@ -25,7 +25,7 @@ type Magnitude = {
   condition: 'Ｍ不明' | 'Ｍ８を超える巨大地震';
 } | {
   value: string;
-  condition: undefined;
+  condition: never;
 });
 
 export interface Earthquake {
