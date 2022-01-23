@@ -1,6 +1,6 @@
 import { TelegramJSONMain } from '../main';
 import { Coordinate } from './component/coordinate';
-import { UnitValue } from './component/unit-value';
+import { UnitValue, UnitValueNotNull } from './component/unit-value';
 
 export namespace WeatherTyphoon {
   export interface Schema {
@@ -39,7 +39,7 @@ export namespace WeatherTyphoon {
     location: string;
     direction: Direction;
     speed: UnitValue;
-    pressure: UnitValue;
+    pressure: UnitValueNotNull;
   };
   export type ForecastCenter = {
     probabilityCircle: {
