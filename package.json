@@ -1,6 +1,6 @@
 {
   "name": "@dmdata/telegram-json-types",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "publish:npm": "npm version patch && npm publish --access=public"
   },
