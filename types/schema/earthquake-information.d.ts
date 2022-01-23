@@ -6,7 +6,7 @@ import { UnitValueNotNull } from './component/unit-value';
 export namespace EarthquakeInformation {
   export interface Schema {
     type: 'earthquake-information';
-    version: '1.0.0';
+    version: '1.1.0';
   }
 
   export type Intensity = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
