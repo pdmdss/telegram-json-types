@@ -9,26 +9,26 @@ export namespace EarthquakeInformation {
     version: '1.1.0';
   }
 
-  export type Intensity = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
-  export type LpgmIntensity = '0' | '1' | '2' | '3' | '4';
+  export type IntensityClass = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
+  export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
   export type LpgmCategory = '1' | '2' | '3' | '4';
 
   type OnRevise = { revise?: '上方修正' | '追加'; };
   export type IntensityMaxInt = {
     name: string;
     code: string;
-    maxInt: Intensity;
+    maxInt: IntensityClass;
   };
   export type IntensityMaxIntOnRevise = {
     name: string;
     code: string;
-    maxInt?: Intensity;
+    maxInt?: IntensityClass;
   } & OnRevise;
 
   export type IntensityCity = {
     name: string;
     code: string;
-    maxInt?: Intensity;
+    maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
   };
@@ -36,21 +36,21 @@ export namespace EarthquakeInformation {
   export type IntensityStation = {
     name: string;
     code: string;
-    int: Intensity | '!5-';
+    int: IntensityClass | '!5-';
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
   };
 
   export type IntensityLpgmMaxInt = IntensityMaxIntOnRevise & {
-    maxLpgmInt: LpgmIntensity;
+    maxLpgmInt: LpgmIntensityClass;
   };
   export type IntensityLpgmStationPrePeriod = {
     periodicBand: UnitValueNotNull<never, '秒台'>;
-    lpgmInt: LpgmIntensity;
+    lpgmInt: LpgmIntensityClass;
     sva: UnitValueNotNull<never, 'cm/s'>;
   };
   export type IntensityLpgmStation = IntensityStation & {
-    lpgmInt: LpgmIntensity;
+    lpgmInt: LpgmIntensityClass;
     sva: UnitValueNotNull<never, 'cm/s'>;
     prePeriods: IntensityLpgmStationPrePeriod[];
   }
@@ -69,13 +69,13 @@ export namespace EarthquakeInformation {
 
 
   export type IntensityVXSE51 = {
-    maxInt: Intensity;
+    maxInt: IntensityClass;
     prefectures: IntensityMaxInt[];
     regions: IntensityMaxInt[];
   };
 
   export type IntensityVXSE53 = {
-    maxInt: Intensity;
+    maxInt: IntensityClass;
     prefectures: IntensityMaxIntOnRevise[];
     regions: IntensityMaxIntOnRevise[];
     cities: IntensityCity[];
@@ -83,8 +83,8 @@ export namespace EarthquakeInformation {
   };
 
   export type IntensityVXSE62 = {
-    maxInt: Intensity;
-    maxLpgmInt: LpgmIntensity;
+    maxInt: IntensityClass;
+    maxLpgmInt: LpgmIntensityClass;
     lpgmCategory: LpgmCategory;
     prefectures: IntensityLpgmMaxInt[];
     regions: IntensityLpgmMaxInt[];
