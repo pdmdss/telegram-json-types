@@ -13,7 +13,6 @@ export namespace EarthquakeInformation {
   export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
   export type LpgmCategory = '1' | '2' | '3' | '4';
 
-  type OnRevise = { revise?: '上方修正' | '追加'; };
   export type IntensityMaxInt = {
     name: string;
     code: string;
@@ -23,7 +22,8 @@ export namespace EarthquakeInformation {
     name: string;
     code: string;
     maxInt?: IntensityClass;
-  } & OnRevise;
+    revise?: '上方修正' | '追加';
+  }
 
   export type IntensityCity = {
     name: string;
