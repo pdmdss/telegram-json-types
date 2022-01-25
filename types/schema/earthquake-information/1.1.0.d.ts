@@ -117,6 +117,10 @@ export namespace EarthquakeInformation {
     comments: Comment;
   }
 
+  export interface PublicBodyVXZSE40 {
+    text: string;
+  }
+
   export interface CancelBody {
     text: string;
   }
@@ -177,18 +181,32 @@ export namespace EarthquakeInformation {
     body: PublicBodyVXSE62;
   }
 
+  export interface PublicVZSE40 extends TelegramJSONMain {
+    _schema: Schema;
+    type: '地震・津波に関するお知らせ';
+    title: '地震・津波に関するお知らせ';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
+    eventId: string;
+    serialNo: null;
+    infoKind: '地震・津波に関するお知らせ';
+    body: PublicBodyVXZSE40;
+  }
+
   export interface Cancel extends TelegramJSONMain {
     _schema: Schema;
-    type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報' | '長周期地震動に関する観測情報';
-    title: '震度速報' | '震源に関する情報' | '震源・震度情報' | '遠地地震に関する情報' | '長周期地震動に関する観測情報';
+    type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報' | '長周期地震動に関する観測情報' | '地震・津波に関するお知らせ';
+    title: '震度速報' | '震源に関する情報' | '震源・震度情報' | '遠地地震に関する情報' | '長周期地震動に関する観測情報' | '地震・津波に関するお知らせ';
     infoType: '取消';
     targetDateTimeDubious: never;
     targetDuration: never;
     validDateTime: never;
     eventId: string;
-    infoKind: '震度速報' | '震源速報' | '地震情報' | '長周期地震動に関する観測情報';
+    infoKind: '震度速報' | '震源速報' | '地震情報' | '長周期地震動に関する観測情報' | '地震・津波に関するお知らせ';
     body: CancelBody;
   }
 
-  export  type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53 | PublicVXSE62) | Cancel;
+  export  type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53 | PublicVXSE62 | PublicVZSE40) | Cancel;
 }
