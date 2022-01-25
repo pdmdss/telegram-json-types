@@ -4,7 +4,7 @@ import { mkdir, readdir, rm, writeFile } from 'fs/promises';
 import * as TJS from 'typescript-json-schema';
 
 const basePath = resolve(__dirname, '../types/schema/');
-const distDir = resolve(__dirname, '../dist/schema/');
+const distDir = resolve(__dirname, '../dist/jschema/');
 
 
 const settings: TJS.PartialArgs = {
