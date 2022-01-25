@@ -7,5 +7,3 @@ export {
   v1_1_0,
   v1_0_0,
 };
-
-export default v1_1_0;
