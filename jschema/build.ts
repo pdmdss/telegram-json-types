@@ -28,7 +28,7 @@ async function programTypescript(files: string[]) {
 
   const objectMaps = tsTypeFiles.map(file => tsTypeFileName2TypeSymbolName(file));
 
-  await rm(distDir, { recursive: true });
+  await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
   for (let i = 0; i < objectMaps.length; i++) {
     const { schemaName, typeName } = objectMaps[i];
