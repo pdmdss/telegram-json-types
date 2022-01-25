@@ -1,6 +1,6 @@
 {
   "name": "@dmdata/telegram-json-types",
-  "version": "1.0.8",
+  "version": "1.0.9-jschema.0",
   "scripts": {
     "build:jschema": "npx tsc --project tsconfig.jschema.json",
     "build:dist-jschema": "npx ts-node ./dist/build.js",
