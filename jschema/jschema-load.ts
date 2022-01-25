@@ -3,24 +3,29 @@ import { resolve } from 'path';
 
 import { distDir } from './config';
 
-const schemas = new Map<string, string>();
+const schemas = new Map<string, Map<string, string>>();
 
-const jschemaList = readdirSync(distDir).filter(file => /\.json$/.test(file));
+const jschemaList = readdirSync(distDir)
+  .filter(file => /\.json$/.test(file))
+  .sort();
 
-jschemaList.forEach(jschema => {
-  schemas.set(
-    jschema.replace('.json', ''),
-    resolve(distDir, jschema)
-  );
+jschemaList.forEach(file => {
+  const [, schemaName, schemaVersion] = file.match(/^([\w-]+)_(\w+\.\w+\.\w+)\.json$/) ?? [];
+
+  const schemaVersions = schemas.get(schemaName) ?? schemas.set(schemaName, new Map()).get(schemaName);
+  const jschemaFile = resolve(distDir, file);
+
+  schemaVersions?.set(schemaVersion, jschemaFile);
+  schemaVersions?.set('latest', jschemaFile);
 });
 
 
-export function getJSchema(name: string) {
-  const filePath = schemas.get(name);
+export async function getJSchema(name: string, version: string = 'latest') {
+  const filePath = schemas.get(name)?.get(version);
 
   if (!filePath) {
     return null;
   }
 
-  return import(filePath);
+  return await import(filePath);
 }

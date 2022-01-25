@@ -5,8 +5,6 @@ import * as TJS from 'typescript-json-schema';
 import { basePath, distDir } from './config';
 
 
-
-
 const settings: TJS.PartialArgs = {
   required: true,
 };
@@ -15,30 +13,36 @@ const compilerOptions: TJS.CompilerOptions = {
   strictNullChecks: true,
 };
 
-readdir(basePath)
+readdir(basePath, { withFileTypes: true })
+  .then(dirs =>
+    dirs.filter(dir => dir.isDirectory())
+      .map<Promise<[string, string[]]>>(async dir => [dir.name, await readdir(resolve(basePath, dir.name))])
+  )
+  .then(dirs => Promise.all(dirs))
+  .then(dirs => dirs
+    .flatMap(([dir, files]) => files.map(file => resolve(basePath, dir, file)))
+    .filter(file => /(\d+\.\d+\.\d+)(\.d)?\.ts$/.test(file)))
   .then(files => programTypescript(files));
 
 
 async function programTypescript(files: string[]) {
   const tsTypeFiles = files.filter(file => /\.ts$/.test(file));
-  const filepath = tsTypeFiles.map(file => resolve(basePath, file));
-
-  const program = TJS.getProgramFromFiles(filepath, compilerOptions);
-  const generator = TJS.buildGenerator(program, settings);
 
   const objectMaps = tsTypeFiles.map(file => tsTypeFileName2TypeSymbolName(file));
 
   await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
   for (let i = 0; i < objectMaps.length; i++) {
-    const { schemaName, typeName } = objectMaps[i];
-    console.log(`Build ok: ${schemaName}: ${typeName}`);
+    const { schemaName, schemaVersion, typeName, file } = objectMaps[i];
 
-    const schema = generator?.getSchemaForSymbol(typeName, true);
+    const program = TJS.getProgramFromFiles([file], compilerOptions);
+    const schema = TJS.generateSchema(program, typeName, settings);
+
+    console.log(`Build ok: ${schemaName}:${schemaVersion} => ${typeName}`);
 
     await writeFile(
-      resolve(distDir, `${schemaName}.json`),
-      JSON.stringify(schema, undefined, 4)
+      resolve(distDir, `${schemaName}_${schemaVersion}.json`),
+      JSON.stringify(schema)
     );
   }
 
@@ -46,11 +50,13 @@ async function programTypescript(files: string[]) {
 }
 
 function tsTypeFileName2TypeSymbolName(file: string) {
-  const schemaName = file.replace(/^([\w-]+?)(\.d)?\.ts$/, '$1');
-  const nameScope = schemaName.replace(/-(\w)|(^\w)/g, (match, p1 = '', p2 = '') => `${p1}${p2}`.toUpperCase());
+  const [, schemaName = null, schemaVersion = null] = file.match(/([\w-]+?)[\\/](\d+\.\d+\.\d+)(\.d)?\.ts$/) ?? [];
+  const nameScope = schemaName?.replace(/-(\w)|(^\w)/g, (match, p1 = '', p2 = '') => `${p1}${p2}`.toUpperCase());
 
   return {
     schemaName,
-    typeName: nameScope + '.Main'
+    schemaVersion,
+    typeName: nameScope + '.Main',
+    file
   };
 }
