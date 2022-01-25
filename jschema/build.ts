@@ -3,8 +3,8 @@ import { mkdir, readdir, rm, writeFile } from 'fs/promises';
 
 import * as TJS from 'typescript-json-schema';
 
-const basePath = resolve(__dirname, './types/schema/');
-const distDir = resolve(__dirname, './dist/schema/');
+const basePath = resolve(__dirname, '../types/schema/');
+const distDir = resolve(__dirname, '../dist/schema/');
 
 
 const settings: TJS.PartialArgs = {
@@ -32,6 +32,7 @@ async function programTypescript(files: string[]) {
   await mkdir(distDir, { recursive: true });
   for (let i = 0; i < objectMaps.length; i++) {
     const { schemaName, typeName } = objectMaps[i];
+    console.log(`Build ok: ${schemaName}: ${typeName}`);
 
     const schema = generator?.getSchemaForSymbol(typeName, true);
 
@@ -40,6 +41,8 @@ async function programTypescript(files: string[]) {
       JSON.stringify(schema, undefined, 4)
     );
   }
+
+  console.log('Build complete');
 }
 
 function tsTypeFileName2TypeSymbolName(file: string) {
