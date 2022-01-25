@@ -156,7 +156,7 @@ export namespace TsunamiInformation {
     };
   };
 
-  export interface ChancelBody {
+  export interface CancelBody {
     text: string;
   }
 
@@ -227,7 +227,7 @@ export namespace TsunamiInformation {
 
 
 
-  export interface Channel extends TelegramJSONMain {
+  export interface Cancel extends TelegramJSONMain {
     type: '大津波警報・津波警報・津波予報a' | '津波情報a' | '各地の満潮時刻・津波到達予想時刻に関する情報' | '津波観測に関する情報';
     infoType: '取消';
     targetDateTimeDubious: never;
@@ -235,9 +235,9 @@ export namespace TsunamiInformation {
     validDateTime: never;
     eventId: string;
     infoKind: '津波警報・注意報・予報'| '津波情報';
-    body: ChancelBody;
+    body: CancelBody;
   }
 
-  export type Main = (PublicVTSE41 | PublicVTSE51 | PublicVTSE52) | Channel;
+  export type Main = (PublicVTSE41 | PublicVTSE51 | PublicVTSE52) | Cancel;
 
 }

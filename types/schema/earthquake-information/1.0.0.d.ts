@@ -84,7 +84,7 @@ export namespace EarthquakeInformation {
     comments: Comment;
   }
 
-  export interface ChancelBody {
+  export interface CancelBody {
     text: string;
   }
 
@@ -130,7 +130,7 @@ export namespace EarthquakeInformation {
     body: PublicBodyVXSE53;
   }
 
-  export interface Channel extends TelegramJSONMain {
+  export interface Cancel extends TelegramJSONMain {
     _schema: Schema;
     type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報';
     title: '震度速報' | '震源に関する情報' | '震源・震度情報' | '遠地地震に関する情報';
@@ -140,8 +140,8 @@ export namespace EarthquakeInformation {
     validDateTime: never;
     eventId: string;
     infoKind: '震度速報' | '震源速報' | '地震情報';
-    body: ChancelBody;
+    body: CancelBody;
   }
 
-  export  type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53) | Channel;
+  export  type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53) | Cancel;
 }

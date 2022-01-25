@@ -124,7 +124,7 @@ export namespace EewInformation {
     text: string;
   }
 
-  export interface ChancelBody {
+  export interface CancelBody {
     isLastInfo: true;
     text: string;
   }
@@ -157,7 +157,7 @@ export namespace EewInformation {
     body: PublicTesting;
   }
 
-  export interface Channel extends TelegramJSONMain {
+  export interface Cancel extends TelegramJSONMain {
     _schema: Schema;
     type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
     title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
@@ -168,9 +168,9 @@ export namespace EewInformation {
     eventId: string;
     serialNo: string;
     infoKind: '緊急地震速報';
-    body: ChancelBody;
+    body: CancelBody;
   }
 
-  export type Main = PublicCommon | PublicTesting | Channel;
+  export type Main = PublicCommon | PublicTesting | Cancel;
 
 }
