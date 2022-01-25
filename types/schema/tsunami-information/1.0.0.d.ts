@@ -186,10 +186,13 @@ export namespace TsunamiInformation {
     _schema: Schema;
     type: '津波警報・注意報・予報a';
     title: string;
-    infoKind: '津波警報・注意報・予報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime?: string;
     eventId: string;
     serialNo: null;
-    infoType: '発表' | '訂正';
+    infoKind: '津波警報・注意報・予報';
     body: PublicBodyVTSE41;
   }
 
@@ -197,10 +200,13 @@ export namespace TsunamiInformation {
     _schema: Schema;
     type: '津波情報a';
     title:  '各地の満潮時刻・津波到達予想時刻に関する情報' | '津波観測に関する情報';
-    infoKind:'津波情報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '発表' | '訂正';
+    infoKind:'津波情報';
     body: PublicBodyVTSE51;
   }
 
@@ -209,10 +215,13 @@ export namespace TsunamiInformation {
     _schema: Schema;
     type: '沖合の津波観測に関する情報';
     title: '沖合の津波観測に関する情報';
-    infoKind: '津波情報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '発表' | '訂正';
+    infoKind: '津波情報';
     body: PublicBodyVTSE52;
   }
 
@@ -221,7 +230,11 @@ export namespace TsunamiInformation {
   export interface Channel extends TelegramJSONMain {
     type: '大津波警報・津波警報・津波予報a' | '津波情報a' | '各地の満潮時刻・津波到達予想時刻に関する情報' | '津波観測に関する情報';
     infoType: '取消';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
+    infoKind: '津波警報・注意報・予報'| '津波情報';
     body: ChancelBody;
   }
 

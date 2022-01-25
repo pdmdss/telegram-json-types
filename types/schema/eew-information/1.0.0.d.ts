@@ -133,10 +133,13 @@ export namespace EewInformation {
     _schema: Schema;
     type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）';
     title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）';
-    infoKind: '緊急地震速報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '発表' | '訂正';
+    infoKind: '緊急地震速報';
     body: PublicCommonBody;
   }
 
@@ -144,10 +147,13 @@ export namespace EewInformation {
     _schema: Schema;
     type: '緊急地震速報テスト';
     title: '緊急地震速報テスト';
-    infoKind: '緊急地震速報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '発表' | '訂正';
+    infoKind: '緊急地震速報';
     body: PublicTesting;
   }
 
@@ -155,10 +161,13 @@ export namespace EewInformation {
     _schema: Schema;
     type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
     title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
-    infoKind: '緊急地震速報';
+    infoType: '取消';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '取消';
+    infoKind: '緊急地震速報';
     body: ChancelBody;
   }
 

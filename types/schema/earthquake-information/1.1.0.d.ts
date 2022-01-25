@@ -125,10 +125,13 @@ export namespace EarthquakeInformation {
     _schema: Schema;
     type: '震度速報';
     title: '震度速報';
-    infoKind: '震度速報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: null;
-    infoType: '発表' | '訂正';
+    infoKind: '震度速報';
     body: PublicBodyVXSE51;
   }
 
@@ -136,10 +139,13 @@ export namespace EarthquakeInformation {
     _schema: Schema;
     type: '震源に関する情報';
     title: '震源に関する情報';
-    infoKind: '震源速報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: null;
-    infoType: '発表' | '訂正';
+    infoKind: '震源速報';
     body: PublicBodyVXSE52;
   }
 
@@ -147,10 +153,13 @@ export namespace EarthquakeInformation {
     _schema: Schema;
     type: '震源・震度に関する情報';
     title: '震源・震度情報' | '遠地地震に関する情報';
-    infoKind: '地震情報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '発表' | '訂正';
+    infoKind: '地震情報';
     body: PublicBodyVXSE53;
   }
 
@@ -158,10 +167,13 @@ export namespace EarthquakeInformation {
     _schema: Schema;
     type: '長周期地震動に関する観測情報';
     title: '長周期地震動に関する観測情報';
-    infoKind: '長周期地震動に関する観測情報';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
     eventId: string;
     serialNo: string;
-    infoType: '発表' | '訂正';
+    infoKind: '長周期地震動に関する観測情報';
     body: PublicBodyVXSE62;
   }
 
@@ -169,9 +181,12 @@ export namespace EarthquakeInformation {
     _schema: Schema;
     type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報' | '長周期地震動に関する観測情報';
     title: '震度速報' | '震源に関する情報' | '震源・震度情報' | '遠地地震に関する情報' | '長周期地震動に関する観測情報';
-    infoKind: '震度速報';
-    eventId: string;
     infoType: '取消';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
+    eventId: string;
+    infoKind: '震度速報' | '震源速報' | '地震情報' | '長周期地震動に関する観測情報';
     body: ChancelBody;
   }
 
