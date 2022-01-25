@@ -2,10 +2,13 @@
   "name": "@dmdata/telegram-json-types",
   "version": "1.0.8",
   "scripts": {
-    "build:json-schema": "npx ts-node ./jschema/build.ts",
+    "build:jschema": "npx tsc --project tsconfig.jschema.json",
+    "build:dist-jschema": "npx ts-node ./dist/build.js",
+    "prepublishOnly": "npm run build:jschema && npm run build:dist-jschema",
     "publish:npm": "npm version patch && npm publish --access=public"
   },
   "types": "index.d.ts",
+  "main": "./dist/jschema-load.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
