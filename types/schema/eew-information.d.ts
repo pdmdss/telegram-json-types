@@ -108,7 +108,7 @@ export namespace EewInformation {
     };
   };
 
-  export interface PublicBody {
+  export interface PublicCommonBody {
     isLastInfo: boolean;
     zones?: WarningArea[];
     prefectures?: WarningArea[];
@@ -119,21 +119,37 @@ export namespace EewInformation {
     comments: Comment;
   }
 
-  export interface ChancelBody {
+  export interface PublicTesting {
+    isLastInfo: false;
     text: string;
   }
 
-  export interface Public extends TelegramJSONMain {
+  export interface ChancelBody {
+    isLastInfo: true;
+    text: string;
+  }
+
+  export interface PublicCommon extends TelegramJSONMain {
     _schema: Schema;
     type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）';
     title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）';
     infoKind: '緊急地震速報';
     eventId: string;
-    serialNo: null;
+    serialNo: string;
     infoType: '発表' | '訂正';
-    body: PublicBody;
+    body: PublicCommonBody;
   }
 
+  export interface PublicTesting extends TelegramJSONMain {
+    _schema: Schema;
+    type: '緊急地震速報テスト';
+    title: '緊急地震速報テスト';
+    infoKind: '緊急地震速報';
+    eventId: string;
+    serialNo: string;
+    infoType: '発表' | '訂正';
+    body: PublicTesting;
+  }
 
   export interface Channel extends TelegramJSONMain {
     _schema: Schema;
@@ -146,6 +162,6 @@ export namespace EewInformation {
     body: ChancelBody;
   }
 
-  export type Main = Public | Channel;
+  export type Main = PublicCommon | PublicTesting | Channel;
 
 }
