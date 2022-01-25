@@ -136,8 +136,13 @@ export namespace EEWInformation {
 
 
   export interface Channel extends TelegramJSONMain {
-    infoType: '取消';
+    _schema: Schema;
+    type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
+    title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
+    infoKind: '緊急地震速報';
     eventId: string;
+    serialNo: string;
+    infoType: '取消';
     body: ChancelBody;
   }
 

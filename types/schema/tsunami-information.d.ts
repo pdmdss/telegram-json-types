@@ -184,7 +184,7 @@ export namespace TsunamiInformation {
 
   export interface PublicVTSE41 extends TelegramJSONMain {
     _schema: Schema;
-    type: '大津波警報・津波警報・津波予報a';
+    type: '津波警報・注意報・予報a';
     title: string;
     infoKind: '津波警報・注意報・予報';
     eventId: string;
@@ -219,6 +219,7 @@ export namespace TsunamiInformation {
 
 
   export interface Channel extends TelegramJSONMain {
+    type: '大津波警報・津波警報・津波予報a' | '津波情報a' | '各地の満潮時刻・津波到達予想時刻に関する情報' | '津波観測に関する情報';
     infoType: '取消';
     eventId: string;
     body: ChancelBody;

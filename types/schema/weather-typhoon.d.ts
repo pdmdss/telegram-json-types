@@ -119,5 +119,4 @@ export namespace WeatherTyphoon {
 
 
   export type Main = Public;
-
 }

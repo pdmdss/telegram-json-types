@@ -167,8 +167,12 @@ export namespace EarthquakeInformation {
   }
 
   export interface Channel extends TelegramJSONMain {
-    infoType: '取消';
+    _schema: Schema;
+    type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報' | '長周期地震動に関する観測情報';
+    title: '震度速報' | '震源に関する情報' | '震源・震度情報' | '遠地地震に関する情報' | '長周期地震動に関する観測情報';
+    infoKind: '震度速報';
     eventId: string;
+    infoType: '取消';
     body: ChancelBody;
   }
 
