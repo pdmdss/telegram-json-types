@@ -14,7 +14,7 @@ DMDATA.JP が提供する [JSON Schema](https://dmdata.jp/doc/reference/conversi
 import { EarthquakeInformation }  from '@dmdata/telegram-json-types';
 
 const data = await fetch('https://data.api.dmdata.jp/v1/...')
-      .then(res => res.json()) as Promise<EarthquakeInformation.Main>
+      .then(res => res.json()) as Promise<EarthquakeInformation.Latest.Main>
       
 ```
 

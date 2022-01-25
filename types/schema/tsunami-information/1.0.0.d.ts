@@ -1,5 +1,5 @@
-import { Earthquake } from './component/earthquake';
-import { TelegramJSONMain } from '../main';
+import { Earthquake } from '../component/earthquake';
+import { TelegramJSONMain } from '../../main';
 
 
 export namespace TsunamiInformation {

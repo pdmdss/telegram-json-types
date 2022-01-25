@@ -1,7 +1,5 @@
-import { Earthquake } from './component/earthquake';
-import { TelegramJSONMain } from '../main';
-import { UnitValueNotNull } from './component/unit-value';
-
+import { Earthquake } from '../component/earthquake';
+import { TelegramJSONMain } from '../../main';
 
 export namespace EarthquakeInformation {
   export interface Schema {
@@ -10,8 +8,6 @@ export namespace EarthquakeInformation {
   }
 
   export type IntensityClass = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
-  export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
-  export type LpgmCategory = '1' | '2' | '3' | '4';
 
   export type IntensityMaxInt = {
     name: string;
@@ -41,20 +37,6 @@ export namespace EarthquakeInformation {
     condition?: '震度５弱以上未入電';
   };
 
-  export type IntensityLpgmMaxInt = IntensityMaxIntOnRevise & {
-    maxLpgmInt: LpgmIntensityClass;
-  };
-  export type IntensityLpgmStationPrePeriod = {
-    periodicBand: UnitValueNotNull<never, '秒台'>;
-    lpgmInt: LpgmIntensityClass;
-    sva: UnitValueNotNull<never, 'cm/s'>;
-  };
-  export type IntensityLpgmStation = IntensityStation & {
-    lpgmInt: LpgmIntensityClass;
-    sva: UnitValueNotNull<never, 'cm/s'>;
-    prePeriods: IntensityLpgmStationPrePeriod[];
-  }
-
   export type Comment = {
     free?: string;
     forecast?: {
@@ -82,15 +64,6 @@ export namespace EarthquakeInformation {
     stations: IntensityStation[];
   };
 
-  export type IntensityVXSE62 = {
-    maxInt: IntensityClass;
-    maxLpgmInt: LpgmIntensityClass;
-    lpgmCategory: LpgmCategory;
-    prefectures: IntensityLpgmMaxInt[];
-    regions: IntensityLpgmMaxInt[];
-    stations: IntensityLpgmStation[];
-  };
-
 
   export interface PublicBodyVXSE51 {
     intensity: IntensityVXSE51;
@@ -107,13 +80,6 @@ export namespace EarthquakeInformation {
   export interface PublicBodyVXSE53 {
     earthquake: Earthquake;
     intensity?: IntensityVXSE53;
-    text?: string;
-    comments: Comment;
-  }
-
-  export interface PublicBodyVXSE62 {
-    earthquake: Earthquake;
-    intensity?: IntensityVXSE62;
     text?: string;
     comments: Comment;
   }
@@ -155,17 +121,6 @@ export namespace EarthquakeInformation {
     body: PublicBodyVXSE53;
   }
 
-  export interface PublicVXSE62 extends TelegramJSONMain {
-    _schema: Schema;
-    type: '長周期地震動に関する観測情報';
-    title: '長周期地震動に関する観測情報';
-    infoKind: '長周期地震動に関する観測情報';
-    eventId: string;
-    serialNo: string;
-    infoType: '発表' | '訂正';
-    body: PublicBodyVXSE62;
-  }
-
   export interface Channel extends TelegramJSONMain {
     _schema: Schema;
     type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報' | '長周期地震動に関する観測情報';
@@ -176,6 +131,5 @@ export namespace EarthquakeInformation {
     body: ChancelBody;
   }
 
-  export type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53 | PublicVXSE62) | Channel;
-
+  export  type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53) | Channel;
 }
