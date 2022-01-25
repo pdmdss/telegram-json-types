@@ -4,7 +4,7 @@ export type Coordinate<Geo = never> = {
   latitude: { text: string, value: string };
   longitude: { text: string, value: string };
   height?: UnitValue<'高さ', 'm'>;
-  condition: undefined;
+  condition: never;
   geodeticSystem: Geo;
 } | {
   latitude: never;
