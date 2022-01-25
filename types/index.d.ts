@@ -4,8 +4,9 @@ import * as EarthquakeCounts from './schema/earthquake-counts';
 import * as EarthquakeHypocenterUpdate from './schema/earthquake-hypocenter-update';
 import * as EarthquakeNankai from './schema/earthquake-nankai';
 import * as EewInformation from './schema/eew-information';
-import * as WeatherTyphoon from './schema/eew-information';
 import * as TsunamiInformation from './schema/tsunami-information';
+import * as VolcanoInformation from './schema/volcano-information';
+import * as WeatherTyphoon from './schema/weather-typhoon';
 
 export {
   EarthquakeInformation,
@@ -15,5 +16,6 @@ export {
   EarthquakeNankai,
   EewInformation,
   TsunamiInformation,
+  VolcanoInformation,
   WeatherTyphoon
 };
