@@ -25,17 +25,22 @@ Telegram JSON が、仕様通り整合するかチェックすることができ
 `$ npm i @dmdata/telegram-json-type ajv`
 
 ```typescript
-import { getJSchema }  from '@dmdata/telegram-json-types';
+import { getJSchema } from '@dmdata/telegram-json-types';
 
 // 実際の電文データ
-const telegramData = {};
+const telegramData = {
+  _schema: {
+    type: 'earthquake-information',
+    version: '1.1.0'
+  }
+};
 
-async function check(){
+async function check() {
   // Schema 名から JSON Schema 定義を読み込む 
-  const jschema = await getJSchema('earthquake-information');
-  
+  const jschema = await getJSchema(telegramData._schema.type, telegramData._schema.version);
+
   const validate = ajv.complite(jschema);
-  
+
   console.log(validate(telegramData)); // false
 }
 
