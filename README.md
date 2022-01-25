@@ -10,7 +10,7 @@ DMDATA.JP が提供する [JSON Schema](https://dmdata.jp/doc/reference/conversi
 
 ### 型の使用
 
-```:typescirpt
+```typescript
 import { EarthquakeInformation }  from '@dmdata/telegram-json-types';
 
 const data = await fetch('https://data.api.dmdata.jp/v1/...')
