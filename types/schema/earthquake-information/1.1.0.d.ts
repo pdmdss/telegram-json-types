@@ -1,7 +1,6 @@
-import { Earthquake } from './component/earthquake';
-import { TelegramJSONMain } from '../main';
-import { UnitValueNotNull } from './component/unit-value';
-
+import { Earthquake } from '../component/earthquake';
+import { TelegramJSONMain } from '../../main';
+import { UnitValueNotNull } from '../component/unit-value';
 
 export namespace EarthquakeInformation {
   export interface Schema {
@@ -176,6 +175,5 @@ export namespace EarthquakeInformation {
     body: ChancelBody;
   }
 
-  export type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53 | PublicVXSE62) | Channel;
-
+  export  type Main = (PublicVXSE51 | PublicVXSE52 | PublicVXSE53 | PublicVXSE62) | Channel;
 }
