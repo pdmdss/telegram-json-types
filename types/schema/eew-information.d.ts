@@ -3,7 +3,7 @@ import { Coordinate } from './component/coordinate';
 import { UnitValueNotNull } from './component/unit-value';
 
 
-export namespace EEWInformation {
+export namespace EewInformation {
   export interface Schema {
     type: 'eew-information';
     version: '1.0.0';
