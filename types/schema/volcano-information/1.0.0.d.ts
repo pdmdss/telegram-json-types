@@ -225,14 +225,14 @@ export namespace VolcanoInformation {
     target: TargetEWF;
     cities: CityVFVO50[];
     disasterPreventions: DisasterPrevention[];
-    comment: Comments;
+    comments: Comments;
     text?: string;
   }
 
   export interface PublicBodyVFVO51 {
     notice?: string;
     targets: TargetEWF[];
-    comment: Comments;
+    comments: Comments;
     text?: string;
   }
 
@@ -247,7 +247,7 @@ export namespace VolcanoInformation {
     notice?: string;
     target: Target;
     cities: City[];
-    comment: Comments;
+    comments: Comments;
     ash: Ash;
     text?: string;
   }
@@ -257,7 +257,7 @@ export namespace VolcanoInformation {
     target: Target;
     cities: City[];
     eruption: Eruption;
-    comment: Comments;
+    comments: Comments;
     ash: Ash;
     text?: string;
   }
@@ -270,7 +270,7 @@ export namespace VolcanoInformation {
     target: Target;
     cities: CityVFVO56[];
     eruption: Pick<Eruption, 'eventDateTime'>;
-    comment: Comments;
+    comments: Comments;
     text?: string;
   }
 
