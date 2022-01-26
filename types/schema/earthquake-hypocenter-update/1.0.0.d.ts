@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '../../main';
-import { Earthquake } from '../component/earthquake';
+import { TelegramJSONMain } from '@t/main';
+import { Earthquake } from '@t/component/earthquake';
 
 export namespace EarthquakeHypocenterUpdate {
   export interface Schema {

@@ -1,6 +1,6 @@
-import { TelegramJSONMain } from '../../main';
-import { Coordinate } from '../../component/coordinate';
-import { UnitValueNotNull } from '../../component/unit-value';
+import { TelegramJSONMain } from '@t/main';
+import { Coordinate } from '@t/component/coordinate';
+import { UnitValueNotNull } from '@t/component/unit-value';
 
 
 export namespace EewInformation {

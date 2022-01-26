@@ -11,5 +11,17 @@
     "strict": true,
     "esModuleInterop": true,
     "baseUrl": "./",
+    "paths": {
+      "@t/*": [
+        "./types/*"
+      ]
+    }
   },
+  "include": [
+    "types/**/*"
+  ],
+  "exclude": [
+    "jschema",
+    "node_modules"
+  ]
 }

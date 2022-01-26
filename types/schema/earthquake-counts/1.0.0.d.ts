@@ -1,4 +1,4 @@
-import { TelegramJSONMain } from '../../main';
+import { TelegramJSONMain } from '@t/main';
 
 export namespace EarthquakeCounts {
   export interface Schema {

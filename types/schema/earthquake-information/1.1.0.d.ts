@@ -1,6 +1,6 @@
-import { Earthquake } from '../../component/earthquake';
-import { TelegramJSONMain } from '../../main';
-import { UnitValueNotNull } from '../../component/unit-value';
+import { TelegramJSONMain } from '@t/main';
+import { Earthquake } from '@t/component/earthquake';
+import { UnitValueNotNull } from '@t/component/unit-value';
 
 export namespace EarthquakeInformation {
   export interface Schema {

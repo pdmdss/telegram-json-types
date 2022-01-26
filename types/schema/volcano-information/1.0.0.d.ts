@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '../../main';
-import { Coordinate } from '../component/coordinate';
+import { TelegramJSONMain } from '@t/main';
+import { Coordinate } from '@t/component/coordinate';
 
 export namespace VolcanoInformation {
   export interface Schema {
