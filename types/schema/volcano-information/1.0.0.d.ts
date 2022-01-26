@@ -150,7 +150,7 @@ export namespace VolcanoInformation {
     type: '噴煙の流向';
     unit: '漢字';
   } & ({
-    value: Direction8 | '直上' | '流行不明';
+    value: Direction8 | '直上' | '流向不明';
     condition: never;
   } | {
     value: null;
@@ -284,7 +284,7 @@ export namespace VolcanoInformation {
     notice?: string;
     target: TargetEWF;
     oceanZones: OceanZone[];
-    comment: Comments;
+    comments: Comments;
     text?: string;
   }
 
