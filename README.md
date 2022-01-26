@@ -18,6 +18,35 @@ const data = await fetch('https://data.api.dmdata.jp/v1/...')
       
 ```
 
+## JSON Schema による整合性チェック
+
+Telegram JSON が、仕様通り整合するかチェックすることができます。
+
+`$ npm i @dmdata/telegram-json-type ajv`
+
+```typescript
+import { getJSchema } from '@dmdata/telegram-json-types';
+
+// 実際の電文データ
+const telegramData = {
+  _schema: {
+    type: 'earthquake-information',
+    version: '1.1.0'
+  }
+};
+
+async function check() {
+  // Schema 名から JSON Schema 定義を読み込む 
+  const jschema = await getJSchema(telegramData._schema.type, telegramData._schema.version);
+
+  const validate = ajv.complite(jschema);
+
+  console.log(validate(telegramData)); // false
+}
+
+check();
+```
+
 ## 使える型定義
 
 * [EarthquakeInformation](https://dmdata.jp/doc/reference/conversion/json/schema/earthquake-information)

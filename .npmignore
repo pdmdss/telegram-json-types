@@ -1,3 +1,4 @@
 /node_modules/
-/dist/
 /.idea/
+/jschema/
+/tsconfig.jschema.json
