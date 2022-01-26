@@ -38,7 +38,7 @@ export namespace TsunamiInformation {
   } | {
     value: null;
     over: never;
-    condition: '巨大' | '高い';
+    condition?: '巨大' | '高い';
   });
 
   export interface TsunamiForecastMaxHeight {
@@ -168,7 +168,7 @@ export namespace TsunamiInformation {
 
   export interface PublicBodyVTSE51Tsunami {
     forecasts: TsunamiForecastVXSE51[];
-    observations: TsunamiObservationVXSE51[];
+    observations?: TsunamiObservationVXSE51[];
   }
 
   export interface PublicBodyVTSE52Tsunami {
