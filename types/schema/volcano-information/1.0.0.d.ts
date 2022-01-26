@@ -338,7 +338,6 @@ export namespace VolcanoInformation {
     type: '降灰予報（定時）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTime: string;
     targetDateTimeDubious: never;
     targetDuration: never;
     validDateTime: string;
@@ -353,7 +352,6 @@ export namespace VolcanoInformation {
     type: '降灰予報（速報）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTime: string;
     targetDateTimeDubious: never;
     targetDuration: never;
     validDateTime: string;
@@ -368,7 +366,6 @@ export namespace VolcanoInformation {
     type: '降灰予報（詳細）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTime: string;
     targetDateTimeDubious: never;
     targetDuration: never;
     validDateTime: string;
@@ -383,10 +380,9 @@ export namespace VolcanoInformation {
     type: '噴火速報';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTime: string;
     targetDateTimeDubious?: '年頃' | '月頃' | '日頃' | '時頃' | '分頃' | '秒頃' | '頃';
     targetDuration: never;
-    validDateTime: string;
+    validDateTime: never;
     eventId: string;
     serialNo: null;
     infoKind: '噴火速報';
@@ -412,10 +408,9 @@ export namespace VolcanoInformation {
     type: '火山に関するお知らせ';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTime: string;
     targetDateTimeDubious: never;
     targetDuration: never;
-    validDateTime: string;
+    validDateTime: never;
     eventId: string;
     serialNo: null;
     infoKind: '火山に関するお知らせ';
