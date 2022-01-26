@@ -17,19 +17,29 @@ export namespace TsunamiInformation {
     };
   }
 
-  export interface TsunamiForecastFirstHeight {
-    arrivalTime?: string;
-    condition?: '津波到達中と推測' | '第１波の到達を確認' | 'ただちに津波来襲と予測';
-    revise?: '追加' | '更新';
-  }
+  export type TsunamiForecastFirstHeight = ({
+    arrivalTime: string;
+    condition?: 'ただちに津波来襲と予測';
+  } | {
+    arrivalTime: never;
+    condition: '津波到達中と推測' | '第１波の到達を確認';
+  }) &
+    {
+      revise?: '追加' | '更新';
+    };
 
-  export interface TsunamiForecastMaxHeightValue {
+  export type TsunamiForecastMaxHeightValue = {
     type: '津波の高さ';
     unit: 'm';
-    value: string | null;
+  } & ({
+    value: string;
     over?: true;
-    condition?: '巨大' | '高い';
-  }
+    condition: never;
+  } | {
+    value: null;
+    over: never;
+    condition: '巨大' | '高い';
+  });
 
   export interface TsunamiForecastMaxHeight {
     height: TsunamiForecastMaxHeightValue;
@@ -48,8 +58,8 @@ export namespace TsunamiInformation {
     code: string;
     name: string;
     kind: TsunamiForecastKind;
-    firstHeight: TsunamiForecastFirstHeight;
-    maxHeight: TsunamiForecastMaxHeight;
+    firstHeight?: TsunamiForecastFirstHeight;
+    maxHeight?: TsunamiForecastMaxHeight;
     stations?: TsunamiForecastStation[] | never;
   }
 
@@ -61,27 +71,43 @@ export namespace TsunamiInformation {
     stations?: TsunamiForecastStation[];
   }
 
-  export interface TsunamiObservationStationFirstHeight {
+  export type TsunamiObservationStationFirstHeight = ({
     arrivalTime: string;
-    initial?: '押し' | '引き';
-    condition?: '第１波識別不能';
+    initial: '押し' | '引き';
+    condition: never;
+  } | {
+    arrivalTime: never;
+    initial: never;
+    condition: '第１波識別不能';
+  }) & {
     revise?: '追加' | '更新';
-  }
+  };
 
   export interface TsunamiObservationStationMaxHeightValue {
     type: 'これまでの最大波の高さ';
     unit: 'm';
-    value: string | null;
+    value: string;
     over?: true;
     condition?: '上昇中';
   }
 
-  export interface TsunamiObservationStationMaxHeight {
-    dateTime?: string;
-    height?: TsunamiObservationStationMaxHeightValue;
-    condition?: '微弱' | '観測中' | '重要';
-    revise?: '追加' | '更新';
-  }
+  export type TsunamiObservationStationMaxHeight =
+    ({
+      dateTime: string;
+      height: TsunamiObservationStationMaxHeightValue;
+      condition?: '重要';
+    } | {
+      dateTime: string;
+      height: never;
+      condition: '微弱';
+    } | {
+      dateTime: never;
+      height: never;
+      condition: '観測中';
+    }) &
+    {
+      revise?: '追加' | '更新';
+    }
 
   export interface TsunamiObservationStation {
     code: string;
@@ -113,19 +139,21 @@ export namespace TsunamiInformation {
     revise?: '追加' | '更新';
   }
 
-  export interface TsunamiEstimationMaxHeightValue {
-    type: '津波の高さ';
-    unit: 'm';
-    value: string | null;
-    over?: true;
-  }
+  export type TsunamiEstimationMaxHeightValue = TsunamiForecastMaxHeightValue;
 
-  export interface TsunamiEstimationMaxHeight {
-    dateTime?: string;
-    height?: TsunamiEstimationMaxHeightValue;
-    condition?: '微弱' | '観測中' | '重要';
-    revise?: '追加' | '更新';
-  }
+  export type TsunamiEstimationMaxHeight =
+    ({
+      dateTime: string;
+      height: TsunamiEstimationMaxHeightValue;
+      condition?: '重要';
+    } | {
+      dateTime: never;
+      height: never;
+      condition: '推定中';
+    }) &
+    {
+      revise?: '追加' | '更新';
+    };
 
   export interface TsunamiEstimation {
     code: string;
