@@ -38,6 +38,12 @@ export namespace VolcanoInformation {
     kind: TargetKind;
   }
 
+  export interface TargetVFVO56 {
+    code: string;
+    name: string;
+    kind: TargetKind;
+  }
+
   export interface TargetEWF extends Target {
     crater: never;
     kind: TargetKindEWF;
@@ -267,7 +273,7 @@ export namespace VolcanoInformation {
 
   export interface PublicBodyVFVO56 {
     notice?: string;
-    target: Target;
+    target: TargetVFVO56;
     cities: CityVFVO56[];
     eruption: Pick<Eruption, 'eventDateTime'>;
     comments: Comments;
