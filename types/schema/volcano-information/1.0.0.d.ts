@@ -12,7 +12,7 @@ export namespace VolcanoInformation {
 
   export interface TargetCrater {
     name: string | null;
-    coordinate: VolcanoCoordinate;
+    coordinate?: VolcanoCoordinate;
   }
 
   export interface TargetKind {
@@ -207,7 +207,7 @@ export namespace VolcanoInformation {
     code: string;
     name: string;
     polygons: [number, number][][];
-    size: AshForecastItemSize;
+    size?: AshForecastItemSize;
     direction: AshForecastItemDirection;
     distance: AshForecastItemDistance;
     remake?: string;
@@ -219,7 +219,7 @@ export namespace VolcanoInformation {
     elapsedTime: string;
     startTime: string;
     endTime: string;
-    items: AshForecastItem;
+    items: AshForecastItem[];
   }
 
   export interface Ash {
