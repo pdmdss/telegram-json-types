@@ -1,6 +1,6 @@
 import { TelegramJSONMain } from '@t/main';
 import { Coordinate } from '@t/component/coordinate';
-import { UnitValue, UnitValueNotNull } from '@t/component/unit-value';
+import { UnitValueNotNull } from '@t/component/unit-value';
 
 export namespace WeatherTyphoon {
   export interface Schema {
@@ -18,11 +18,11 @@ export namespace WeatherTyphoon {
 
   export interface Axis {
     direction: Direction;
-    radius: UnitValue;
+    radius: UnitValueNotNull;
   }
 
   export interface RealStateClassification {
-    category: 'TD' | 'TY' | 'STS' | 'Hurricane' | 'Tropical Storm' | 'LOW' | null;
+    category: 'TD' | 'TY' | 'TS' | 'STS' | 'Hurricane' | 'Tropical Storm' | 'LOW' | null;
     name: '熱帯低気圧' | '台風' | 'ハリケーン' | '発達した熱帯低気圧' | '温帯低気圧' | null;
     area: '大型' | '超大型' | null;
     intensity: '強い' | '非常に強い' | '猛烈な' | null;
@@ -30,12 +30,23 @@ export namespace WeatherTyphoon {
 
   export type ForecastClassification = Omit<RealStateClassification, 'area'>;
 
+  export type RealStateCenterSpeed = {
+    type: '移動速度';
+    unit: 'km/h';
+  } & ({
+    value: string;
+    condition: never;
+  } | {
+    value: null;
+    condition: 'ゆっくり' | 'ほとんど停滞';
+  })
+
   export interface RealStateCenter {
     coordinate: Coordinate;
-    location: string;
+    location: string | null;
     direction: Direction;
-    speed: UnitValue;
-    pressure: UnitValueNotNull;
+    speed: RealStateCenterSpeed;
+    pressure: UnitValueNotNull<'中心気圧', 'hPa'>;
   }
 
   export type ForecastCenter = {
@@ -43,7 +54,7 @@ export namespace WeatherTyphoon {
       basePoint: Coordinate;
       axes: Axis[];
     };
-  } & Omit<RealStateCenter, 'location'>;
+  } & Omit<RealStateCenter, 'coordinate'>;
 
   export interface RealStateWindArea {
     strong: Axis[];
@@ -51,8 +62,8 @@ export namespace WeatherTyphoon {
   }
 
   export interface RealStateWind {
-    average: UnitValue;
-    instantaneous: UnitValue;
+    average: UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
+    instantaneous: UnitValueNotNull<'最大瞬間風速', 'm/s'>;
     area: RealStateWindArea;
   }
 
@@ -61,8 +72,8 @@ export namespace WeatherTyphoon {
   }
 
   export interface ForecastWind {
-    average: UnitValue;
-    instantaneous: UnitValue;
+    average: UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
+    instantaneous: UnitValueNotNull<'最大瞬間風速', 'm/s'>;
     area: ForecastWindArea;
   }
 
