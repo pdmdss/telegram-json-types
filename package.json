@@ -2,7 +2,7 @@
   "name": "@dmdata/telegram-json-types",
   "version": "1.0.9-jschema.1",
   "scripts": {
-    "build:jschema": "npx tsc --project tsconfig.jschema.json",
+    "build:jschema": "npx tsc --project jschema/tsconfig.json",
     "build:dist-jschema": "node ./dist/build.js",
     "prepublishOnly": "npm run build:jschema && npm run build:dist-jschema",
     "publish:npm": "npm version patch && npm publish --access=public"
