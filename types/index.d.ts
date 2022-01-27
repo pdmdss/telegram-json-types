@@ -13,6 +13,7 @@ import * as WeatherWarning from './schema/weather-warning';
 import * as WeatherTornado from './schema/weather-tornado';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 import * as WeatherLandslide from './schema/weather-landslide';
+import * as WeatherRiverFlood from './schema/weather-river-flood';
 
 export {
   EarthquakeInformation,
@@ -29,5 +30,6 @@ export {
   WeatherWarning,
   WeatherTornado,
   WeatherTyphoon,
-  WeatherLandslide
+  WeatherLandslide,
+  WeatherRiverFlood
 };

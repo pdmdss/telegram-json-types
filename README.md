@@ -64,3 +64,4 @@ check();
 * [WeatherTornado](https://dmdata.jp/doc/reference/conversion/json/schema/weather-tornado)
 * [WeatherTyphoon](https://dmdata.jp/doc/reference/conversion/json/schema/weather-typhoon)
 * [WeatherLandslide](https://dmdata.jp/doc/reference/conversion/json/schema/weather-landslide)
+* [WeatherRiverFlood](https://dmdata.jp/doc/reference/conversion/json/schema/weather-river-flood)
