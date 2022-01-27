@@ -18,7 +18,8 @@
     }
   },
   "include": [
-    "types/**/*"
+    "types/**/*",
+    "test/**/*"
   ],
   "exclude": [
     "jschema",
