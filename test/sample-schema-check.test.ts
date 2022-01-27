@@ -11,6 +11,7 @@ const checkSchemaTypes = [
   'earthquake-nankai',
   'tsunami-information',
   'volcano-information',
+  'weather-information',
   'weather-warning',
   'weather-typhoon',
 ];
