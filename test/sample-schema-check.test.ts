@@ -15,6 +15,7 @@ const checkSchemaTypes = [
   'weather-impact-society',
   'weather-early',
   'weather-warning',
+  'weather-tornado',
   'weather-typhoon',
 ];
 

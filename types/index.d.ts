@@ -10,6 +10,7 @@ import * as WeatherInformation from './schema/weather-information';
 import * as WeatherImpactSociety from './schema/weather-impact-society';
 import * as WeatherEarly from './schema/weather-early';
 import * as WeatherWarning from './schema/weather-warning';
+import * as WeatherTornado from './schema/weather-tornado';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 
 export {
@@ -25,5 +26,6 @@ export {
   WeatherImpactSociety,
   WeatherEarly,
   WeatherWarning,
+  WeatherTornado,
   WeatherTyphoon
 };

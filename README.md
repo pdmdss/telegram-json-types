@@ -61,4 +61,5 @@ check();
 * [WeatherImpactSociety](https://dmdata.jp/doc/reference/conversion/json/schema/weather-impact-society)
 * [WeatherEarly](https://dmdata.jp/doc/reference/conversion/json/schema/weather-early)
 * [WeatherWarning](https://dmdata.jp/doc/reference/conversion/json/schema/weather-warning)
+* [WeatherTornado](https://dmdata.jp/doc/reference/conversion/json/schema/weather-tornado)
 * [WeatherTyphoon](https://dmdata.jp/doc/reference/conversion/json/schema/weather-typhoon)
