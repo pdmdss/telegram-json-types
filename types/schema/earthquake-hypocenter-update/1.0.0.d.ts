@@ -13,7 +13,7 @@ export namespace EarthquakeHypocenterUpdate {
 
   export interface PublicBody {
     earthquake: Earthquake;
-    text: string;
+    text?: string;
     comments?: Comments;
   }
 
