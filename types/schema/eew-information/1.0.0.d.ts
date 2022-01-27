@@ -1,4 +1,5 @@
 import { TelegramJSONMain } from '@t/main';
+import { CodeName } from '@t/component/code-name';
 import { Coordinate } from '@t/component/coordinate';
 import { UnitValueNotNull } from '@t/component/unit-value';
 
@@ -12,24 +13,18 @@ export namespace EewInformation {
   export type IntensityClass = '0' | '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
   export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
 
-  export interface WarningAreaKind {
-    code: string;
-    name: string;
-    lastKind: {
-      code: string;
-      name: string;
-    };
+  export interface WarningAreaKindLastKind extends CodeName {
   }
 
-  export interface WarningArea {
-    code: string;
-    name: string;
+  export interface WarningAreaKind extends CodeName {
+    lastKind: WarningAreaKindLastKind;
+  }
+
+  export interface WarningArea extends CodeName {
     kind: WarningAreaKind;
   }
 
-  export interface EarthquakeHypocenterReduce {
-    code: string;
-    name: string;
+  export interface EarthquakeHypocenterReduce extends CodeName {
   }
 
   export interface EarthquakeHypocenterAccuracy {
@@ -42,9 +37,7 @@ export namespace EewInformation {
     numberOfMagnitudeCalculation: '0' | '1' | '2' | '3' | '4' | '5';
   }
 
-  export interface EarthquakeHypocenter {
-    code: string;
-    name: string;
+  export interface EarthquakeHypocenter extends CodeName {
     coordinate: Coordinate<'日本測地系'>;
     depth: UnitValueNotNull<'深さ', 'km'>;
     reduce: EarthquakeHypocenterReduce;
@@ -83,14 +76,10 @@ export namespace EewInformation {
     maxIntChangeReason: '0' | '1' | '2' | '3' | '4' | '9';
   }
 
-  export interface IntensityRegionKind {
-    code:string;
-    name:string;
+  export interface IntensityRegionKind extends CodeName {
   }
 
-  export interface IntensityRegion {
-    code: string;
-    name: string;
+  export interface IntensityRegion extends CodeName {
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
     kind: IntensityRegionKind;

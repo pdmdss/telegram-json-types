@@ -1,4 +1,5 @@
 import { TelegramJSONMain } from '@t/main';
+import { CodeName } from '@t/component/code-name';
 
 export namespace EarthquakeNankai {
   export interface Schema {
@@ -6,9 +7,7 @@ export namespace EarthquakeNankai {
     version: '1.0.0';
   }
 
-  export interface EarthquakeInfoKind {
-    code: string;
-    name: string;
+  export interface EarthquakeInfoKind extends CodeName{
   }
 
   export interface EarthquakeInfo {

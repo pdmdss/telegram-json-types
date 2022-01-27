@@ -1,4 +1,5 @@
 import { TelegramJSONMain } from '@t/main';
+import { CodeName } from '@t/component/code-name';
 import { Earthquake } from '@t/component/earthquake';
 import { UnitValueNotNull } from '@t/component/unit-value';
 
@@ -12,33 +13,26 @@ export namespace EarthquakeInformation {
   export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
   export type LpgmCategory = '1' | '2' | '3' | '4';
 
-  export type IntensityMaxInt = {
-    name: string;
-    code: string;
+  export interface IntensityMaxInt extends CodeName {
     maxInt: IntensityClass;
-  };
-  export type IntensityMaxIntOnRevise = {
-    name: string;
-    code: string;
+  }
+
+  export interface IntensityMaxIntOnRevise extends CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
   }
 
-  export type IntensityCity = {
-    name: string;
-    code: string;
+  export interface IntensityCity extends CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
-  };
+  }
 
-  export type IntensityStation = {
-    name: string;
-    code: string;
+  export interface IntensityStation extends CodeName {
     int: IntensityClass | '!5-';
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
-  };
+  }
 
   export type IntensityLpgmMaxInt = IntensityMaxIntOnRevise & {
     maxLpgmInt: LpgmIntensityClass;
@@ -67,28 +61,28 @@ export namespace EarthquakeInformation {
   };
 
 
-  export type IntensityVXSE51 = {
+  export interface IntensityVXSE51 {
     maxInt: IntensityClass;
     prefectures: IntensityMaxInt[];
     regions: IntensityMaxInt[];
-  };
+  }
 
-  export type IntensityVXSE53 = {
+  export interface IntensityVXSE53 {
     maxInt: IntensityClass;
     prefectures: IntensityMaxIntOnRevise[];
     regions: IntensityMaxIntOnRevise[];
     cities: IntensityCity[];
     stations: IntensityStation[];
-  };
+  }
 
-  export type IntensityVXSE62 = {
+  export interface IntensityVXSE62 {
     maxInt: IntensityClass;
     maxLpgmInt: LpgmIntensityClass;
     lpgmCategory: LpgmCategory;
     prefectures: IntensityLpgmMaxInt[];
     regions: IntensityLpgmMaxInt[];
     stations: IntensityLpgmStation[];
-  };
+  }
 
 
   export interface PublicBodyVXSE51 {

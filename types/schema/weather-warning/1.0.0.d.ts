@@ -1,14 +1,10 @@
 import { TelegramJSONMain } from '@t/main';
+import { CodeName } from '@t/component/code-name';
 
 export namespace WeatherWarning {
   export interface Schema {
     type: 'weather-warning';
     version: '1.0.0';
-  }
-
-  export interface CodeName {
-    code: string;
-    name: string;
   }
 
   export interface KindNextKindDateTime {

@@ -1,5 +1,6 @@
-import { Earthquake } from '@t/component/earthquake';
 import { TelegramJSONMain } from '@t/main';
+import { CodeName } from '@t/component/code-name';
+import { Earthquake } from '@t/component/earthquake';
 
 
 export namespace TsunamiInformation {
@@ -8,13 +9,11 @@ export namespace TsunamiInformation {
     version: '1.0.0';
   }
 
-  export interface TsunamiForecastKind {
-    code: string;
-    name: string;
-    lastKind: {
-      code: string;
-      name: string;
-    };
+  export interface TsunamiForecastKindLastKind extends CodeName {
+  }
+
+  export interface TsunamiForecastKind extends CodeName {
+    lastKind: TsunamiForecastKindLastKind;
   }
 
   export type TsunamiForecastFirstHeight = ({
@@ -47,16 +46,12 @@ export namespace TsunamiInformation {
     revise?: '追加' | '更新';
   }
 
-  export interface TsunamiForecastStation {
-    code: string;
-    name: string;
+  export interface TsunamiForecastStation extends CodeName {
     highTideDateTime: string;
     firstHeight: TsunamiForecastFirstHeight;
   }
 
-  export interface TsunamiForecast {
-    code: string;
-    name: string;
+  export interface TsunamiForecast extends CodeName {
     kind: TsunamiForecastKind;
     firstHeight?: TsunamiForecastFirstHeight;
     maxHeight?: TsunamiForecastMaxHeight;
@@ -109,9 +104,7 @@ export namespace TsunamiInformation {
       revise?: '追加' | '更新';
     }
 
-  export interface TsunamiObservationStation {
-    code: string;
-    name: string;
+  export interface TsunamiObservationStation extends CodeName {
     sensor?: string;
     firstHeight: TsunamiObservationStationFirstHeight;
     maxHeight: TsunamiObservationStationMaxHeight;
@@ -155,9 +148,7 @@ export namespace TsunamiInformation {
       revise?: '追加' | '更新';
     };
 
-  export interface TsunamiEstimation {
-    code: string;
-    name: string;
+  export interface TsunamiEstimation extends CodeName {
     firstHeight: TsunamiEstimationFirstHeight;
     maxHeight: TsunamiEstimationMaxHeight;
   }

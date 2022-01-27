@@ -1,4 +1,5 @@
 import { TelegramJSONMain } from '@t/main';
+import { CodeName } from '@t/component/code-name';
 import { Earthquake } from '@t/component/earthquake';
 
 export namespace EarthquakeInformation {
@@ -9,33 +10,26 @@ export namespace EarthquakeInformation {
 
   export type IntensityClass = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
 
-  export type IntensityMaxInt = {
-    name: string;
-    code: string;
+  export interface IntensityMaxInt extends CodeName {
     maxInt: IntensityClass;
-  };
-  export type IntensityMaxIntOnRevise = {
-    name: string;
-    code: string;
+  }
+
+  export interface IntensityMaxIntOnRevise extends CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
   }
 
-  export type IntensityCity = {
-    name: string;
-    code: string;
+  export interface IntensityCity extends CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
-  };
+  }
 
-  export type IntensityStation = {
-    name: string;
-    code: string;
+  export interface IntensityStation extends CodeName {
     int: IntensityClass | '!5-';
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
-  };
+  }
 
   export type Comment = {
     free?: string;
@@ -50,19 +44,19 @@ export namespace EarthquakeInformation {
   };
 
 
-  export type IntensityVXSE51 = {
+  export interface IntensityVXSE51 {
     maxInt: IntensityClass;
     prefectures: IntensityMaxInt[];
     regions: IntensityMaxInt[];
-  };
+  }
 
-  export type IntensityVXSE53 = {
+  export interface IntensityVXSE53 {
     maxInt: IntensityClass;
     prefectures: IntensityMaxIntOnRevise[];
     regions: IntensityMaxIntOnRevise[];
     cities: IntensityCity[];
     stations: IntensityStation[];
-  };
+  }
 
 
   export interface PublicBodyVXSE51 {
