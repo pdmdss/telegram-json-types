@@ -83,12 +83,17 @@ export namespace EewInformation {
     maxIntChangeReason: '0' | '1' | '2' | '3' | '4' | '9';
   }
 
+  export interface IntensityRegionKind {
+    code:string;
+    name:string;
+  }
+
   export interface IntensityRegion {
     code: string;
     name: string;
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
-    kind: WarningAreaKind;
+    kind: IntensityRegionKind;
   }
 
 
@@ -119,7 +124,7 @@ export namespace EewInformation {
     comments: Comment;
   }
 
-  export interface PublicTesting {
+  export interface PublicTestingBody {
     isLastInfo: false;
     text: string;
   }
@@ -145,8 +150,8 @@ export namespace EewInformation {
 
   export interface PublicTesting extends TelegramJSONMain {
     _schema: Schema;
-    type: '緊急地震速報テスト';
-    title: '緊急地震速報テスト';
+    type: '緊急地震速報配信テスト';
+    title: '緊急地震速報配信テスト';
     infoType: '発表' | '訂正';
     targetDateTimeDubious: never;
     targetDuration: never;
@@ -154,13 +159,13 @@ export namespace EewInformation {
     eventId: string;
     serialNo: string;
     infoKind: '緊急地震速報';
-    body: PublicTesting;
+    body: PublicTestingBody;
   }
 
   export interface Cancel extends TelegramJSONMain {
     _schema: Schema;
-    type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
-    title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報テスト';
+    type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報配信テスト';
+    title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報配信テスト';
     infoType: '取消';
     targetDateTimeDubious: never;
     targetDuration: never;
