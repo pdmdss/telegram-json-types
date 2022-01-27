@@ -17,6 +17,7 @@ const checkSchemaTypes = [
   'weather-warning',
   'weather-tornado',
   'weather-typhoon',
+  'weather-landslide',
 ];
 
 const ajv = new Ajv({
