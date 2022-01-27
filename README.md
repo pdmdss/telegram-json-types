@@ -57,4 +57,5 @@ check();
 * [EewInformation](https://dmdata.jp/doc/reference/conversion/json/schema/eew-information)
 * [TsunamiInformation](https://dmdata.jp/doc/reference/conversion/json/schema/tsunami-information)
 * [VolcanoInformation](https://dmdata.jp/doc/reference/conversion/json/schema/volcano-information)
+* [WeatherWarning](https://dmdata.jp/doc/reference/conversion/json/schema/weather-warning)
 * [WeatherTyphoon](https://dmdata.jp/doc/reference/conversion/json/schema/weather-typhoon)

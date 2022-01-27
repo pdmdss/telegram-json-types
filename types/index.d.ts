@@ -6,6 +6,7 @@ import * as EarthquakeNankai from './schema/earthquake-nankai';
 import * as EewInformation from './schema/eew-information';
 import * as TsunamiInformation from './schema/tsunami-information';
 import * as VolcanoInformation from './schema/volcano-information';
+import * as WeatherWarning from './schema/weather-warning';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 
 export {
@@ -17,5 +18,6 @@ export {
   EewInformation,
   TsunamiInformation,
   VolcanoInformation,
+  WeatherWarning,
   WeatherTyphoon
 };
