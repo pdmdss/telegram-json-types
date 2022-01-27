@@ -13,6 +13,7 @@ const checkSchemaTypes = [
   'volcano-information',
   'weather-information',
   'weather-impact-society',
+  'weather-early',
   'weather-warning',
   'weather-typhoon',
 ];

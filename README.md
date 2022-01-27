@@ -59,5 +59,6 @@ check();
 * [VolcanoInformation](https://dmdata.jp/doc/reference/conversion/json/schema/volcano-information)
 * [WeatherInformation](https://dmdata.jp/doc/reference/conversion/json/schema/weather-information)
 * [WeatherImpactSociety](https://dmdata.jp/doc/reference/conversion/json/schema/weather-impact-society)
+* [WeatherEarly](https://dmdata.jp/doc/reference/conversion/json/schema/weather-early)
 * [WeatherWarning](https://dmdata.jp/doc/reference/conversion/json/schema/weather-warning)
 * [WeatherTyphoon](https://dmdata.jp/doc/reference/conversion/json/schema/weather-typhoon)

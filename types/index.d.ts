@@ -8,6 +8,7 @@ import * as TsunamiInformation from './schema/tsunami-information';
 import * as VolcanoInformation from './schema/volcano-information';
 import * as WeatherInformation from './schema/weather-information';
 import * as WeatherImpactSociety from './schema/weather-impact-society';
+import * as WeatherEarly from './schema/weather-early';
 import * as WeatherWarning from './schema/weather-warning';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 
@@ -22,6 +23,7 @@ export {
   VolcanoInformation,
   WeatherInformation,
   WeatherImpactSociety,
+  WeatherEarly,
   WeatherWarning,
   WeatherTyphoon
 };
