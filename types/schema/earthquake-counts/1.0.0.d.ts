@@ -17,7 +17,7 @@ export namespace EarthquakeCounts {
   }
 
   export interface EarthquakeCount {
-    type: '１時間地震回数' | '累計地震回数' | '地震回数';
+    type: '１時間地震回数' | '累積地震回数' | '地震回数';
     targetTime: EarthquakeCountTargetTime;
     values: EarthquakeCountValues;
   }
@@ -27,7 +27,7 @@ export namespace EarthquakeCounts {
   }
 
   export interface PublicBody {
-    earthquakeCounts?: EarthquakeCount;
+    earthquakeCounts?: EarthquakeCount[];
     nextAdvisory?: string;
     text?: string;
     comments?: Comments;
