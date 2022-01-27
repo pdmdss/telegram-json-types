@@ -58,5 +58,6 @@ check();
 * [TsunamiInformation](https://dmdata.jp/doc/reference/conversion/json/schema/tsunami-information)
 * [VolcanoInformation](https://dmdata.jp/doc/reference/conversion/json/schema/volcano-information)
 * [WeatherInformation](https://dmdata.jp/doc/reference/conversion/json/schema/weather-information)
+* [WeatherImpactSociety](https://dmdata.jp/doc/reference/conversion/json/schema/weather-impact-society)
 * [WeatherWarning](https://dmdata.jp/doc/reference/conversion/json/schema/weather-warning)
 * [WeatherTyphoon](https://dmdata.jp/doc/reference/conversion/json/schema/weather-typhoon)
