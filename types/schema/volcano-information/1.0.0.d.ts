@@ -129,7 +129,7 @@ export namespace VolcanoInformation {
     unit: 'm';
   } & ({
     value: string;
-    condition?: '以上';
+    condition?: string;
   } | {
     value: null;
     condition?: '噴煙なし' | '不明';
@@ -140,7 +140,7 @@ export namespace VolcanoInformation {
     unit: 'ft';
   } & ({
     value: string;
-    condition?: '以上';
+    condition?: string;
   } | {
     value: null;
     condition?: '噴煙なし' | '不明';
