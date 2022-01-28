@@ -1,12 +1,14 @@
-# @dmdata/telegram-json-type
+# @dmdata/telegram-json-types
 
 ## 概要
-DMDATA.JP が提供する [JSON Schema](https://dmdata.jp/doc/reference/conversion/json/) の、TypeScript型定義（作成中）を公開しています。
+
+DMDATA.JP が提供する [JSON Schema](https://dmdata.jp/doc/reference/conversion/json/) の、TypeScript型定義を公開しています。
 
 ## 使い方
 
 ### インストール
-`$ npm i -D @dmdata/telegram-json-type`
+
+`$ npm i -D @dmdata/telegram-json-types`
 
 ### 型の使用
 
@@ -22,7 +24,7 @@ const data = await fetch('https://data.api.dmdata.jp/v1/...')
 
 Telegram JSON が、仕様通り整合するかチェックすることができます。
 
-`$ npm i @dmdata/telegram-json-type ajv`
+`$ npm i @dmdata/telegram-json-types ajv`
 
 ```typescript
 import { getJSchema } from '@dmdata/telegram-json-types';
