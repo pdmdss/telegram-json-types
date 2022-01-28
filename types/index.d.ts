@@ -14,6 +14,26 @@ import * as WeatherTornado from './schema/weather-tornado';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 import * as WeatherLandslide from './schema/weather-landslide';
 import * as WeatherRiverFlood from './schema/weather-river-flood';
+import { TelegramJSONMain } from './main';
+
+type All =
+  EarthquakeInformation.v1_0_0.Main |
+  EarthquakeInformation.v1_1_0.Main |
+  EarthquakeExplanation.v1_0_0.Main |
+  EarthquakeCounts.v1_0_0.Main |
+  EarthquakeHypocenterUpdate.v1_0_0.Main |
+  EarthquakeNankai.v1_0_0.Main |
+  EewInformation.v1_0_0.Main |
+  TsunamiInformation.v1_0_0.Main |
+  VolcanoInformation.v1_0_0.Main |
+  WeatherInformation.v1_0_0.Main |
+  WeatherImpactSociety.v1_0_0.Main |
+  WeatherEarly.v1_0_0.Main |
+  WeatherWarning.v1_0_0.Main |
+  WeatherTornado.v1_0_0.Main |
+  WeatherTyphoon.v1_0_0.Main |
+  WeatherLandslide.v1_0_0.Main |
+  WeatherRiverFlood.v1_0_0.Main;
 
 export {
   EarthquakeInformation,
@@ -31,5 +51,7 @@ export {
   WeatherTornado,
   WeatherTyphoon,
   WeatherLandslide,
-  WeatherRiverFlood
+  WeatherRiverFlood,
+  TelegramJSONMain,
+  All
 };
