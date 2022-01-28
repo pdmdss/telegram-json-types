@@ -9,6 +9,10 @@
     "test": "jest",
     "type-test": "npm run build:dist-jschema && npm run test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pdmdss/telegram-json-types"
+  },
   "types": "index.d.ts",
   "main": "./dist/jschema-load.js",
   "keywords": [],
