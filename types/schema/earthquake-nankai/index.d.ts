@@ -1,4 +1,4 @@
-import { EarthquakeExplanation as v1_0_0 } from './1.0.0';
+import { EarthquakeNankai as v1_0_0 } from './1.0.0';
 
 
 export {
