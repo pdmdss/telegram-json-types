@@ -23,7 +23,7 @@ export namespace WeatherRiverFlood {
   }
 
   export interface MainText {
-    text: string;
+    text: string | null;
     rivers: MainTextRiver[];
     stations: MainTextStation[];
   }
