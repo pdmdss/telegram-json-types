@@ -31,10 +31,14 @@ export namespace WeatherRiverFlood {
   export interface SuppositionKind extends CodeName {
   }
 
-  export interface SuppositionDistrictPrefecture extends CodeName {
+  export interface SuppositionDistrictPrefecture {
+    code: string | null;
+    name: string | null;
   }
 
-  export interface SuppositionDistrictCity extends CodeName {
+  export interface SuppositionDistrictCity {
+    code: string | null;
+    name: string | null;
   }
 
   export interface SuppositionDistrict {
@@ -42,7 +46,7 @@ export namespace WeatherRiverFlood {
     name: string;
     prefecture: SuppositionDistrictPrefecture;
     city: SuppositionDistrictCity;
-    district: string;
+    district: string | null;
   }
 
   export interface Supposition {
@@ -97,7 +101,7 @@ export namespace WeatherRiverFlood {
 
   export interface WaterLevelTimeSeriesItem extends CodeName {
     location: string;
-    type: '水位' | '水量';
+    type: '水位' | '流量';
     forecasts: WaterLevelTimeSeriesItemForecast [];
   }
 
@@ -126,7 +130,7 @@ export namespace WeatherRiverFlood {
   }
 
   export interface FloodedWaterAssumptions {
-    district: string;
+    district: string | null;
     attainmentTime: FloodedWaterAssumptionsAttainmentTime;
     attainmentDeepestTime: FloodedWaterAssumptionsAttainmentDeepestTime;
     floodDepth: FloodedWaterAssumptionsFloodDepth;
@@ -153,7 +157,7 @@ export namespace WeatherRiverFlood {
 
   export interface Reference extends CodeName {
     location: string;
-    district: string;
+    district: string | null;
     sections: string[];
     criteria: ReferenceCriterion[];
   }
