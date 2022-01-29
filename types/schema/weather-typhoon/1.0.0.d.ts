@@ -64,7 +64,7 @@ export namespace WeatherTyphoon {
   export interface RealStateWind {
     average: UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
     instantaneous: UnitValueNotNull<'最大瞬間風速', 'm/s'>;
-    area: RealStateWindArea;
+    area?: RealStateWindArea;
   }
 
   export interface ForecastWindArea {
@@ -74,7 +74,7 @@ export namespace WeatherTyphoon {
   export interface ForecastWind {
     average: UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
     instantaneous: UnitValueNotNull<'最大瞬間風速', 'm/s'>;
-    area: ForecastWindArea;
+    area?: ForecastWindArea;
   }
 
   export interface RealState {
