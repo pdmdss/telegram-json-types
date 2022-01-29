@@ -68,7 +68,7 @@ export namespace TsunamiInformation {
 
   export type TsunamiObservationStationFirstHeight = ({
     arrivalTime: string;
-    initial: '押し' | '引き';
+    initial?: '押し' | '引き';
     condition: never;
   } | {
     arrivalTime: never;
