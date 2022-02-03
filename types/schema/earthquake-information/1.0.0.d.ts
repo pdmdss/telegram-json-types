@@ -30,7 +30,7 @@ export namespace EarthquakeInformation {
     condition?: '震度５弱以上未入電';
   }
 
-  export type Comment = {
+  export interface Comments {
     free?: string;
     forecast?: {
       text: string;
@@ -40,7 +40,7 @@ export namespace EarthquakeInformation {
       text: string;
       codes: string[];
     };
-  };
+  }
 
 
   export interface IntensityVXSE51 {
@@ -61,20 +61,20 @@ export namespace EarthquakeInformation {
   export interface PublicBodyVXSE51 {
     intensity: IntensityVXSE51;
     text?: string;
-    comments: Omit<Comment, 'var'>;
+    comments: Omit<Comments, 'var'>;
   }
 
   export interface PublicBodyVXSE52 {
     earthquake: Components.Earthquake;
     text?: string;
-    comments: Omit<Comment, 'var'>;
+    comments: Omit<Comments, 'var'>;
   }
 
   export interface PublicBodyVXSE53 {
     earthquake: Components.Earthquake;
     intensity?: IntensityVXSE53;
     text?: string;
-    comments: Comment;
+    comments: Comments;
   }
 
   export interface PublicBodyVXZSE40 {

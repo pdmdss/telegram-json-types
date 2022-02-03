@@ -92,13 +92,13 @@ export namespace EewInformation {
   }
 
 
-  export type Comment = {
+  export interface Comments {
     free?: string;
     warning?: {
       text: string;
       codes: string[];
     };
-  };
+  }
 
   export interface PublicCommonBody {
     isLastInfo: boolean;
@@ -110,7 +110,7 @@ export namespace EewInformation {
     earthquake: Earthquake;
     intensity?: Intensity;
     text?: string;
-    comments: Comment;
+    comments: Comments;
   }
 
   export interface PublicTestingBody {
