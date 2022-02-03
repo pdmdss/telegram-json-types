@@ -102,6 +102,8 @@ export namespace EewInformation {
 
   export interface PublicCommonBody {
     isLastInfo: boolean;
+    isCanceled: boolean;
+    isWarning: boolean;
     zones?: WarningArea[];
     prefectures?: WarningArea[];
     regions?: WarningArea[];
@@ -113,11 +115,13 @@ export namespace EewInformation {
 
   export interface PublicTestingBody {
     isLastInfo: false;
+    isCanceled: false;
     text: string;
   }
 
   export interface CancelBody {
     isLastInfo: true;
+    isCanceled: true;
     text: string;
   }
 
