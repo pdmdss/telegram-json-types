@@ -1,6 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
-import { Earthquake } from '@t/component/earthquake';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 
 export namespace TsunamiInformation {
@@ -9,10 +8,10 @@ export namespace TsunamiInformation {
     version: '1.0.0';
   }
 
-  export interface TsunamiForecastKindLastKind extends CodeName {
+  export interface TsunamiForecastKindLastKind extends Components.CodeName {
   }
 
-  export interface TsunamiForecastKind extends CodeName {
+  export interface TsunamiForecastKind extends Components.CodeName {
     lastKind: TsunamiForecastKindLastKind;
   }
 
@@ -46,12 +45,12 @@ export namespace TsunamiInformation {
     revise?: '追加' | '更新';
   }
 
-  export interface TsunamiForecastStation extends CodeName {
+  export interface TsunamiForecastStation extends Components.CodeName {
     highTideDateTime: string;
     firstHeight: TsunamiForecastFirstHeight;
   }
 
-  export interface TsunamiForecast extends CodeName {
+  export interface TsunamiForecast extends Components.CodeName {
     kind: TsunamiForecastKind;
     firstHeight?: TsunamiForecastFirstHeight;
     maxHeight?: TsunamiForecastMaxHeight;
@@ -104,7 +103,7 @@ export namespace TsunamiInformation {
       revise?: '追加' | '更新';
     }
 
-  export interface TsunamiObservationStation extends CodeName {
+  export interface TsunamiObservationStation extends Components.CodeName {
     sensor?: string;
     firstHeight: TsunamiObservationStationFirstHeight;
     maxHeight: TsunamiObservationStationMaxHeight;
@@ -148,7 +147,7 @@ export namespace TsunamiInformation {
       revise?: '追加' | '更新';
     };
 
-  export interface TsunamiEstimation extends CodeName {
+  export interface TsunamiEstimation extends Components.CodeName {
     firstHeight: TsunamiEstimationFirstHeight;
     maxHeight: TsunamiEstimationMaxHeight;
   }
@@ -181,21 +180,21 @@ export namespace TsunamiInformation {
 
   export interface PublicBodyVTSE41 {
     tsunami: PublicBodyVTSE41Tsunami;
-    earthquakes: Earthquake[];
+    earthquakes: Components.Earthquake[];
     text?: string;
     comments?: Comment;
   }
 
   export interface PublicBodyVTSE51 {
     tsunami: PublicBodyVTSE51Tsunami;
-    earthquakes: Earthquake[];
+    earthquakes: Components.Earthquake[];
     text?: string;
     comments?: Comment;
   }
 
   export interface PublicBodyVTSE52 {
     tsunami: PublicBodyVTSE52Tsunami;
-    earthquakes: Earthquake[];
+    earthquakes: Components.Earthquake[];
     text?: string;
     comments?: Comment;
   }

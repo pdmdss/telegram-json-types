@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace WeatherTornado {
   export interface Schema {
@@ -7,16 +7,16 @@ export namespace WeatherTornado {
     version: '1.0.0';
   }
 
-  export interface Witness extends CodeName {
+  export interface Witness extends Components.CodeName {
   }
 
-  export interface TargetKind extends CodeName {
+  export interface TargetKind extends Components.CodeName {
     code: '1' | '0';
     name: '竜巻注意情報' | 'なし';
     status: '発表' | 'なし';
   }
 
-  export interface Target extends CodeName {
+  export interface Target extends Components.CodeName {
     kinds: [TargetKind];
   }
 

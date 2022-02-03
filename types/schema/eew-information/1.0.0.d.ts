@@ -1,7 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
-import { Coordinate } from '@t/component/coordinate';
-import { UnitValueNotNull } from '@t/component/unit-value';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 
 export namespace EewInformation {
@@ -13,18 +11,18 @@ export namespace EewInformation {
   export type IntensityClass = '0' | '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
   export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
 
-  export interface WarningAreaKindLastKind extends CodeName {
+  export interface WarningAreaKindLastKind extends Components.CodeName {
   }
 
-  export interface WarningAreaKind extends CodeName {
+  export interface WarningAreaKind extends Components.CodeName {
     lastKind: WarningAreaKindLastKind;
   }
 
-  export interface WarningArea extends CodeName {
+  export interface WarningArea extends Components.CodeName {
     kind: WarningAreaKind;
   }
 
-  export interface EarthquakeHypocenterReduce extends CodeName {
+  export interface EarthquakeHypocenterReduce extends Components.CodeName {
   }
 
   export interface EarthquakeHypocenterAccuracy {
@@ -37,9 +35,9 @@ export namespace EewInformation {
     numberOfMagnitudeCalculation: '0' | '1' | '2' | '3' | '4' | '5';
   }
 
-  export interface EarthquakeHypocenter extends CodeName {
-    coordinate: Coordinate<'日本測地系'>;
-    depth: UnitValueNotNull<'深さ', 'km'>;
+  export interface EarthquakeHypocenter extends Components.CodeName {
+    coordinate: Components.Coordinate<'日本測地系'>;
+    depth: Components.UnitValueNotNull<'深さ', 'km'>;
     reduce: EarthquakeHypocenterReduce;
     landOrSea?: '内陸' | '海域';
     accuracy: EarthquakeHypocenterAccuracy;
@@ -76,10 +74,10 @@ export namespace EewInformation {
     maxIntChangeReason: '0' | '1' | '2' | '3' | '4' | '9';
   }
 
-  export interface IntensityRegionKind extends CodeName {
+  export interface IntensityRegionKind extends Components.CodeName {
   }
 
-  export interface IntensityRegion extends CodeName {
+  export interface IntensityRegion extends Components.CodeName {
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
     kind: IntensityRegionKind;

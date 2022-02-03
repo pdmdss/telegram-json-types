@@ -1,6 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
-import { Earthquake } from '@t/component/earthquake';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component/';
 
 export namespace EarthquakeInformation {
   export interface Schema {
@@ -10,22 +9,22 @@ export namespace EarthquakeInformation {
 
   export type IntensityClass = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
 
-  export interface IntensityMaxInt extends CodeName {
+  export interface IntensityMaxInt extends Components.CodeName {
     maxInt: IntensityClass;
   }
 
-  export interface IntensityMaxIntOnRevise extends CodeName {
+  export interface IntensityMaxIntOnRevise extends Components.CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
   }
 
-  export interface IntensityCity extends CodeName {
+  export interface IntensityCity extends Components.CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
   }
 
-  export interface IntensityStation extends CodeName {
+  export interface IntensityStation extends Components.CodeName {
     int: IntensityClass | '!5-';
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
@@ -66,13 +65,13 @@ export namespace EarthquakeInformation {
   }
 
   export interface PublicBodyVXSE52 {
-    earthquake: Earthquake;
+    earthquake: Components.Earthquake;
     text?: string;
     comments: Omit<Comment, 'var'>;
   }
 
   export interface PublicBodyVXSE53 {
-    earthquake: Earthquake;
+    earthquake: Components.Earthquake;
     intensity?: IntensityVXSE53;
     text?: string;
     comments: Comment;

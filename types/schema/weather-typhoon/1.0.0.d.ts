@@ -1,6 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { Coordinate } from '@t/component/coordinate';
-import { UnitValueNotNull } from '@t/component/unit-value';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace WeatherTyphoon {
   export interface Schema {
@@ -18,7 +17,7 @@ export namespace WeatherTyphoon {
 
   export interface Axis {
     direction: Direction;
-    radius: UnitValueNotNull;
+    radius: Components.UnitValueNotNull;
   }
 
   export interface RealStateClassification {
@@ -42,16 +41,16 @@ export namespace WeatherTyphoon {
   })
 
   export interface RealStateCenter {
-    coordinate: Coordinate;
+    coordinate: Components.Coordinate;
     location: string | null;
     direction: Direction;
     speed: RealStateCenterSpeed;
-    pressure: UnitValueNotNull<'中心気圧', 'hPa'>;
+    pressure: Components.UnitValueNotNull<'中心気圧', 'hPa'>;
   }
 
   export type ForecastCenter = {
     probabilityCircle: {
-      basePoint: Coordinate;
+      basePoint: Components.Coordinate;
       axes: Axis[];
     };
   } & Omit<RealStateCenter, 'coordinate'>;
@@ -62,8 +61,8 @@ export namespace WeatherTyphoon {
   }
 
   export interface RealStateWind {
-    average: UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
-    instantaneous: UnitValueNotNull<'最大瞬間風速', 'm/s'>;
+    average: Components.UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
+    instantaneous: Components.UnitValueNotNull<'最大瞬間風速', 'm/s'>;
     area?: RealStateWindArea;
   }
 
@@ -72,8 +71,8 @@ export namespace WeatherTyphoon {
   }
 
   export interface ForecastWind {
-    average: UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
-    instantaneous: UnitValueNotNull<'最大瞬間風速', 'm/s'>;
+    average: Components.UnitValueNotNull<'最大風速', 'm/s', '中心付近' | '中心付近を除く' | 'なし' | never>;
+    instantaneous: Components.UnitValueNotNull<'最大瞬間風速', 'm/s'>;
     area?: ForecastWindArea;
   }
 

@@ -1,7 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
-import { Earthquake } from '@t/component/earthquake';
-import { UnitValueNotNull } from '@t/component/unit-value';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component/';
 
 export namespace EarthquakeInformation {
   export interface Schema {
@@ -13,22 +11,22 @@ export namespace EarthquakeInformation {
   export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
   export type LpgmCategory = '1' | '2' | '3' | '4';
 
-  export interface IntensityMaxInt extends CodeName {
+  export interface IntensityMaxInt extends Components.CodeName {
     maxInt: IntensityClass;
   }
 
-  export interface IntensityMaxIntOnRevise extends CodeName {
+  export interface IntensityMaxIntOnRevise extends Components.CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
   }
 
-  export interface IntensityCity extends CodeName {
+  export interface IntensityCity extends Components.CodeName {
     maxInt?: IntensityClass;
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
   }
 
-  export interface IntensityStation extends CodeName {
+  export interface IntensityStation extends Components.CodeName {
     int: IntensityClass | '!5-';
     revise?: '上方修正' | '追加';
     condition?: '震度５弱以上未入電';
@@ -38,13 +36,13 @@ export namespace EarthquakeInformation {
     maxLpgmInt: LpgmIntensityClass;
   };
   export type IntensityLpgmStationPrePeriod = {
-    periodicBand: UnitValueNotNull<never, '秒台'>;
+    periodicBand: Components.UnitValueNotNull<never, '秒台'>;
     lpgmInt: LpgmIntensityClass;
-    sva: UnitValueNotNull<never, 'cm/s'>;
+    sva: Components.UnitValueNotNull<never, 'cm/s'>;
   };
   export type IntensityLpgmStation = IntensityStation & {
     lpgmInt: LpgmIntensityClass;
-    sva: UnitValueNotNull<never, 'cm/s'>;
+    sva: Components.UnitValueNotNull<never, 'cm/s'>;
     prePeriods: IntensityLpgmStationPrePeriod[];
   }
 
@@ -92,20 +90,20 @@ export namespace EarthquakeInformation {
   }
 
   export interface PublicBodyVXSE52 {
-    earthquake: Earthquake;
+    earthquake: Components.Earthquake;
     text?: string;
     comments: Omit<Comment, 'var'>;
   }
 
   export interface PublicBodyVXSE53 {
-    earthquake: Earthquake;
+    earthquake: Components.Earthquake;
     intensity?: IntensityVXSE53;
     text?: string;
     comments: Comment;
   }
 
   export interface PublicBodyVXSE62 {
-    earthquake: Earthquake;
+    earthquake: Components.Earthquake;
     intensity?: IntensityVXSE62;
     text?: string;
     comments: Comment;

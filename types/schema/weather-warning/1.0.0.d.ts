@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace WeatherWarning {
   export interface Schema {
@@ -13,26 +13,26 @@ export namespace WeatherWarning {
     precision: string;
   }
 
-  export interface KindNextKind extends CodeName {
+  export interface KindNextKind extends Components.CodeName {
     condition?: '土砂災害' | '浸水害' | '土砂災害、浸水害';
     dateTime: KindNextKindDateTime;
   }
 
 
-  export interface Kind extends CodeName {
+  export interface Kind extends Components.CodeName {
     status: '発表' | '継続' | '特別警報から警報' | '特別警報から注意報' | '警報から注意報' | '解除';
     condition?: '土砂災害' | '浸水害' | '土砂災害、浸水害';
     attentions?: string[];
     additions?: string[];
-    lastKind?: CodeName;
+    lastKind?: Components.CodeName;
     nextKinds?: KindNextKind[];
   }
 
-  export interface KindVPOA50 extends CodeName {
+  export interface KindVPOA50 extends Components.CodeName {
     status: '発表' | 'なし';
   }
 
-  export interface PrefectureBase extends CodeName {
+  export interface PrefectureBase extends Components.CodeName {
     kinds: Kind[];
     changeStatus: '警報・注意報種別に変化有' | '警報・注意報種別に変化無、量的予想事項等に変化有' | '変化無';
     fullStatus: '全域' | '一部';
@@ -40,7 +40,7 @@ export namespace WeatherWarning {
     condition: never;
   }
 
-  export interface PrefectureNone extends CodeName {
+  export interface PrefectureNone extends Components.CodeName {
     kinds: {}[];
     changeStatus: never;
     fullStatus: never;
@@ -50,7 +50,7 @@ export namespace WeatherWarning {
 
   export type Prefecture = PrefectureBase | PrefectureNone;
 
-  export interface PrefectureVPOA50 extends CodeName {
+  export interface PrefectureVPOA50 extends Components.CodeName {
     kinds: [KindVPOA50];
   }
 
@@ -65,7 +65,7 @@ export namespace WeatherWarning {
     name: string;
   }
 
-  export interface TimeSeriesItemKindRiskDegreeLocalSignificance extends CodeName {
+  export interface TimeSeriesItemKindRiskDegreeLocalSignificance extends Components.CodeName {
     refId: string;
   }
 
@@ -74,7 +74,7 @@ export namespace WeatherWarning {
     term: string;
   }
 
-  export interface TimeSeriesItemKindRiskDegreeLocalFuture extends CodeName {
+  export interface TimeSeriesItemKindRiskDegreeLocalFuture extends Components.CodeName {
     sentence: string;
   }
 
@@ -152,12 +152,12 @@ export namespace WeatherWarning {
     TimeSeriesItemKindQuantitativeTimeline
     | TimeSeriesItemKindQuantitativeWhole;
 
-  export interface TimeSeriesItemKind extends CodeName {
+  export interface TimeSeriesItemKind extends Components.CodeName {
     riskDegrees: TimeSeriesItemKindRiskDegree[];
     quantitative?: TimeSeriesItemKindQuantitative[];
   }
 
-  export interface TimeSeriesItem extends CodeName {
+  export interface TimeSeriesItem extends Components.CodeName {
     kinds: TimeSeriesItemKind[];
   }
 

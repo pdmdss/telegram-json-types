@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace WeatherEarly {
   export interface Schema {
@@ -7,7 +7,7 @@ export namespace WeatherEarly {
     version: '1.0.0';
   }
 
-  export interface Target extends CodeName {
+  export interface Target extends Components.CodeName {
   }
 
   export interface TargetTimeDateTime {
@@ -20,7 +20,7 @@ export namespace WeatherEarly {
     duration?: string;
   }
 
-  export interface MainTextZone extends CodeName {
+  export interface MainTextZone extends Components.CodeName {
   }
 
 
@@ -47,13 +47,13 @@ export namespace WeatherEarly {
     condition?: string;
   }
 
-  export interface StatisticStation extends CodeName {
+  export interface StatisticStation extends Components.CodeName {
     type: '天候の状況（速報値）';
     observedValues: StatisticStationObservedValue[];
   }
 
 
-  export interface EarlyBaseZone extends CodeName {
+  export interface EarlyBaseZone extends Components.CodeName {
   }
 
   export interface EarlyBase {

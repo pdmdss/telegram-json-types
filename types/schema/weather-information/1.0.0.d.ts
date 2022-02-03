@@ -1,4 +1,4 @@
-import { TelegramJSONMain } from '@t/main';
+import { TelegramJSONMain } from '../../main';
 
 export namespace WeatherInformation {
   export interface Schema {

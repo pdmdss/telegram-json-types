@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace WeatherLandslide {
   export interface Schema {
@@ -8,16 +8,16 @@ export namespace WeatherLandslide {
   }
 
 
-  export interface Target extends CodeName {
+  export interface Target extends Components.CodeName {
   }
 
-  export interface CityKind extends CodeName {
+  export interface CityKind extends Components.CodeName {
     code: '3' | '1' | '0';
     name: '警戒' | '解除' | 'なし';
     status: '発表' | '継続' | '解除' | 'なし';
   }
 
-  export interface City extends CodeName {
+  export interface City extends Components.CodeName {
     kinds: [CityKind];
   }
 

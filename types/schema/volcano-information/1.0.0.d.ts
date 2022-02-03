@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { Coordinate } from '@t/component/coordinate';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace VolcanoInformation {
   export interface Schema {
@@ -7,7 +7,7 @@ export namespace VolcanoInformation {
     version: '1.0.0';
   }
 
-  export type VolcanoCoordinate = Required<Coordinate>;
+  export type VolcanoCoordinate = Required<Components.Coordinate>;
   export type Direction8 = '北' | '北東' | '東' | '南東' | '南' | '南西' | '西' | '北西';
 
   export interface TargetCrater {

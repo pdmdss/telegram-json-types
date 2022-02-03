@@ -1,5 +1,5 @@
-import { TelegramJSONMain } from '@t/main';
-import { CodeName } from '@t/component/code-name';
+import { TelegramJSONMain } from '../../main';
+import { Components } from '../../component';
 
 export namespace WeatherRiverFlood {
   export interface Schema {
@@ -7,18 +7,18 @@ export namespace WeatherRiverFlood {
     version: '1.0.0';
   }
 
-  export interface TargetKind extends CodeName {
+  export interface TargetKind extends Components.CodeName {
     condition: string;
   }
 
-  export interface Target extends CodeName {
+  export interface Target extends Components.CodeName {
     kind: TargetKind;
   }
 
-  export interface MainTextRiver extends CodeName {
+  export interface MainTextRiver extends Components.CodeName {
   }
 
-  export interface MainTextStation extends CodeName {
+  export interface MainTextStation extends Components.CodeName {
     location: string;
   }
 
@@ -28,7 +28,7 @@ export namespace WeatherRiverFlood {
     stations: MainTextStation[];
   }
 
-  export interface SuppositionKind extends CodeName {
+  export interface SuppositionKind extends Components.CodeName {
   }
 
   export interface SuppositionDistrictPrefecture {
@@ -99,7 +99,7 @@ export namespace WeatherRiverFlood {
     condition?: string;
   }
 
-  export interface WaterLevelTimeSeriesItem extends CodeName {
+  export interface WaterLevelTimeSeriesItem extends Components.CodeName {
     location: string;
     type: '水位' | '流量';
     forecasts: WaterLevelTimeSeriesItemForecast [];
@@ -136,13 +136,13 @@ export namespace WeatherRiverFlood {
     floodDepth: FloodedWaterAssumptionsFloodDepth;
   }
 
-  export interface FloodedWater extends CodeName {
+  export interface FloodedWater extends Components.CodeName {
     dateTime: string;
     text: string;
     assumptions: FloodedWaterAssumptions[];
   }
 
-  export interface Office extends CodeName {
+  export interface Office extends Components.CodeName {
     type: '水位関係' | '気象関係';
     contact: string;
     url: string;
@@ -155,7 +155,7 @@ export namespace WeatherRiverFlood {
     condition: '有効' | '無効';
   }
 
-  export interface Reference extends CodeName {
+  export interface Reference extends Components.CodeName {
     location: string;
     district: string | null;
     sections: string[];

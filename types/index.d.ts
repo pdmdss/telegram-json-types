@@ -15,6 +15,7 @@ import * as WeatherTyphoon from './schema/weather-typhoon';
 import * as WeatherLandslide from './schema/weather-landslide';
 import * as WeatherRiverFlood from './schema/weather-river-flood';
 import { TelegramJSONMain } from './main';
+import { Components } from './component';
 
 type All =
   EarthquakeInformation.v1_0_0.Main |
@@ -53,5 +54,6 @@ export {
   WeatherLandslide,
   WeatherRiverFlood,
   TelegramJSONMain,
+  Components,
   All
 };
