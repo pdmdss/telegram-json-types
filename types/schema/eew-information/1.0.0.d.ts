@@ -80,6 +80,8 @@ export namespace EewInformation {
   export interface IntensityRegion extends Components.CodeName {
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
+    isPlum: boolean;
+    isWarning: boolean;
     kind: IntensityRegionKind;
     condition?: '既に主要動到達と推測';
     arrivalTime?: string;
