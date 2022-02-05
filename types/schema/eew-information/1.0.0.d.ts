@@ -81,14 +81,27 @@ export namespace EewInformation {
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
     kind: IntensityRegionKind;
+    condition?: '既に主要動到達と推測';
+    arrivalTime?: string;
   }
 
+  export interface IntensityRegionReached extends IntensityRegion {
+    condition: '既に主要動到達と推測';
+    arrivalTime: never;
+  }
+
+  export interface IntensityRegionUnReached extends IntensityRegion {
+    condition: never;
+    arrivalTime: string;
+  }
+
+  export type IntensityRegionItem = IntensityRegionReached | IntensityRegionUnReached
 
   export interface Intensity {
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
     appendix?: IntensityAppendix;
-    regions: IntensityRegion[];
+    regions: IntensityRegionItem[];
   }
 
 
