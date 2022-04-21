@@ -99,11 +99,22 @@ export namespace EewInformation {
 
   export type IntensityRegionItem = IntensityRegionReached | IntensityRegionUnReached
 
+  export interface IntensityRealtimeStation {
+    code: string;
+    name: string;
+    int: IntensityClass;
+    k: string;
+  }
+
   export interface Intensity {
     forecastMaxInt: IntensityForecastMaxInt;
     forecastLpgmMaxInt?: IntensityForecastLpgmMaxInt;
     appendix?: IntensityAppendix;
     regions: IntensityRegionItem[];
+  }
+
+  export interface IntensityRealtime {
+    stations: IntensityRealtimeStation[];
   }
 
 
@@ -126,6 +137,14 @@ export namespace EewInformation {
     intensity?: Intensity;
     text?: string;
     comments: Comments;
+  }
+
+  export interface PublicRealtimeBody {
+    isLastInfo: boolean;
+    isCanceled: boolean;
+    earthquake: Earthquake;
+    intensity?: IntensityRealtime;
+    text?: string;
   }
 
   export interface PublicTestingBody {
@@ -154,6 +173,21 @@ export namespace EewInformation {
     body: PublicCommonBody;
   }
 
+  export interface PublicRealtime extends TelegramJSONMain {
+    _schema: Schema;
+    type: 'リアルタイム震度';
+    title: 'リアルタイム震度';
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious: never;
+    targetDuration: never;
+    validDateTime: never;
+    eventId: string;
+    serialNo: string;
+    infoKind: '緊急地震速報';
+    body: PublicRealtimeBody;
+  }
+
+
   export interface PublicTesting extends TelegramJSONMain {
     _schema: Schema;
     type: '緊急地震速報配信テスト';
@@ -170,8 +204,8 @@ export namespace EewInformation {
 
   export interface Cancel extends TelegramJSONMain {
     _schema: Schema;
-    type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報配信テスト';
-    title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | '緊急地震速報配信テスト';
+    type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | 'リアルタイム震度' | '緊急地震速報配信テスト';
+    title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | 'リアルタイム震度' | '緊急地震速報配信テスト';
     infoType: '取消';
     targetDateTimeDubious: never;
     targetDuration: never;
@@ -182,6 +216,6 @@ export namespace EewInformation {
     body: CancelBody;
   }
 
-  export type Main = PublicCommon | PublicTesting | Cancel;
+  export type Main = PublicCommon | PublicRealtime | PublicTesting | Cancel;
 
 }
