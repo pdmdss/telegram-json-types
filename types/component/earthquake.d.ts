@@ -1,56 +1,77 @@
 import { Coordinate } from './coordinate';
 import { UnitValueNotNull } from './unit-value';
 
-type Depth = {
+interface DepthBase {
   type: '深さ';
   unit: 'km';
-} & ({
-  value: null;
-  condition: '不明';
-} | {
+  value: string | null;
+  condition: string | never;
+}
+
+interface DepthNormal extends DepthBase {
+  value: string;
+  condition: never;
+}
+
+interface DepthShallow extends DepthBase {
   value: '0';
   condition: 'ごく浅い';
-} | {
+}
+
+interface DepthDeep extends DepthBase {
   value: '700';
   condition: '７００ｋｍ以上';
-} | {
-  value: string;
-  condition: never;
-});
-type Magnitude = {
+}
+
+interface DepthUnknown extends DepthBase {
+  value: null;
+  condition: '不明';
+}
+
+type Depth = DepthNormal | DepthShallow | DepthDeep | DepthUnknown;
+
+
+interface MagnitudeBase {
   type: 'マグニチュード';
   unit: 'Mj' | 'M';
-} & ({
-  value: null;
-  condition: 'Ｍ不明' | 'Ｍ８を超える巨大地震';
-} | {
+  value: string | null;
+  condition: string | never;
+}
+
+interface MagnitudeNormal extends MagnitudeBase {
   value: string;
   condition: never;
-});
+}
+
+interface MagnitudeUnknown extends MagnitudeBase {
+  value: null;
+  condition: 'Ｍ不明' | 'Ｍ８を超える巨大地震';
+}
+
+type Magnitude = MagnitudeNormal | MagnitudeUnknown;
+
+interface Hypocenter {
+  name: string;
+  code: string;
+  coordinate: Coordinate<'日本測地系' | undefined>;
+  depth: Depth;
+  detailed?: {
+    code: string;
+    name: string;
+  };
+  auxiliary?: {
+    text: string;
+    code: string;
+    name: string;
+    direction: string;
+    distance: Omit<UnitValueNotNull<never, 'km'>, 'type' | 'condition'>;
+  };
+  source?: 'ＰＴＷＣ' | 'ＵＳＧＳ' | 'ＷＣＡＴＷＣ';
+}
 
 export interface Earthquake {
   originTime: string;
   arrivalTime: string;
-  hypocenter: {
-    name: string;
-    code: string;
-    coordinate: Coordinate<'日本測地系' | undefined>;
-    depth: Depth;
-    detailed?: {
-      code: string;
-      name: string;
-    };
-    auxiliary?: {
-      text: string;
-      code: string;
-      name: string;
-      direction: string;
-      distance: Omit<UnitValueNotNull<never, 'km'>, 'type' | 'condition'>;
-    };
-    source?: 'ＰＴＷＣ' | 'ＵＳＧＳ' | 'ＷＣＡＴＷＣ';
-  };
+  hypocenter: Hypocenter;
   magnitude: Magnitude;
 }
-
-
-
