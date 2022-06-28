@@ -1,4 +1,4 @@
-import { UnitValue } from './unit-value';
+import { UnitValueNotNull } from './unit-value';
 
 
 interface CoordinateNormal<Geo> {
@@ -10,7 +10,7 @@ interface CoordinateNormal<Geo> {
     text: string;
     value: string;
   };
-  height?: UnitValue<'高さ', 'm'>;
+  height?: UnitValueNotNull<'高さ', 'm'>;
   condition: never;
   geodeticSystem: Geo;
 }
