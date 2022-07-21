@@ -136,7 +136,7 @@ export namespace EewInformation {
     earthquake: Earthquake;
     intensity?: Intensity;
     text?: string;
-    comments: Comments;
+    comments?: Comments;
   }
 
   export interface PublicRealtimeBody {
