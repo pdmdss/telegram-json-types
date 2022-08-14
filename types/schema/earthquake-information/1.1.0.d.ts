@@ -8,8 +8,8 @@ export namespace EarthquakeInformation {
   }
 
   export type IntensityClass = '1' | '2' | '3' | '4' | '5-' | '5+' | '6-' | '6+' | '7';
-  export type LpgmIntensityClass = '0' | '1' | '2' | '3' | '4';
-  export type LpgmCategory = '1' | '2' | '3' | '4';
+  export type LgIntensityClass = '0' | '1' | '2' | '3' | '4';
+  export type LgCategory = '1' | '2' | '3' | '4';
 
   export interface IntensityMaxInt extends Components.CodeName {
     maxInt: IntensityClass;
@@ -32,18 +32,18 @@ export namespace EarthquakeInformation {
     condition?: '震度５弱以上未入電';
   }
 
-  export type IntensityLpgmMaxInt = IntensityMaxIntOnRevise & {
-    maxLpgmInt: LpgmIntensityClass;
+  export type IntensityLgMaxInt = IntensityMaxIntOnRevise & {
+    maxLgInt: LgIntensityClass;
   };
-  export type IntensityLpgmStationPrePeriod = {
+  export type IntensityLgStationPrePeriod = {
     periodicBand: Components.UnitValueNotNull<never, '秒台'>;
-    lpgmInt: LpgmIntensityClass;
+    lgInt: LgIntensityClass;
     sva: Components.UnitValueNotNull<never, 'cm/s'>;
   };
-  export type IntensityLpgmStation = IntensityStation & {
-    lpgmInt: LpgmIntensityClass;
+  export type IntensityLgStation = IntensityStation & {
+    lgInt: LgIntensityClass;
     sva: Components.UnitValueNotNull<never, 'cm/s'>;
-    prePeriods: IntensityLpgmStationPrePeriod[];
+    prePeriods: IntensityLgStationPrePeriod[];
   }
 
   export interface Comments {
@@ -75,11 +75,11 @@ export namespace EarthquakeInformation {
 
   export interface IntensityVXSE62 {
     maxInt: IntensityClass;
-    maxLpgmInt: LpgmIntensityClass;
-    lpgmCategory: LpgmCategory;
-    prefectures: IntensityLpgmMaxInt[];
-    regions: IntensityLpgmMaxInt[];
-    stations: IntensityLpgmStation[];
+    maxLgInt: LgIntensityClass;
+    lgCategory: LgCategory;
+    prefectures: IntensityLgMaxInt[];
+    regions: IntensityLgMaxInt[];
+    stations: IntensityLgStation[];
   }
 
 
