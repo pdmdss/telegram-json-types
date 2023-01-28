@@ -28,7 +28,7 @@ export namespace EarthquakeInformation {
 
   export interface IntensityStation extends Components.CodeName {
     int: IntensityClass | '!5-';
-    revise?: '上方修正' | '追加';
+    revise?: '上方修正' | '下方修正' | '追加';
     condition?: '震度５弱以上未入電';
   }
 
@@ -40,7 +40,10 @@ export namespace EarthquakeInformation {
     lgInt: LgIntensityClass;
     sva: Components.UnitValueNotNull<never, 'cm/s'>;
   };
-  export type IntensityLgStation = IntensityStation & {
+
+  export interface IntensityLgStation extends Components.CodeName {
+    int?: IntensityClass;
+    revise?: '上方修正' | '下方修正' | '追加';
     lgInt: LgIntensityClass;
     sva: Components.UnitValueNotNull<never, 'cm/s'>;
     prePeriods: IntensityLgStationPrePeriod[];
