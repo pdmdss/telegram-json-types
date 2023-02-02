@@ -79,7 +79,7 @@ export namespace EewInformation {
 
   export interface IntensityRegion extends Components.CodeName {
     forecastMaxInt: IntensityForecastMaxInt;
-    forecastLgMaxInt?: IntensityForecastLgMaxInt;
+    forecastMaxLgInt?: IntensityForecastLgMaxInt;
     isPlum: boolean;
     isWarning: boolean;
     kind: IntensityRegionKind;
@@ -108,7 +108,7 @@ export namespace EewInformation {
 
   export interface Intensity {
     forecastMaxInt: IntensityForecastMaxInt;
-    forecastLgMaxInt?: IntensityForecastLgMaxInt;
+    forecastMaxLgInt?: IntensityForecastLgMaxInt;
     appendix?: IntensityAppendix;
     regions: IntensityRegionItem[];
   }
