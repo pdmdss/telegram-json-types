@@ -27,8 +27,8 @@ export namespace EewInformation {
 
   export interface EarthquakeHypocenterAccuracy {
     epicenters: [
-        '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8',
-        '0' | '1' | '2' | '3' | '4' | '9'
+      '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8',
+      '0' | '1' | '2' | '3' | '4' | '9'
     ];
     depth: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
     magnitudeCalculation: '0' | '2' | '3' | '4' | '5' | '6' | '8';
@@ -37,7 +37,7 @@ export namespace EewInformation {
 
   export interface EarthquakeHypocenter extends Components.CodeName {
     coordinate: Components.Coordinate<'日本測地系'>;
-    depth: Components.UnitValueNotNull<'深さ', 'km'>;
+    depth: Components.UnitValueNotNull<'深さ', 'km', "ごく浅い" | "７００ｋｍ以上" | "不明">;
     reduce: EarthquakeHypocenterReduce;
     landOrSea?: '内陸' | '海域';
     accuracy: EarthquakeHypocenterAccuracy;
