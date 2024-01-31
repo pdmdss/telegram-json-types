@@ -77,7 +77,7 @@ export namespace EarthquakeInformation {
     comments: Comments;
   }
 
-  export interface PublicBodyVXZSE40 {
+  export interface PublicBodyVZSE40 {
     text: string;
   }
 
@@ -138,7 +138,7 @@ export namespace EarthquakeInformation {
     eventId: string;
     serialNo: null;
     infoKind: '地震・津波に関するお知らせ';
-    body: PublicBodyVXZSE40;
+    body: PublicBodyVZSE40;
   }
 
   export interface Cancel extends TelegramJSONMain {
