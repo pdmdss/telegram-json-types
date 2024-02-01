@@ -23,35 +23,10 @@ export namespace WeatherEarly {
   export interface MainTextZone extends Components.CodeName {
   }
 
-
   export interface MainText {
     text: string;
     zones: MainTextZone[];
   }
-
-  export interface StatisticPeriodDateTime {
-    value: string;
-    validFormat?: string;
-  }
-
-  export interface StatisticPeriod {
-    dateTime: StatisticPeriodDateTime;
-    duration: string;
-    name: string;
-  }
-
-  export interface StatisticStationObservedValue {
-    type: string;
-    unit: string;
-    value: string | null;
-    condition?: string;
-  }
-
-  export interface StatisticStation extends Components.CodeName {
-    type: '天候の状況（速報値）';
-    observedValues: StatisticStationObservedValue[];
-  }
-
 
   export interface EarlyBaseZone extends Components.CodeName {
   }
