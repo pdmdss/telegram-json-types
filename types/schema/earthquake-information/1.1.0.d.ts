@@ -35,17 +35,24 @@ export namespace EarthquakeInformation {
   export type IntensityLgMaxInt = IntensityMaxIntOnRevise & {
     maxLgInt: LgIntensityClass;
   };
+
+  export interface IntensityPeriodicBand extends Omit<Components.UnitValueNotNull<void, '秒台'>, 'type'> {
+  }
+
+  export interface IntensitySva extends Omit<Components.UnitValueNotNull<void, 'cm/s'>, 'type'> {
+  }
+
   export type IntensityLgStationPrePeriod = {
-    periodicBand: Components.UnitValueNotNull<never, '秒台'>;
+    periodicBand: IntensityPeriodicBand;
     lgInt: LgIntensityClass;
-    sva: Components.UnitValueNotNull<never, 'cm/s'>;
+    sva: IntensitySva;
   };
 
   export interface IntensityLgStation extends Components.CodeName {
     int?: IntensityClass;
     revise?: '上方修正' | '下方修正' | '追加';
     lgInt: LgIntensityClass;
-    sva: Components.UnitValueNotNull<never, 'cm/s'>;
+    sva: IntensitySva;
     prePeriods: IntensityLgStationPrePeriod[];
   }
 
@@ -59,6 +66,16 @@ export namespace EarthquakeInformation {
       text: string;
       codes: string[];
     };
+    uri?: string;
+  }
+
+  export interface CommentsVXSE51Or52 extends Comments {
+    var?: never;
+    uri?: never;
+  }
+
+  export interface CommentsVXSE53 extends Comments {
+    uri?: never;
   }
 
 
@@ -89,20 +106,20 @@ export namespace EarthquakeInformation {
   export interface PublicBodyVXSE51 {
     intensity: IntensityVXSE51;
     text?: string;
-    comments: Omit<Comments, 'var'>;
+    comments: CommentsVXSE51Or52;
   }
 
   export interface PublicBodyVXSE52 {
     earthquake: Components.Earthquake;
     text?: string;
-    comments: Omit<Comments, 'var'>;
+    comments: CommentsVXSE51Or52;
   }
 
   export interface PublicBodyVXSE53 {
     earthquake: Components.Earthquake;
     intensity?: IntensityVXSE53;
     text?: string;
-    comments: Comments;
+    comments: CommentsVXSE53;
   }
 
   export interface PublicBodyVXSE62 {
@@ -125,9 +142,9 @@ export namespace EarthquakeInformation {
     type: '震度速報';
     title: '震度速報';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '震度速報';
@@ -139,9 +156,9 @@ export namespace EarthquakeInformation {
     type: '震源に関する情報';
     title: '震源に関する情報';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '震源速報';
@@ -153,9 +170,9 @@ export namespace EarthquakeInformation {
     type: '震源・震度に関する情報';
     title: '震源・震度情報' | '遠地地震に関する情報';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '地震情報';
@@ -167,9 +184,9 @@ export namespace EarthquakeInformation {
     type: '長周期地震動に関する観測情報';
     title: '長周期地震動に関する観測情報';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '長周期地震動に関する観測情報';
@@ -181,9 +198,9 @@ export namespace EarthquakeInformation {
     type: '地震・津波に関するお知らせ';
     title: '地震・津波に関するお知らせ';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '地震・津波に関するお知らせ';
@@ -195,9 +212,9 @@ export namespace EarthquakeInformation {
     type: '震度速報' | '震源に関する情報' | '震源・震度に関する情報' | '長周期地震動に関する観測情報' | '地震・津波に関するお知らせ';
     title: '震度速報' | '震源に関する情報' | '震源・震度情報' | '遠地地震に関する情報' | '長周期地震動に関する観測情報' | '地震・津波に関するお知らせ';
     infoType: '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     infoKind: '震度速報' | '震源速報' | '地震情報' | '長周期地震動に関する観測情報' | '地震・津波に関するお知らせ';
     body: CancelBody;

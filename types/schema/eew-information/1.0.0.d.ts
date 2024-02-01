@@ -89,11 +89,11 @@ export namespace EewInformation {
 
   export interface IntensityRegionReached extends IntensityRegion {
     condition: '既に主要動到達と推測';
-    arrivalTime: never;
+    arrivalTime?: never;
   }
 
   export interface IntensityRegionUnReached extends IntensityRegion {
-    condition: never;
+    condition?: never;
     arrivalTime: string;
   }
 
@@ -128,7 +128,7 @@ export namespace EewInformation {
 
   export interface PublicCommonBody {
     isLastInfo: boolean;
-    isCanceled: boolean;
+    isCanceled: false;
     isWarning: boolean;
     zones?: WarningArea[];
     prefectures?: WarningArea[];
@@ -141,7 +141,7 @@ export namespace EewInformation {
 
   export interface PublicRealtimeBody {
     isLastInfo: boolean;
-    isCanceled: boolean;
+    isCanceled: false;
     earthquake: Earthquake;
     intensity?: IntensityRealtime;
     text?: string;
@@ -164,9 +164,9 @@ export namespace EewInformation {
     type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）';
     title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '緊急地震速報';
@@ -178,9 +178,9 @@ export namespace EewInformation {
     type: 'リアルタイム震度';
     title: 'リアルタイム震度';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '緊急地震速報';
@@ -193,9 +193,9 @@ export namespace EewInformation {
     type: '緊急地震速報配信テスト';
     title: '緊急地震速報配信テスト';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '緊急地震速報';
@@ -207,9 +207,9 @@ export namespace EewInformation {
     type: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | 'リアルタイム震度' | '緊急地震速報配信テスト';
     title: '緊急地震速報（予報）' | '緊急地震速報（地震動予報）' | '緊急地震速報（警報）' | 'リアルタイム震度' | '緊急地震速報配信テスト';
     infoType: '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '緊急地震速報';

@@ -111,9 +111,9 @@ export namespace WeatherImpactSociety {
     type: '全般天候情報' | '地方天候情報' | '府県天候情報';
     title: string;
     infoType: '発表' | '訂正' | '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: string;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: string;
     eventId: string;
     serialNo: string;
     infoKind: '天候情報';
@@ -122,17 +122,19 @@ export namespace WeatherImpactSociety {
 
   export interface PublicZone extends Public {
     type: '全般天候情報' | '地方天候情報';
+    validDateTime: string;
     body: PublicBodyZone;
   }
 
   export interface PublicPrefecture extends Public {
     type: '府県天候情報';
+    validDateTime: string;
     body: PublicBodyPrefecture;
   }
 
-  export interface PublicZoneSeason extends PublicZone {
+  export interface PublicZoneSeason extends Public {
     type: '地方天候情報';
-    validDateTime: never;
+    validDateTime?: never;
     body: PublicBodyZoneSeason;
   }
 

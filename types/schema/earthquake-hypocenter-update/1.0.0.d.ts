@@ -26,9 +26,9 @@ export namespace EarthquakeHypocenterUpdate {
     type: '顕著な地震の震源要素更新のお知らせ';
     title: '顕著な地震の震源要素更新のお知らせ';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '震源要素更新のお知らせ';
@@ -40,9 +40,9 @@ export namespace EarthquakeHypocenterUpdate {
     type: '顕著な地震の震源要素更新のお知らせ';
     title: '顕著な地震の震源要素更新のお知らせ';
     infoType: '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '震源要素更新のお知らせ';

@@ -11,15 +11,15 @@ interface CoordinateNormal<Geo> {
     value: string;
   };
   height?: UnitValueNotNull<'高さ', 'm'>;
-  condition: never;
-  geodeticSystem: Geo;
+  condition?: never;
+  geodeticSystem?: Geo;
 }
 
 interface CoordinateUnknown {
-  latitude: never;
-  longitude: never;
-  height: never;
-  geodeticSystem: never;
+  latitude?: never;
+  longitude?: never;
+  height?: never;
+  geodeticSystem?: never;
   condition: '不明';
 }
 

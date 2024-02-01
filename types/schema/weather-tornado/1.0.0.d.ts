@@ -38,8 +38,8 @@ export namespace WeatherTornado {
     type: '竜巻注意情報（目撃情報付き）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
     validDateTime: string;
     eventId: null;
     serialNo: string;

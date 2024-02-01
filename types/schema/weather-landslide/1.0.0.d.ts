@@ -38,9 +38,9 @@ export namespace WeatherLandslide {
     type: '土砂災害警戒情報';
     title: string;
     infoType: '発表';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '土砂災害警戒情報';

@@ -179,9 +179,9 @@ export namespace WeatherRiverFlood {
     type: '指定河川洪水予報';
     title: string;
     infoType: '発表' | '訂正' | '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '指定河川洪水予報';

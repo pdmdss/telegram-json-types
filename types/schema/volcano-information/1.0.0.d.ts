@@ -45,7 +45,7 @@ export namespace VolcanoInformation {
   }
 
   export interface TargetEWF extends Target {
-    crater: never;
+    crater?: never;
     kind: TargetKindEWF;
   }
 
@@ -151,7 +151,7 @@ export namespace VolcanoInformation {
     unit: '漢字';
   } & ({
     value: Direction8 | '直上' | '流向不明';
-    condition: never;
+    condition?: never;
   } | {
     value: null;
     condition: '噴煙なし';
@@ -301,9 +301,9 @@ export namespace VolcanoInformation {
     type: '噴火警報・予報';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '噴火警報・予報';
@@ -315,9 +315,9 @@ export namespace VolcanoInformation {
     type: '火山の状況に関する解説情報';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '火山の状況に関する解説情報';
@@ -331,8 +331,8 @@ export namespace VolcanoInformation {
     infoType: '発表' | '訂正';
     targetDateTime: string | null;
     targetDateTimeDubious?: '年頃' | '月頃' | '日頃' | '時頃' | '分頃' | '秒頃' | '頃';
-    targetDuration: never;
-    validDateTime: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '噴火に関する火山観測報';
@@ -344,8 +344,8 @@ export namespace VolcanoInformation {
     type: '降灰予報（定時）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
     validDateTime: string;
     eventId: string;
     serialNo: string;
@@ -358,8 +358,8 @@ export namespace VolcanoInformation {
     type: '降灰予報（速報）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
     validDateTime: string;
     eventId: string;
     serialNo: string;
@@ -372,8 +372,8 @@ export namespace VolcanoInformation {
     type: '降灰予報（詳細）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
     validDateTime: string;
     eventId: string;
     serialNo: string;
@@ -387,8 +387,8 @@ export namespace VolcanoInformation {
     title: string;
     infoType: '発表' | '訂正';
     targetDateTimeDubious?: '年頃' | '月頃' | '日頃' | '時頃' | '分頃' | '秒頃' | '頃';
-    targetDuration: never;
-    validDateTime: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '噴火速報';
@@ -400,9 +400,9 @@ export namespace VolcanoInformation {
     type: '火山現象に関する海上警報・海上予報';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '火山現象に関する海上警報・海上予報';
@@ -414,9 +414,9 @@ export namespace VolcanoInformation {
     type: '火山に関するお知らせ';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '火山に関するお知らせ';
@@ -429,7 +429,7 @@ export namespace VolcanoInformation {
     title: string;
     infoType: '取消';
     targetDateTimeDubious?: '年頃' | '月頃' | '日頃' | '時頃' | '分頃' | '秒頃' | '頃';
-    targetDuration: never;
+    targetDuration?: never;
     validDateTime?: string;
     eventId: string;
     infoKind: '噴火警報・予報' | '火山の状況に関する解説情報' | '噴火に関する火山観測報' | '降灰予報' | '噴火速報' | '火山現象に関する海上警報・海上予報' | '火山に関するお知らせ';

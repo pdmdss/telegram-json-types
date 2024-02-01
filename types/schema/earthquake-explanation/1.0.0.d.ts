@@ -30,9 +30,9 @@ export namespace EarthquakeExplanation {
     type: '地震の活動状況等に関する情報';
     title: '地震の活動状況等に関する情報';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '地震の活動状況等に関する情報';
@@ -44,9 +44,9 @@ export namespace EarthquakeExplanation {
     type: '地震の活動状況等に関する情報';
     title: '地震の活動状況等に関する情報';
     infoType: '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: null;
     infoKind: '地震の活動状況等に関する情報';

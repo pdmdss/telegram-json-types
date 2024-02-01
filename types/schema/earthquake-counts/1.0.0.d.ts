@@ -42,9 +42,9 @@ export namespace EarthquakeCounts {
     type: '地震回数に関する情報';
     title: '地震回数に関する情報';
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '地震回数情報';
@@ -56,9 +56,9 @@ export namespace EarthquakeCounts {
     type: '地震回数に関する情報';
     title: '地震回数に関する情報';
     infoType: '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '地震回数情報';

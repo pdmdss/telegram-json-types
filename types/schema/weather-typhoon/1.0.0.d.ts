@@ -34,7 +34,7 @@ export namespace WeatherTyphoon {
     unit: 'km/h';
   } & ({
     value: string;
-    condition: never;
+    condition?: never;
   } | {
     value: null;
     condition: 'ゆっくり' | 'ほとんど停滞';
@@ -118,9 +118,9 @@ export namespace WeatherTyphoon {
     _schema: Schema;
     type: '台風解析・予報情報（５日予報）（Ｈ３０）' | '台風解析・予報情報（５日予報）' | '台風解析・予報情報（３日予報）';
     title: '台風解析・予報情報';
-    targetDateTimeDubious: never;
+    targetDateTimeDubious?: never;
     targetDuration: string;
-    validDateTime: never;
+    validDateTime?: never;
     infoKind: '台風解析・予報情報（５日予報）' | '台風解析・予報情報（３日予報）';
     eventId: string;
     serialNo: string;

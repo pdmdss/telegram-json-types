@@ -37,14 +37,14 @@ export namespace WeatherWarning {
     changeStatus: '警報・注意報種別に変化有' | '警報・注意報種別に変化無、量的予想事項等に変化有' | '変化無';
     fullStatus: '全域' | '一部';
     editingMark: boolean;
-    condition: never;
+    condition?: never;
   }
 
   export interface PrefectureNone extends Components.CodeName {
-    kinds: {}[];
-    changeStatus: never;
-    fullStatus: never;
-    editingMark: never;
+    kinds: [];
+    changeStatus?: never;
+    fullStatus?: never;
+    editingMark?: never;
     condition: '発表警報・注意報はなし';
   }
 
@@ -185,9 +185,9 @@ export namespace WeatherWarning {
     type: '気象警報・注意報（Ｈ２７）';
     title: string;
     infoType: '発表' | '訂正';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: null;
     serialNo: null;
     infoKind: '気象警報・注意報';
@@ -199,9 +199,9 @@ export namespace WeatherWarning {
     type: '記録的短時間大雨情報';
     title: string;
     infoType: '発表' | '訂正' | '取消';
-    targetDateTimeDubious: never;
-    targetDuration: never;
-    validDateTime: never;
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
     eventId: string;
     serialNo: string;
     infoKind: '記録的短時間大雨情報';

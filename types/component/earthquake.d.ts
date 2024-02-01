@@ -5,12 +5,12 @@ interface DepthBase {
   type: '深さ';
   unit: 'km';
   value: string | null;
-  condition: string | never;
+  condition?: string | never;
 }
 
 interface DepthNormal extends DepthBase {
   value: string;
-  condition: never;
+  condition?: never;
 }
 
 interface DepthShallow extends DepthBase {
@@ -35,12 +35,12 @@ interface MagnitudeBase {
   type: 'マグニチュード';
   unit: 'Mj' | 'M';
   value: string | null;
-  condition: string | never;
+  condition?: string | never;
 }
 
 interface MagnitudeNormal extends MagnitudeBase {
   value: string;
-  condition: never;
+  condition?: never;
 }
 
 interface MagnitudeUnknown extends MagnitudeBase {
