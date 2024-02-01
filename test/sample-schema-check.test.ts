@@ -1,5 +1,4 @@
 import Ajv from 'ajv';
-import fetch from 'node-fetch';
 import { getJSchema } from '../jschema/jschema-load';
 
 const checkSchemaTypes = [
