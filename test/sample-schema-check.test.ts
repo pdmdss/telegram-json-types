@@ -1,3 +1,5 @@
+import { test } from 'node:test';
+import { deepEqual } from 'node:assert';
 import Ajv from 'ajv';
 import { getJSchema } from '../jschema/jschema-load';
 
@@ -24,21 +26,24 @@ const ajv = new Ajv({
   strictTuples: false
 });
 
-test.each(checkSchemaTypes)('CheckSchemaType: %s', async schemaType => {
-  const sampleList = await getList(schemaType);
+for (const schemaType of checkSchemaTypes) {
+  test(schemaType, async t => {
+    const sampleList = await getList(schemaType);
 
-  for (let i = 0; i < sampleList.length; i++) {
-    const url = sampleList[i];
-    const json: any = await fetch(url).then(res => res.json());
-    const schema = await getJSchema(json._schema.type, json._schema.version);
-    const validate = ajv.compile(schema);
-    const valid = validate(json);
+    for (let i = 0; i < sampleList.length; i++) {
+      const url = sampleList[i];
+      const json: any = await fetch(url).then(res => res.json());
+      const schema = await getJSchema(json._schema.type, json._schema.version);
+      const validate = ajv.compile(schema);
+      const valid = validate(json);
 
-    console.group(url);
-    expect(validate.errors ?? []).toEqual([]);
-    console.groupEnd();
-  }
-});
+      await t.test(url, () => {
+        deepEqual(validate.errors ?? [], []);
+      });
+    }
+  });
+
+}
 
 
 async function getList(schemaType: string) {
