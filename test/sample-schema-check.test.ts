@@ -1,5 +1,5 @@
 import { test } from 'node:test';
-import { deepEqual } from 'node:assert';
+import { deepEqual } from 'node:assert/strict';
 import Ajv from 'ajv';
 import { getJSchema } from '../jschema/jschema-load';
 
@@ -10,6 +10,11 @@ const checkSchemaTypes = [
   'earthquake-counts',
   'earthquake-hypocenter-update',
   'earthquake-nankai',
+  'forecast-prefecture',
+  'forecast-warning-possibility',
+  'forecast-season',
+  'forecast-2week-temperature',
+  'forecast-weathermap',
   'tsunami-information',
   'volcano-information',
   'weather-information',

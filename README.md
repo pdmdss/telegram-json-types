@@ -22,7 +22,7 @@ const data = await fetch('https://data.api.dmdata.jp/v1/...')
 
 ## JSON Schema による整合性チェック
 
-Telegram JSON が、仕様通り整合するかチェックすることができます。
+Telegram JSON が、仕様通り整合するかチェックができます。
 
 `$ npm i @dmdata/telegram-json-types ajv`
 
@@ -57,6 +57,11 @@ check();
 * [EarthquakeHypocenterUpdate](https://dmdata.jp/doc/reference/conversion/json/schema/earthquake-hypocenter-update)
 * [EarthquakeNankai](https://dmdata.jp/doc/reference/conversion/json/schema/earthquake-nankai)
 * [EewInformation](https://dmdata.jp/doc/reference/conversion/json/schema/eew-information)
+* [Forecast2weekTemperature](https://dmdata.jp/doc/reference/conversion/json/schema/forecast-2week-temperature)
+* [ForecastPrefecture](https://dmdata.jp/doc/reference/conversion/json/schema/forecast-prefecture)
+* [ForecastSeason](https://dmdata.jp/doc/reference/conversion/json/schema/forecast-season)
+* [ForecastWarningPossibility](https://dmdata.jp/doc/reference/conversion/json/schema/forecast-warning-possibility)
+* [ForecastWeathermap](https://dmdata.jp/doc/reference/conversion/json/schema/forecast-weathermap)
 * [TsunamiInformation](https://dmdata.jp/doc/reference/conversion/json/schema/tsunami-information)
 * [VolcanoInformation](https://dmdata.jp/doc/reference/conversion/json/schema/volcano-information)
 * [WeatherInformation](https://dmdata.jp/doc/reference/conversion/json/schema/weather-information)

@@ -14,6 +14,12 @@ import * as WeatherTornado from './schema/weather-tornado';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 import * as WeatherLandslide from './schema/weather-landslide';
 import * as WeatherRiverFlood from './schema/weather-river-flood';
+import * as ForecastPrefecture from './schema/forecast-prefecture';
+import * as ForecastWarningPossibility from './schema/forecast-warning-possibility';
+import * as ForecastSeason from './schema/forecast-season';
+import * as Forecast2weekTemperature from './schema/forecast-2week-temperature';
+import * as ForecastWeathermap from './schema/forecast-weathermap';
+
 import { TelegramJSONMain } from './main';
 import { Components } from './component';
 
@@ -28,13 +34,18 @@ type All =
   TsunamiInformation.v1_0_0.Main |
   VolcanoInformation.v1_0_0.Main |
   WeatherInformation.v1_0_0.Main |
-  WeatherImpactSociety.v1_0_0.Main |
+  WeatherImpactSociety.v1_0_1.Main |
   WeatherEarly.v1_0_0.Main |
   WeatherWarning.v1_0_0.Main |
   WeatherTornado.v1_0_0.Main |
   WeatherTyphoon.v1_0_0.Main |
   WeatherLandslide.v1_0_0.Main |
-  WeatherRiverFlood.v1_0_0.Main;
+  WeatherRiverFlood.v1_0_0.Main |
+  ForecastPrefecture.v1_0_0.Main |
+  ForecastWarningPossibility.v1_0_0.Main |
+  ForecastSeason.v1_0_0.Main |
+  Forecast2weekTemperature.v1_0_0.Main |
+  ForecastWeathermap.v1_0_0.Main;
 
 export {
   EarthquakeInformation,
@@ -53,6 +64,11 @@ export {
   WeatherTyphoon,
   WeatherLandslide,
   WeatherRiverFlood,
+  ForecastPrefecture,
+  ForecastWarningPossibility,
+  ForecastSeason,
+  Forecast2weekTemperature,
+  ForecastWeathermap,
   TelegramJSONMain,
   Components,
   All
