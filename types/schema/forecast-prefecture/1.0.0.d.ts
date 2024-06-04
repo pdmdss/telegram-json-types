@@ -191,7 +191,7 @@ export namespace ForecastPrefecture {
 
   export interface TimeSeriesRegion3HoursItemWeather {
     refId: string;
-    name: string;
+    name: '晴れ' | 'くもり' | '雨' | '雪' | '雨または雪';
   }
 
   export interface TimeSeriesRegion3HoursItemKindWeather {
