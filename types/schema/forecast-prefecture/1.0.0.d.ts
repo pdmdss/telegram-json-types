@@ -39,7 +39,7 @@ export namespace ForecastPrefecture {
     type: '波高';
     unit: 'm';
     value: string | null;
-    condition?: 'うねり　を伴う' | '予報無し';
+    condition?: 'うねり　を伴う' | '流氷におおわれている';
   }
 
   export interface PrecipitationProbability<Type extends '６時間降水確率' | '日降水確率'> {
