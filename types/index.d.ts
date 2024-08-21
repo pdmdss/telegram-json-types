@@ -32,6 +32,7 @@ type All =
   EarthquakeNankai.v1_0_0.Main |
   EewInformation.v1_0_0.Main |
   TsunamiInformation.v1_0_0.Main |
+  TsunamiInformation.v1_1_0.Main |
   VolcanoInformation.v1_0_0.Main |
   WeatherInformation.v1_0_0.Main |
   WeatherImpactSociety.v1_0_1.Main |

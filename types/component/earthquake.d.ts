@@ -66,7 +66,7 @@ interface Hypocenter {
     direction: string;
     distance: Omit<UnitValueNotNull<never, 'km'>, 'type' | 'condition'>;
   };
-  source?: 'ＰＴＷＣ' | 'ＵＳＧＳ' | 'ＷＣＡＴＷＣ';
+  source?: 'ＰＴＷＣ' | 'ＮＴＷＣ' | 'ＵＳＧＳ' | 'ＳＣＳＴＡＣ' | 'ＣＡＴＡＣ' | 'ＷＣＡＴＷＣ';
 }
 
 export interface Earthquake {
