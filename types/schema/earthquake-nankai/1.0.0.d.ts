@@ -69,18 +69,33 @@ export namespace EarthquakeNankai {
     body: PublicBody;
   }
 
+  export interface PublicVYSE60 extends TelegramJSONMain {
+    _schema: Schema;
+    type: '北海道・三陸沖後発地震注意情報';
+    title: string;
+    infoType: '発表' | '訂正';
+    targetDateTimeDubious?: never;
+    targetDuration?: never;
+    validDateTime?: never;
+    eventId: string;
+    serialNo: null;
+    infoKind: '北海道・三陸沖後発地震注意情報';
+    body: PublicBody;
+  }
+
+
   export interface Cancel extends TelegramJSONMain {
     _schema: Schema;
-    type: '南海トラフ地震臨時情報' | '南海トラフ地震関連解説情報';
+    type: '南海トラフ地震臨時情報' | '南海トラフ地震関連解説情報' | '北海道・三陸沖後発地震注意情報';
     title: string;
     infoType: '取消';
     targetDateTimeDubious?: never;
     targetDuration?: never;
     validDateTime?: never;
     eventId: string;
-    infoKind: '南海トラフ地震に関連する情報';
+    infoKind: '南海トラフ地震に関連する情報' | '北海道・三陸沖後発地震注意情報';
     body: CancelBody;
   }
 
-  export type Main = PublicVYSE50 | PublicVYSE51 | PublicVYSE52 | Cancel;
+  export type Main = PublicVYSE50 | PublicVYSE51 | PublicVYSE52 | PublicVYSE60 | Cancel;
 }
