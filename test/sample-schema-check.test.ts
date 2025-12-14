@@ -3,6 +3,7 @@ import { deepEqual } from 'node:assert/strict';
 import Ajv from 'ajv';
 import { getJSchema } from '../jschema/jschema-load';
 
+const sampleUrl = 'https://sample.dmdata.jp';
 const checkSchemaTypes = [
   'eew-information',
   'earthquake-information',
@@ -52,12 +53,14 @@ for (const schemaType of checkSchemaTypes) {
 
 
 async function getList(schemaType: string) {
-  const url = `https://sample.dmdata.jp/conversion/json/schema/${schemaType}/`;
-  return await fetch(url).then(res => res.text())
-    .then(html => html
-      .replace(/^.+?<pre>.+?<hr>(.+?)<\/pre>.+?$/s, '$1')
-      .match(/<a\shref="(.+?)">/g)
-      ?.map(a => url + a.replace(/^<a\shref="(.+?)">$/, '$1'))
-      .filter(href => /\.json$/.test(href)) ?? []
+  const query = new URLSearchParams({ prefix: `conversion/json/schema/${schemaType}`, delimiter: '' });
+  const url = `${sampleUrl}/?` + query.toString();
+
+  return await fetch(url, { headers: { accept: 'application/xml' } })
+    .then(res => res.text())
+    .then(xml => xml
+      .match(/<Key>.+?\.json<\/Key>/g)
+      ?.map(element => element.replace(/^<Key>(.+?\.json)<\/Key>$/, '$1'))
+      .map(href => `${sampleUrl}/${encodeURIComponent(href)}`) ?? []
     );
 }

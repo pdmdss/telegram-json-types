@@ -1,5 +1,6 @@
-import { readdirSync } from 'fs';
-import { resolve } from 'path';
+import { readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 import { distDir } from './config';
 
@@ -13,7 +14,7 @@ jschemaList.forEach(file => {
   const [, schemaName, schemaVersion] = file.match(/^([\w-]+)_(\w+\.\w+\.\w+)\.json$/) ?? [];
 
   const schemaVersions = schemas.get(schemaName) ?? schemas.set(schemaName, new Map()).get(schemaName);
-  const jschemaFile = resolve(distDir, file);
+  const jschemaFile = pathToFileURL(resolve(distDir, file)).toString();
 
   schemaVersions?.set(schemaVersion, jschemaFile);
   schemaVersions?.set('latest', jschemaFile);
