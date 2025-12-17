@@ -17,12 +17,12 @@ export namespace EarthquakeInformation {
 
   export interface IntensityMaxIntOnRevise extends Components.CodeName {
     maxInt?: IntensityClass;
-    revise?: '上方修正' | '追加';
+    revise?: '上方修正' | '下方修正' | '追加';
   }
 
   export interface IntensityCity extends Components.CodeName {
     maxInt?: IntensityClass;
-    revise?: '上方修正' | '追加';
+    revise?: '上方修正' | '下方修正' | '追加';
     condition?: '震度５弱以上未入電';
   }
 

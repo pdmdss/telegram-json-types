@@ -164,8 +164,8 @@ export namespace TsunamiInformation {
   }
 
   export interface TsunamiEstimationFirstHeight {
-    arrivalTime: string;
-    condition?: '早いところでは既に津波到達と推定';
+    arrivalTime?: string;
+    condition: '早いところでは既に津波到達と推定';
     revise?: '追加' | '更新';
   }
 
