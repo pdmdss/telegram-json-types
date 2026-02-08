@@ -6,6 +6,8 @@ import { baseDir, distDir, schemaDir } from './config';
 
 const settings: TJS.PartialArgs = {
   required: true,
+  aliasRef: true,
+  noExtraProps: true
 };
 
 const compilerOptions: TJS.CompilerOptions = {
