@@ -38,6 +38,7 @@ type All =
   WeatherImpactSociety.v1_0_1.Main |
   WeatherEarly.v1_0_0.Main |
   WeatherWarning.v1_0_0.Main |
+  WeatherWarning.v1_1_0.Main |
   WeatherTornado.v1_0_0.Main |
   WeatherTyphoon.v1_0_0.Main |
   WeatherLandslide.v1_0_0.Main |
