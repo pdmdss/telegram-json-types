@@ -10,6 +10,7 @@ import * as WeatherInformation from './schema/weather-information';
 import * as WeatherImpactSociety from './schema/weather-impact-society';
 import * as WeatherEarly from './schema/weather-early';
 import * as WeatherWarning from './schema/weather-warning';
+import * as WeatherWarningTimeseries from './schema/weather-warning-timeseries';
 import * as WeatherTornado from './schema/weather-tornado';
 import * as WeatherTyphoon from './schema/weather-typhoon';
 import * as WeatherLandslide from './schema/weather-landslide';
@@ -39,6 +40,7 @@ type All =
   WeatherEarly.v1_0_0.Main |
   WeatherWarning.v1_0_0.Main |
   WeatherWarning.v1_1_0.Main |
+  WeatherWarningTimeseries.v1_0_0.Main |
   WeatherTornado.v1_0_0.Main |
   WeatherTyphoon.v1_0_0.Main |
   WeatherLandslide.v1_0_0.Main |
@@ -62,6 +64,7 @@ export {
   WeatherImpactSociety,
   WeatherEarly,
   WeatherWarning,
+  WeatherWarningTimeseries,
   WeatherTornado,
   WeatherTyphoon,
   WeatherLandslide,
