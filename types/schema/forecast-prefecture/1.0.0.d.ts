@@ -74,6 +74,7 @@ export namespace ForecastPrefecture {
     refId: string;
     text: string;
     base: {
+      timeModifier?: string;
       name: string;
       condition?: string;
     };
@@ -100,8 +101,13 @@ export namespace ForecastPrefecture {
     refId: string;
     text: string;
     base: {
+      timeModifier?: string;
       direction: WindDirection | WindDirectionMildWind;
     };
+    temporaries?: {
+      timeModifier: string;
+      direction: WindDirection | WindDirectionWindSubside;
+    }[];
     becomings?: {
       timeModifier: string;
       direction: WindDirection | WindDirectionWindSubside;
@@ -128,8 +134,13 @@ export namespace ForecastPrefecture {
     refId: string;
     text: string;
     base: {
+      timeModifier?: string;
       height: WaveHeight;
     };
+    temporaries?: {
+      timeModifier: string;
+      height: WaveHeight;
+    }[];
     becomings?: {
       timeModifier: string;
       height: WaveHeight;
@@ -432,7 +443,7 @@ export namespace ForecastPrefecture {
     timeSeries: [TimeSeriesStationWeek];
   }
 
-  export interface TimeSeriesReferenceItemTemperature<Type extends '最低気温平年値' | '最高気温平年値'> extends Omit<Temperature<Type>, 'value'> {
+  export interface TimeSeriesReferenceItemTemperature<Type extends '最低気温平年値' | '最高気温平年値'> extends Temperature<Type> {
     refId: string;
   }
 

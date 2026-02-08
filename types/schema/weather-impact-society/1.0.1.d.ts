@@ -48,6 +48,7 @@ export namespace WeatherImpactSociety {
 
   export interface StatisticStation extends Components.CodeName {
     type: '天候の状況（速報値）';
+    remark?: string;
     observedValues: StatisticStationObservedValue[];
   }
 

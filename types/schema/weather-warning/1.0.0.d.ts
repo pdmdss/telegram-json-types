@@ -16,6 +16,7 @@ export namespace WeatherWarning {
   export interface KindNextKind extends Components.CodeName {
     condition?: '土砂災害' | '浸水害' | '土砂災害、浸水害';
     dateTime: KindNextKindDateTime;
+    sentence?: string;
   }
 
 

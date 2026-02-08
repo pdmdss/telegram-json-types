@@ -38,10 +38,22 @@ export namespace WeatherTyphoon {
   } | {
     value: null;
     condition: 'ゆっくり' | 'ほとんど停滞';
-  })
+  });
+
+  export interface Coordinate {
+    latitude: {
+      text: string;
+      value: string;
+    };
+    longitude: {
+      text: string;
+      value: string;
+    };
+    condition?: '正確' | 'ほぼ正確' | '不確実';
+  }
 
   export interface RealStateCenter {
-    coordinate: Components.Coordinate;
+    coordinate: Coordinate;
     location: string | null;
     direction: Direction;
     speed: RealStateCenterSpeed;

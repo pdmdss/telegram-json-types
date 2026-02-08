@@ -13,6 +13,7 @@ export namespace WeatherEarly {
   export interface TargetTimeDateTime {
     value: string;
     validFormat: string;
+    precision: string;
   }
 
   export interface TargetTime {
