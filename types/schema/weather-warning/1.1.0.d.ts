@@ -31,7 +31,6 @@ export namespace WeatherWarning {
 
   // 危険度
   export interface Significancy {
-    refId: string;
     type: RiskTypes;
     code: '50' | '30' | '20' | '01' | '51' | '41' | '31' | '22' | '21' | '11' | '00';
     name: '特別警報級' | '警報級' | '注意報級' | '注意報級未満' | '警戒レベル５相当' | '警戒レベル４相当' | '警戒レベル３相当' | '警戒レベル２相当' | '警戒レベル２' | '警戒レベル２未満' | '値なし';

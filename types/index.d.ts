@@ -7,6 +7,7 @@ import * as EewInformation from './schema/eew-information';
 import * as TsunamiInformation from './schema/tsunami-information';
 import * as VolcanoInformation from './schema/volcano-information';
 import * as WeatherInformation from './schema/weather-information';
+import * as WeatherCommentary from './schema/weather-commentary';
 import * as WeatherImpactSociety from './schema/weather-impact-society';
 import * as WeatherEarly from './schema/weather-early';
 import * as WeatherWarning from './schema/weather-warning';
@@ -36,6 +37,7 @@ type All =
   TsunamiInformation.v1_1_0.Main |
   VolcanoInformation.v1_0_0.Main |
   WeatherInformation.v1_0_0.Main |
+  WeatherCommentary.v1_0_0.Main |
   WeatherImpactSociety.v1_0_1.Main |
   WeatherEarly.v1_0_0.Main |
   WeatherWarning.v1_0_0.Main |
@@ -62,6 +64,7 @@ export {
   TsunamiInformation,
   VolcanoInformation,
   WeatherInformation,
+  WeatherCommentary,
   WeatherImpactSociety,
   WeatherEarly,
   WeatherWarning,
