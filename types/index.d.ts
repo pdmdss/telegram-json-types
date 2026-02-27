@@ -47,6 +47,7 @@ type All =
   WeatherRiverFlood.v1_0_0.Main |
   ForecastPrefecture.v1_0_0.Main |
   ForecastWarningPossibility.v1_0_0.Main |
+  ForecastWarningPossibility.v1_1_0.Main |
   ForecastSeason.v1_0_0.Main |
   Forecast2weekTemperature.v1_0_0.Main |
   ForecastWeathermap.v1_0_0.Main;

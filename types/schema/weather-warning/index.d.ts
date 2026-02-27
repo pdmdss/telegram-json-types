@@ -1,5 +1,5 @@
-import { WeatherWarning as v1_0_0 } from './1.0.0';
 import { WeatherWarning as v1_1_0 } from './1.1.0';
+import { WeatherWarning as v1_0_0 } from './1.0.0';
 
 
 export {
