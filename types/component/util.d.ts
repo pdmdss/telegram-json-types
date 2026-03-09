@@ -6,7 +6,12 @@ export namespace Util {
   export type TimeRefID<T extends object> = { refId: string } & T;
   export type Local<T extends object> = { name: string; } & T;
 
-  export type Part<B extends object, L extends Local<B> = Local<B>> = {
-    base: B & { locals?: never; } | { locals: L[]; } & { [K in keyof B]?: never; };
+  export type Part<B extends object, L extends Local<B> = Local<B>, Be extends Becoming<B, L>[] | never = never> = {
+    base: (B & { locals?: never; }) | ({ locals: L[]; } & { [K in keyof B]?: never; });
+    becomings?: Be;
   };
+
+  export type Becoming<B extends object, L extends Local<B> = Local<B>> = {
+    timeModifier: string;
+  } & ((B & { locals?: never; }) | ({ locals: L[]; } & { [K in keyof B]?: never; }));
 }
