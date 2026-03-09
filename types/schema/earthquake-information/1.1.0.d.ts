@@ -32,9 +32,9 @@ export namespace EarthquakeInformation {
     condition?: '震度５弱以上未入電';
   }
 
-  export type IntensityLgMaxInt = IntensityMaxIntOnRevise & {
+  export interface IntensityLgMaxInt extends IntensityMaxIntOnRevise {
     maxLgInt: LgIntensityClass;
-  };
+  }
 
   export interface IntensityPeriodicBand extends Omit<Components.UnitValueNotNull<void, '秒台'>, 'type'> {
   }

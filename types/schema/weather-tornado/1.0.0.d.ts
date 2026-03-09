@@ -23,6 +23,9 @@ export namespace WeatherTornado {
   export interface Region extends Target {
   }
 
+  export interface Area extends Target {
+  }
+
   export interface City extends Target {
   }
 
@@ -30,6 +33,7 @@ export namespace WeatherTornado {
     witnesses?: Witness[];
     targets: Target[];
     regions: Region[];
+    areas: Area[];
     cities: City[];
   }
 
