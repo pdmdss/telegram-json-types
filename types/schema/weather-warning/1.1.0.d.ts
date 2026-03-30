@@ -100,7 +100,7 @@ export namespace WeatherWarning {
   export type VisibilityPart = Util.Part<VisibilityBase, VisibilityLocal>;
 
   // 波
-  type WaveHeightTypes = '波高' | 'うちあげ高水位' | '最高うちあげ高水位';
+  export type WaveHeightTypes = '波高' | 'うちあげ高水位' | '最高うちあげ高水位';
 
   export type WaveHeight<Type extends WaveHeightTypes> = Util.ValueElement<Type, 'm'>;
 
@@ -114,7 +114,7 @@ export namespace WeatherWarning {
 
 
   // 潮位
-  type TidalLevelTypes = '潮位' | '最高潮位';
+  export type TidalLevelTypes = '潮位' | '最高潮位';
 
   export type TidalLevel<Type extends TidalLevelTypes> = Util.ValueElement<Type, 'm'>;
 
@@ -144,23 +144,23 @@ export namespace WeatherWarning {
   export type EventPart = Util.Part<EventBase, EventLocal>;
 
   // 雪
-  export type SnowfallDepthType = '６時間最大降雪量' | '１２時間最大降雪量' | '２４時間最大降雪量';
+  export type SnowfallDepthTypes = '６時間最大降雪量' | '１２時間最大降雪量' | '２４時間最大降雪量';
 
-  export interface SnowfallDepth<Type extends SnowfallDepthType = SnowfallDepthType> {
+  export interface SnowfallDepth<Type extends SnowfallDepthTypes = SnowfallDepthTypes> {
     type: Type;
     uint: 'cm';
     value: string;
   }
 
-  export interface SnowfallDepthBase<Type extends SnowfallDepthType> {
+  export interface SnowfallDepthBase<Type extends SnowfallDepthTypes> {
     snowfallDepths: SnowfallDepth<Type>[];
   }
 
-  export type SnowfallDepthLocal<Type extends SnowfallDepthType> = Util.Local<SnowfallDepthBase<Type>>;
-  export type SnowfallDepthPart<Type extends SnowfallDepthType> = Util.Part<SnowfallDepthBase<Type>, SnowfallDepthLocal<Type>>;
+  export type SnowfallDepthLocal<Type extends SnowfallDepthTypes> = Util.Local<SnowfallDepthBase<Type>>;
+  export type SnowfallDepthPart<Type extends SnowfallDepthTypes> = Util.Part<SnowfallDepthBase<Type>, SnowfallDepthLocal<Type>>;
 
   // 湿度
-  type HumidityTypes = '実効湿度' | '最小湿度';
+  export type HumidityTypes = '実効湿度' | '最小湿度';
 
   export type Humidity<Type extends HumidityTypes> = Util.ValueElement<Type, '%'>;
 
@@ -214,7 +214,7 @@ export namespace WeatherWarning {
 
   export interface WarningPropertySnow {
     type: '雪';
-    snowfallDepthPart: SnowfallDepthPart<SnowfallDepthType>;
+    snowfallDepthPart: SnowfallDepthPart<SnowfallDepthTypes>;
   }
 
   export interface WarningPropertyDryAir {
@@ -224,6 +224,7 @@ export namespace WeatherWarning {
 
 
   export interface LastKind extends Components.CodeName {
+    condition?: '氾濫発生';
   }
 
   export type WarningProperty =
@@ -291,7 +292,7 @@ export namespace WeatherWarning {
     }
     );
 
-  export type WarningAreaKind = Omit<WarningKind<[]>, 'properties'>;
+  export type WarningAreaKind = Omit<WarningKindBase<[]>, 'properties'>;
 
   export type WarningArea<K extends WarningAreaKind> =
     Components.CodeName & (
@@ -312,7 +313,7 @@ export namespace WeatherWarning {
     );
 
 
-  export type WarningCity<K extends WarningKind<any[]>[]> =
+  export type WarningCity<K extends WarningKindBase<any[]>[]> =
     Components.CodeName & { dateTime?: string; } &
     ({
       kinds: K;
@@ -325,21 +326,21 @@ export namespace WeatherWarning {
         condition: '発表警報・注意報はなし';
       });
 
-  export type WarningCityKindRain = WarningKind<WarningPropertiesRain>;
-  export type WarningCityKindLandslide = WarningKind<WarningPropertiesLandslide>;
-  export type WarningCityKindWind = WarningKind<WarningPropertiesWind>;
-  export type WarningCityKindSnow = WarningKind<WarningPropertiesSnow>;
-  export type WarningCityKindWave = WarningKind<WarningPropertiesWave>;
-  export type WarningCityKindStormSurge = WarningKind<WarningPropertiesStormSurge>;
-  export type WarningCityKindThunder = WarningKind<WarningPropertiesThunder>;
-  export type WarningCityKindSnowMelting = WarningKind<WarningPropertiesSnowMelting>;
-  export type WarningCityKindDenseFog = WarningKind<WarningPropertiesDenseFog>;
-  export type WarningCityKindDryAir = WarningKind<WarningPropertiesDryAir>;
-  export type WarningCityKindAvalanche = WarningKind<WarningPropertiesAvalanche>;
-  export type WarningCityKindLowTemperature = WarningKind<WarningPropertiesLowTemperature>;
-  export type WarningCityKindFrost = WarningKind<WarningPropertiesFrost>;
-  export type WarningCityKindIceAccretion = WarningKind<WarningPropertiesIceAccretion>;
-  export type WarningCityKindSnowAccretion = WarningKind<WarningPropertiesSnowAccretion>;
+  export type WarningCityKindRain = WarningKindBase<WarningPropertiesRain>;
+  export type WarningCityKindLandslide = WarningKindBase<WarningPropertiesLandslide>;
+  export type WarningCityKindWind = WarningKindBase<WarningPropertiesWind>;
+  export type WarningCityKindSnow = WarningKindBase<WarningPropertiesSnow>;
+  export type WarningCityKindWave = WarningKindBase<WarningPropertiesWave>;
+  export type WarningCityKindStormSurge = WarningKindBase<WarningPropertiesStormSurge>;
+  export type WarningCityKindThunder = WarningKindBase<WarningPropertiesThunder>;
+  export type WarningCityKindSnowMelting = WarningKindBase<WarningPropertiesSnowMelting>;
+  export type WarningCityKindDenseFog = WarningKindBase<WarningPropertiesDenseFog>;
+  export type WarningCityKindDryAir = WarningKindBase<WarningPropertiesDryAir>;
+  export type WarningCityKindAvalanche = WarningKindBase<WarningPropertiesAvalanche>;
+  export type WarningCityKindLowTemperature = WarningKindBase<WarningPropertiesLowTemperature>;
+  export type WarningCityKindFrost = WarningKindBase<WarningPropertiesFrost>;
+  export type WarningCityKindIceAccretion = WarningKindBase<WarningPropertiesIceAccretion>;
+  export type WarningCityKindSnowAccretion = WarningKindBase<WarningPropertiesSnowAccretion>;
 
   export type WarningCityKindAdvisory =
     WarningCityKindThunder |
@@ -361,7 +362,7 @@ export namespace WeatherWarning {
     WarningCityKindStormSurge |
     WarningCityKindAdvisory;
 
-  export type WarningStormSurgeSectionKind = WarningKind<WarningPropertiesStormSurgeSection>;
+  export type WarningStormSurgeSectionKind = WarningKindBase<WarningPropertiesStormSurgeSection>;
 
   export interface WarningStormSurgeSectionSubCity {
     names: string[];
@@ -421,7 +422,7 @@ export namespace WeatherWarning {
   }
 
 
-  export interface PublicBodyWarningBase<CityKind extends WarningKind<any[]>[] = WarningCityKind[]> {
+  export interface PublicBodyWarningBase<CityKind extends WarningKindBase<any[]>[] = WarningCityKind[]> {
     prefectures: WarningArea<WarningAreaKind>[];
     regions: WarningArea<WarningAreaKind>[];
     areas: WarningArea<WarningAreaKind>[];
@@ -437,7 +438,7 @@ export namespace WeatherWarning {
   export type PublicBodyVPWW55 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindRain]>, PublicBodyWarningOmitKey>;
   export type PublicBodyVPWW56 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindLandslide]>, 'stormSurgeSections' | 'references'>;
   export type PublicBodyVPWW57 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindStormSurge]>, 'comment'>;
-  export type PublicBodyVPWW58 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindWind]>, PublicBodyWarningOmitKey>;
+  export type PublicBodyVPWW58 = Util.Prohibit<PublicBodyWarningBase<WarningCityKindWind[]>, PublicBodyWarningOmitKey>;
   export type PublicBodyVPWW59 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindWave]>, PublicBodyWarningOmitKey>;
   export type PublicBodyVPWW60 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindSnow]>, PublicBodyWarningOmitKey>;
   export type PublicBodyVPWW61 = Util.Prohibit<PublicBodyWarningBase<WarningCityKindAdvisory[]>, PublicBodyWarningOmitKey>;
