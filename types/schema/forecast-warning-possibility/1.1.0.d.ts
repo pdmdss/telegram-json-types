@@ -14,12 +14,12 @@ export namespace ForecastWarningPossibility {
     name: string;
   }
 
-  export type PossibilityRankType = `${ '雨' | '土砂災害' | '雪' | '風（風雪）' | '波' | '潮位' }の警報級の可能性`;
+  export type PossibilityRankType = `${'大雨' | '土砂災害' | '雪' | '風（風雪）' | '波' | '潮位'}の警報級の可能性`;
 
   export type PossibilityRankOfWarning<Type extends PossibilityRankType> = {
     refId: string;
     type: Type;
-    value: '中' | '高';
+    value: '中' | '高' | 'なし';
     condition?: never;
   } | {
     refId: string;
@@ -38,7 +38,7 @@ export namespace ForecastWarningPossibility {
     texts?: [Text];
   }
 
-  export type TimeSeriesPropertyRain = TimeSeriesPropertyPossibilityRankOfWarning<'雨の警報級の可能性'>;
+  export type TimeSeriesPropertyRain = TimeSeriesPropertyPossibilityRankOfWarning<'大雨の警報級の可能性'>;
   export type TimeSeriesPropertyLandslide = TimeSeriesPropertyPossibilityRankOfWarning<'土砂災害の警報級の可能性'>;
   export type TimeSeriesPropertySnow = TimeSeriesPropertyPossibilityRankOfWarning<'雪の警報級の可能性'>;
   export type TimeSeriesPropertyWind = TimeSeriesPropertyPossibilityRankOfWarning<'風（風雪）の警報級の可能性'>;
@@ -72,15 +72,29 @@ export namespace ForecastWarningPossibility {
     properties: P;
   }
 
-  export interface TimeSeriesItem extends Components.CodeName {
-    kinds: [
-      TimeSeriesKind<TimeSeriesPropertiesRain>,
-      TimeSeriesKind<TimeSeriesPropertiesLandslide>,
-      TimeSeriesKind<TimeSeriesPropertiesSnow>,
-      TimeSeriesKind<TimeSeriesPropertiesWind>,
-      TimeSeriesKind<TimeSeriesPropertiesWave>,
+  export type TimeSeriesKinds = [
+    TimeSeriesKind<TimeSeriesPropertiesRain>,
+    TimeSeriesKind<TimeSeriesPropertiesLandslide>,
+    TimeSeriesKind<TimeSeriesPropertiesSnow>,
+    TimeSeriesKind<TimeSeriesPropertiesWind>,
+    TimeSeriesKind<TimeSeriesPropertiesWave>,
+    TimeSeriesKind<TimeSeriesPropertiesTide>
+  ] | [
+    TimeSeriesKind<TimeSeriesPropertiesRain>,
+    TimeSeriesKind<TimeSeriesPropertiesLandslide>,
+    TimeSeriesKind<TimeSeriesPropertiesSnow>,
+    TimeSeriesKind<TimeSeriesPropertiesWind>,
+      TimeSeriesKind<TimeSeriesPropertiesWave> |
       TimeSeriesKind<TimeSeriesPropertiesTide>
-    ];
+  ] | [
+    TimeSeriesKind<TimeSeriesPropertiesRain>,
+    TimeSeriesKind<TimeSeriesPropertiesLandslide>,
+    TimeSeriesKind<TimeSeriesPropertiesSnow>,
+    TimeSeriesKind<TimeSeriesPropertiesWind>
+  ];
+
+  export interface TimeSeriesItem extends Components.CodeName {
+    kinds: TimeSeriesKinds;
   }
 
   export interface TimeSeries {

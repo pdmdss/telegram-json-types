@@ -10,8 +10,8 @@ export namespace ForecastWarningPossibility {
   export interface WindSpeed {
     type: '最大風速';
     unit: 'm/s';
-    value: string;
-    condition?: '以下' | '以上';
+    value: string | null;
+    condition?: '以下' | '以上' | '値なし';
     range?: never;
   }
 
@@ -39,7 +39,7 @@ export namespace ForecastWarningPossibility {
     type: '波高';
     unit: 'm';
     value: null;
-    condition: '流氷に覆われている' | string;
+    condition: '流氷に覆われている' | '値なし' | string;
     range?: never;
   }
 
@@ -58,8 +58,8 @@ export namespace ForecastWarningPossibility {
   export interface Precipitation<Type extends '１時間最大雨量' | '３時間最大雨量' | '２４時間最大雨量'> {
     type: Type;
     unit: 'mm';
-    value: string;
-    condition?: '以下' | '以上';
+    value: string | null;
+    condition?: '以下' | '以上' | '値なし';
     range?: never;
   }
 
@@ -78,8 +78,8 @@ export namespace ForecastWarningPossibility {
   export interface SnowfallDepth<Type extends '６時間最大降雪量' | '２４時間最大降雪量'> {
     type: Type;
     unit: 'cm';
-    value: string;
-    condition?: '以上';
+    value: string | null;
+    condition?: '以上' | '値なし';
     range?: never;
   }
 
@@ -119,6 +119,7 @@ export namespace ForecastWarningPossibility {
     };
     subArea?: {
       name: string;
+      text?: string;
       base: {
         precipitation: Precipitation<Type>;
       };
@@ -147,6 +148,7 @@ export namespace ForecastWarningPossibility {
     };
     subArea?: {
       name: string;
+      text?: string;
       base: {
         depth: SnowfallDepth<'６時間最大降雪量'>;
       };
@@ -174,7 +176,8 @@ export namespace ForecastWarningPossibility {
         }[]
     };
     subArea?: {
-      name: string;
+      name: string
+      text?: string;
       base: {
         speed: WindSpeed | WindSpeedRange;
       };
@@ -203,6 +206,7 @@ export namespace ForecastWarningPossibility {
     };
     subArea?: {
       name: string;
+      text?: string;
       base: {
         height: WaveHeight | WaveHeightRange | WaveHeightNoValue;
       };
@@ -252,6 +256,7 @@ export namespace ForecastWarningPossibility {
     };
     subArea?: {
       name: string;
+      text?: string;
       base: {
         precipitation: Precipitation<'２４時間最大雨量'> | PrecipitationRange<'２４時間最大雨量'>;
       };
@@ -280,6 +285,7 @@ export namespace ForecastWarningPossibility {
     };
     subArea?: {
       name: string;
+      text?: string;
       base: {
         depth: SnowfallDepth<'２４時間最大降雪量'> | SnowfallDepthRange<'２４時間最大降雪量'>;
       };
