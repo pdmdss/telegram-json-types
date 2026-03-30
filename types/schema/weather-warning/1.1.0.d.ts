@@ -274,28 +274,26 @@ export namespace WeatherWarning {
     WarningPropertiesIceAccretion |
     WarningPropertiesSnowAccretion;
 
-    Components.CodeName & { dateTime?: string } & (
   export type WarningKindBase<P extends WarningProperty[] | never> =
+    Components.CodeName & { dateTime?: string; condition?: '氾濫発生'; } & (
     {
       status: '発表' | '継続' | '特別警報から警報' | '特別警報から注意報' | '警報から注意報' | '特別警報から危険警報' | '危険警報から警報' | '危険警報から注意報';
       lastKind?: LastKind;
       additions?: string[];
       properties: P;
-      condition?: '氾濫発生';
     } |
     {
       status: '解除';
       lastKind: LastKind;
       additions?: never;
       properties?: never;
-      condition?: never;
     }
     );
 
   export type WarningAreaKind = Omit<WarningKindBase<[]>, 'properties'>;
 
   export type WarningArea<K extends WarningAreaKind> =
-    Components.CodeName & (
+    Components.CodeName & { dateTime?: string; } & (
     {
       kinds: K[];
       fullStatus: '一部' | '全域';
@@ -369,12 +367,17 @@ export namespace WeatherWarning {
   }
 
   export type WarningStormSurgeSection =
-    { code: string; codeType: '高潮予報区間'; name: string; subCity: WarningStormSurgeSectionSubCity; location: true; dateTime?: string; } &
+    { code: string; codeType: '高潮予報区間'; name: string; subCity: WarningStormSurgeSectionSubCity; location: string; dateTime?: string; } &
     ({
       kinds: [WarningStormSurgeSectionKind];
       changeStatus: '警報・注意報種別に変化有' | '警報・注意報種別に変化無、量的予想事項等に変化有' | '変化無';
       condition?: never;
-    });
+    } |
+      {
+        kinds: [];
+        changeStatus?: never;
+        condition: '発表警報・注意報はなし';
+      });
 
   export interface Office {
     type: '都道府県' | '補足情報担当' | '水位関係' | '気象関係' | string;
@@ -401,7 +404,7 @@ export namespace WeatherWarning {
     name: string;
     location: string;
     chargeSections?: string[];
-    criteria: Criteria;
+    criteria: Criteria[];
   }
 
   export interface TidalWarningReference extends Components.CodeName {
@@ -442,7 +445,7 @@ export namespace WeatherWarning {
   export type PublicBodyVPWW59 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindWave]>, PublicBodyWarningOmitKey>;
   export type PublicBodyVPWW60 = Util.Prohibit<PublicBodyWarningBase<[WarningCityKindSnow]>, PublicBodyWarningOmitKey>;
   export type PublicBodyVPWW61 = Util.Prohibit<PublicBodyWarningBase<WarningCityKindAdvisory[]>, PublicBodyWarningOmitKey>;
-  export type PublicBodyVPWS50 = Util.Prohibit<PublicBodyWarningBase, 'offices' | 'references' | 'comment'>;
+  export type PublicBodyVPWS50 = Util.Prohibit<PublicBodyWarningBase, 'stormSurgeSections' | 'offices' | 'references' | 'comment'>;
   export type PublicBodyWarning =
     PublicBodyVPWW55 | PublicBodyVPWW56 | PublicBodyVPWW57 | PublicBodyVPWW58 | PublicBodyVPWW59 | PublicBodyVPWW60 | PublicBodyVPWW61 | PublicBodyVPWS50;
 
