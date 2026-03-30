@@ -19,11 +19,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^29.5.13",
-    "@types/node": "^24.10.4",
-    "ajv": "^8.17.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.12.0",
+    "ajv": "^8.18.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "typescript-json-schema": "^0.67.1"
   },
   "engines": {
