@@ -63,7 +63,7 @@ export namespace WeatherWarningTimeseries {
   export type WindSpeedsPart = Util.Part<WindSpeedsBase, WindSpeedsLocal>;
 
   // 波
-  type WaveHeightTypes = '波高' | 'うちあげ高水位' | '最高うちあげ高水位';
+  export type WaveHeightTypes = '波高' | 'うちあげ高水位' | '最高うちあげ高水位';
 
   export type WaveHeight<Type extends WaveHeightTypes> = Util.TimeRefID<Util.ValueElement<Type, 'm', '以下' | '未満'>>;
 
@@ -87,25 +87,25 @@ export namespace WeatherWarningTimeseries {
   export type TidalLevelsPart<Type extends TidalLevelTypes> = Util.Part<TidalLevelsBase<Type>, TidalLevelsLocal<Type>>;
 
   // 雪
-  export type SnowfallDepthType = '６時間最大降雪量' | '１２時間最大降雪量' | '２４時間最大降雪量';
+  export type SnowfallDepthTypes = '６時間最大降雪量' | '１２時間最大降雪量' | '２４時間最大降雪量';
 
-  export interface SnowfallDepth<Type extends SnowfallDepthType = SnowfallDepthType> {
+  export interface SnowfallDepth<Type extends SnowfallDepthTypes = SnowfallDepthTypes> {
     refId: string;
     type: Type;
-    uint: 'cm';
+    unit: 'cm';
     value: string;
     condition?: '以下' | '未満';
   }
 
-  export interface SnowfallDepthsBase<Type extends SnowfallDepthType> {
+  export interface SnowfallDepthsBase<Type extends SnowfallDepthTypes> {
     snowfallDepths: SnowfallDepth<Type>[];
   }
 
-  export type SnowfallDepthsLocal<Type extends SnowfallDepthType> = Util.Local<SnowfallDepthsBase<Type>>;
-  export type SnowfallDepthsPart<Type extends SnowfallDepthType> = Util.Part<SnowfallDepthsBase<Type>, SnowfallDepthsLocal<Type>>;
+  export type SnowfallDepthsLocal<Type extends SnowfallDepthTypes> = Util.Local<SnowfallDepthsBase<Type>>;
+  export type SnowfallDepthsPart<Type extends SnowfallDepthTypes> = Util.Part<SnowfallDepthsBase<Type>, SnowfallDepthsLocal<Type>>;
 
   // 湿度
-  type HumidityTypes = '実効湿度' | '最小湿度';
+  export  type HumidityTypes = '実効湿度' | '最小湿度';
 
   export type Humidity<Type extends HumidityTypes> = Util.TimeRefID<Util.ValueElement<Type, '%'>>;
 
@@ -117,12 +117,12 @@ export namespace WeatherWarningTimeseries {
   export type HumiditiesPart<Type extends HumidityTypes> = Util.Part<HumiditiesBase<Type>, HumiditiesLocal<Type>>;
 
   // 雨
-  type PrecipitationTypes = '１時間最大雨量' | '２４時間最大雨量';
+  export type PrecipitationTypes = '１時間最大雨量' | '２４時間最大雨量';
 
   export type Precipitation<Type extends PrecipitationTypes> = Util.TimeRefID<Util.ValueElement<Type, 'mm', '以下' | '未満'>>;
 
   export interface PrecipitationsBase<Type extends PrecipitationTypes> {
-    precipitations: [Precipitation<Type>];
+    precipitations: Precipitation<Type>[];
   }
 
   export type PrecipitationsLocal<Type extends PrecipitationTypes> = Util.Local<PrecipitationsBase<Type>>;
@@ -131,7 +131,7 @@ export namespace WeatherWarningTimeseries {
 
   export interface TimeSeriesPropertyRisk {
     type: RiskTypes;
-    significancesPart: SignificancesPart;
+    significancyPart: SignificancesPart;
   }
 
   export interface TimeSeriesPropertyPrecipitation<Type extends PrecipitationTypes> {
@@ -157,7 +157,7 @@ export namespace WeatherWarningTimeseries {
     tidalLevelPart: TidalLevelsPart<'潮位'>;
   }
 
-  export interface TimeSeriesPropertySnow<Type extends SnowfallDepthType> {
+  export interface TimeSeriesPropertySnow<Type extends SnowfallDepthTypes> {
     type: '雪';
     snowfallDepthPart: SnowfallDepthsPart<Type>;
   }
@@ -176,10 +176,10 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesPropertyWind |
     TimeSeriesPropertyWave |
     TimeSeriesPropertyStormSurge |
-    TimeSeriesPropertySnow<SnowfallDepthType> |
+    TimeSeriesPropertySnow<SnowfallDepthTypes> |
     TimeSeriesPropertyDryAir;
 
-  export interface TimeSeriesKind<P extends [TimeSeriesProperty]> {
+  export interface TimeSeriesKindBase<P extends [TimeSeriesProperty]> {
     status: '発表' | '継続';
     dateTime: string;
     properties: P;
@@ -191,7 +191,7 @@ export namespace WeatherWarningTimeseries {
   export type TimeSeriesPropertiesWindRisk = [TimeSeriesPropertyRisk];
   export type TimeSeriesPropertiesWind = [TimeSeriesPropertyWind];
   export type TimeSeriesPropertiesSnowRisk = [TimeSeriesPropertyRisk];
-  export type TimeSeriesPropertiesSnow<Type extends SnowfallDepthType> = [TimeSeriesPropertySnow<Type>];
+  export type TimeSeriesPropertiesSnow<Type extends SnowfallDepthTypes> = [TimeSeriesPropertySnow<Type>];
   export type TimeSeriesPropertiesWaveRisk = [TimeSeriesPropertyRisk];
   export type TimeSeriesPropertiesWave = [TimeSeriesPropertyWave];
   export type TimeSeriesPropertiesStormSurgeRisk = [TimeSeriesPropertyRisk];
@@ -214,7 +214,7 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesPropertiesWindRisk |
     TimeSeriesPropertiesWind |
     TimeSeriesPropertiesSnowRisk |
-    TimeSeriesPropertiesSnow<SnowfallDepthType> |
+    TimeSeriesPropertiesSnow<SnowfallDepthTypes> |
     TimeSeriesPropertiesWaveRisk |
     TimeSeriesPropertiesWave |
     TimeSeriesPropertiesStormSurgeRisk |
@@ -230,27 +230,27 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesPropertiesIceAccretionRisk |
     TimeSeriesPropertiesSnowAccretionRisk;
 
-  export type TimeSeriesKindRainRisk = TimeSeriesKind<TimeSeriesPropertiesRainRisk>;
-  export type TimeSeriesKindPrecipitation<Type extends PrecipitationTypes> = TimeSeriesKind<TimeSeriesPropertiesPrecipitation<Type>>;
-  export type TimeSeriesKindLandslideRisk = TimeSeriesKind<TimeSeriesPropertiesLandslideRisk>;
-  export type TimeSeriesKindWindRisk = TimeSeriesKind<TimeSeriesPropertiesWindRisk>;
-  export type TimeSeriesKindWind = TimeSeriesKind<TimeSeriesPropertiesWind>;
-  export type TimeSeriesKindSnowRisk = TimeSeriesKind<TimeSeriesPropertiesSnowRisk>;
-  export type TimeSeriesKindSnow<Type extends SnowfallDepthType> = TimeSeriesKind<TimeSeriesPropertiesSnow<Type>>;
-  export type TimeSeriesKindWaveRisk = TimeSeriesKind<TimeSeriesPropertiesWaveRisk>;
-  export type TimeSeriesKindWave = TimeSeriesKind<TimeSeriesPropertiesWave>;
-  export type TimeSeriesKindStormSurgeRisk = TimeSeriesKind<TimeSeriesPropertiesStormSurgeRisk>;
-  export type TimeSeriesKindStormSurge = TimeSeriesKind<TimeSeriesPropertiesStormSurge>;
-  export type TimeSeriesKindThunderRisk = TimeSeriesKind<TimeSeriesPropertiesThunderRisk>;
-  export type TimeSeriesKindSnowMeltingRisk = TimeSeriesKind<TimeSeriesPropertiesSnowMeltingRisk>;
-  export type TimeSeriesKindDenseFogRisk = TimeSeriesKind<TimeSeriesPropertiesDenseFogRisk>;
-  export type TimeSeriesKindDryAirRisk = TimeSeriesKind<TimeSeriesPropertiesDryAirRisk>;
-  export type TimeSeriesKindDryAir = TimeSeriesKind<TimeSeriesPropertiesDryAir>;
-  export type TimeSeriesKindAvalancheRisk = TimeSeriesKind<TimeSeriesPropertiesAvalancheRisk>;
-  export type TimeSeriesKindLowTemperatureRisk = TimeSeriesKind<TimeSeriesPropertiesLowTemperatureRisk>;
-  export type TimeSeriesKindFrostRisk = TimeSeriesKind<TimeSeriesPropertiesFrostRisk>;
-  export type TimeSeriesKindIceAccretionRisk = TimeSeriesKind<TimeSeriesPropertiesIceAccretionRisk>;
-  export type TimeSeriesKindSnowAccretionRisk = TimeSeriesKind<TimeSeriesPropertiesSnowAccretionRisk>;
+  export type TimeSeriesKindRainRisk = TimeSeriesKindBase<TimeSeriesPropertiesRainRisk>;
+  export type TimeSeriesKindPrecipitation<Type extends PrecipitationTypes> = TimeSeriesKindBase<TimeSeriesPropertiesPrecipitation<Type>>;
+  export type TimeSeriesKindLandslideRisk = TimeSeriesKindBase<TimeSeriesPropertiesLandslideRisk>;
+  export type TimeSeriesKindWindRisk = TimeSeriesKindBase<TimeSeriesPropertiesWindRisk>;
+  export type TimeSeriesKindWind = TimeSeriesKindBase<TimeSeriesPropertiesWind>;
+  export type TimeSeriesKindSnowRisk = TimeSeriesKindBase<TimeSeriesPropertiesSnowRisk>;
+  export type TimeSeriesKindSnow<Type extends SnowfallDepthTypes> = TimeSeriesKindBase<TimeSeriesPropertiesSnow<Type>>;
+  export type TimeSeriesKindWaveRisk = TimeSeriesKindBase<TimeSeriesPropertiesWaveRisk>;
+  export type TimeSeriesKindWave = TimeSeriesKindBase<TimeSeriesPropertiesWave>;
+  export type TimeSeriesKindStormSurgeRisk = TimeSeriesKindBase<TimeSeriesPropertiesStormSurgeRisk>;
+  export type TimeSeriesKindStormSurge = TimeSeriesKindBase<TimeSeriesPropertiesStormSurge>;
+  export type TimeSeriesKindThunderRisk = TimeSeriesKindBase<TimeSeriesPropertiesThunderRisk>;
+  export type TimeSeriesKindSnowMeltingRisk = TimeSeriesKindBase<TimeSeriesPropertiesSnowMeltingRisk>;
+  export type TimeSeriesKindDenseFogRisk = TimeSeriesKindBase<TimeSeriesPropertiesDenseFogRisk>;
+  export type TimeSeriesKindDryAirRisk = TimeSeriesKindBase<TimeSeriesPropertiesDryAirRisk>;
+  export type TimeSeriesKindDryAir = TimeSeriesKindBase<TimeSeriesPropertiesDryAir>;
+  export type TimeSeriesKindAvalancheRisk = TimeSeriesKindBase<TimeSeriesPropertiesAvalancheRisk>;
+  export type TimeSeriesKindLowTemperatureRisk = TimeSeriesKindBase<TimeSeriesPropertiesLowTemperatureRisk>;
+  export type TimeSeriesKindFrostRisk = TimeSeriesKindBase<TimeSeriesPropertiesFrostRisk>;
+  export type TimeSeriesKindIceAccretionRisk = TimeSeriesKindBase<TimeSeriesPropertiesIceAccretionRisk>;
+  export type TimeSeriesKindSnowAccretionRisk = TimeSeriesKindBase<TimeSeriesPropertiesSnowAccretionRisk>;
 
   export type TimeSeriesCityKind =
     TimeSeriesKindRainRisk |
@@ -259,7 +259,7 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesKindWindRisk |
     TimeSeriesKindWind |
     TimeSeriesKindSnowRisk |
-    TimeSeriesKindSnow<SnowfallDepthType> |
+    TimeSeriesKindSnow<SnowfallDepthTypes> |
     TimeSeriesKindWaveRisk |
     TimeSeriesKindWave |
     TimeSeriesKindStormSurgeRisk |
@@ -287,7 +287,7 @@ export namespace WeatherWarningTimeseries {
     name: string;
   }
 
-  export interface TimeSeries<Kinds extends TimeSeriesCityKind[]> {
+  export interface TimeSeriesBase<Kinds extends TimeSeriesCityKind[]> {
     timeDefines: TimeSeriesTimeDefine[];
     items: TimeSeriesCity<Kinds>[];
   }
@@ -310,13 +310,14 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesKindIceAccretionRisk,
     TimeSeriesKindSnowAccretionRisk
   ];
-  export type TimeSeriesCity1 = TimeSeries<TimeSeriesCity1Kinds>;
+
+  export type TimeSeriesCity1 = TimeSeriesBase<TimeSeriesCity1Kinds>;
 
   export type TimeSeriesCity2Kinds = [
     TimeSeriesKindPrecipitation<'２４時間最大雨量'>,
     TimeSeriesKindSnow<'２４時間最大降雪量'>
   ];
-  export type TimeSeriesCity2 = TimeSeries<TimeSeriesCity2Kinds>;
+  export type TimeSeriesCity2 = TimeSeriesBase<TimeSeriesCity2Kinds>;
 
   export type TimeSeriesCity3Kinds = [
     TimeSeriesKindDryAirRisk,
@@ -325,7 +326,7 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesKindLowTemperatureRisk,
     TimeSeriesKindFrostRisk
   ];
-  export type TimeSeriesCity3 = TimeSeries<TimeSeriesCity3Kinds>;
+  export type TimeSeriesCity3 = TimeSeriesBase<TimeSeriesCity3Kinds>;
 
   export interface QuantitativeForecast {
     type: '量的予想時系列（市町村等）';
