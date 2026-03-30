@@ -87,7 +87,7 @@ export namespace WeatherWarning {
   // 濃霧
   export interface Visibility {
     type: '視程';
-    uint: 'm';
+    unit: 'm' | 'km';
     value: string;
     condition: '以下';
   }
@@ -148,7 +148,7 @@ export namespace WeatherWarning {
 
   export interface SnowfallDepth<Type extends SnowfallDepthTypes = SnowfallDepthTypes> {
     type: Type;
-    uint: 'cm';
+    unit: 'cm';
     value: string;
   }
 
@@ -274,8 +274,8 @@ export namespace WeatherWarning {
     WarningPropertiesIceAccretion |
     WarningPropertiesSnowAccretion;
 
-  export type WarningKind<P extends WarningProperty[] | never> =
     Components.CodeName & { dateTime?: string } & (
+  export type WarningKindBase<P extends WarningProperty[] | never> =
     {
       status: '発表' | '継続' | '特別警報から警報' | '特別警報から注意報' | '警報から注意報' | '特別警報から危険警報' | '危険警報から警報' | '危険警報から注意報';
       lastKind?: LastKind;
@@ -388,7 +388,7 @@ export namespace WeatherWarning {
 
   export interface CriteriaWaterLevel {
     type: '堤防天端高' | '設計高潮位' | string;
-    uint: 'm';
+    unit: 'm';
     value: string | null;
     condition: '有効' | '値なし';
   }
