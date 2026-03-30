@@ -10,7 +10,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "esModuleInterop": true,
-    "baseUrl": "./"
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "types/**/*",
