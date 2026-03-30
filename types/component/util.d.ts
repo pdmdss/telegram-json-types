@@ -10,6 +10,9 @@ export namespace Util {
     base: (B & { locals?: never; }) | ({ locals: L[]; } & { [K in keyof B]?: never; });
     becomings?: Be;
   };
+  export type PartNoBase<B extends object, L extends Local<B> = Local<B>> =
+    (B & { base?: never; }) |
+    ({ base: { locals: L[]; } } & { [K in keyof B]?: never; });
 
   export type Becoming<B extends object, L extends Local<B> = Local<B>> = {
     timeModifier: string;

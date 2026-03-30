@@ -23,7 +23,7 @@ export namespace WeatherCommentary {
   }
 
   // 雨量 観測データ形式、観測実況形式(M)、観測実況形式(T)、予想
-  type PrecipitationTypes = `前${ '１' | '２４' | '４８' | '７２' }時間降水量` | '前１時間解析雨量' | `${ '１' | '２４' | '４８' | '７２' }時間最大雨量` | '降水量';
+  type PrecipitationTypes = `前${'１' | '２４' | '４８' | '７２'}時間降水量` | '前１時間解析雨量' | `${'１' | '２４' | '４８' | '７２'}時間最大雨量` | '降水量' | string;
 
   export type Precipitation = Util.ValueElement<PrecipitationTypes, 'mm', '以上' | '約'>;
 
@@ -41,7 +41,8 @@ export namespace WeatherCommentary {
     remark?: string;
   }
 
-  export type PrecipitationPart = PrecipitationBase;
+  export type PrecipitationLocal = Util.Local<PrecipitationBase>;
+  export type PrecipitationPart = Util.PartNoBase<PrecipitationBase, PrecipitationLocal>;
 
   export interface PrecipitationsBasePart extends PrecipitationsBase {
   }
@@ -50,7 +51,7 @@ export namespace WeatherCommentary {
   export type PrecipitationsPart = Util.Part<PrecipitationsBase, PrecipitationsLocal>;
 
   // 降雪量 観測データ形式、観測実況形式(M)、観測実況形式(T)、予想
-  export type SnowfallDepthTypes = `${ '３' | '６' | '１２' | '２４' | '４８' | '７２' }時間の降雪深さ` | '積雪量';
+  export type SnowfallDepthTypes = `${'３' | '６' | '１２' | '２４' | '４８' | '７２'}時間の降雪深さ` | '積雪量' | string;
 
   export interface SnowfallDepth {
     type: SnowfallDepthTypes;
@@ -76,7 +77,8 @@ export namespace WeatherCommentary {
     remark?: string;
   }
 
-  export type SnowfallDepthPart = SnowfallDepthBase;
+  export type SnowfallDepthLocal = Util.Local<SnowfallDepthBase>;
+  export type SnowfallDepthPart = Util.PartNoBase<SnowfallDepthBase, SnowfallDepthLocal>;
 
   export interface SnowfallDepthsBasePart extends SnowfallDepthsBase {
   }
@@ -86,7 +88,7 @@ export namespace WeatherCommentary {
 
   // 積雪 観測データ形式、観測実況形式(M)、観測実況形式(T)
   export interface SnowDepth {
-    type: '積雪深';
+    type: '積雪深' | string;
     unit: 'cm';
     value: string;
     condition?: '以上' | '約';
@@ -109,7 +111,8 @@ export namespace WeatherCommentary {
     remark?: string;
   }
 
-  export type SnowDepthPart = SnowDepthBase;
+  export type SnowDepthLocal = Util.Local<SnowDepthBase>;
+  export type SnowDepthPart = Util.PartNoBase<SnowDepthBase, SnowDepthLocal>;
 
   export interface SnowDepthsBasePart extends SnowDepthsBase {
   }
@@ -155,8 +158,7 @@ export namespace WeatherCommentary {
   export type WindsPart = Util.Part<WindsBase, WindsLocal>;
 
   export type WindSpeedsLocal = Util.Local<WindSpeedsBase>;
-  export type WindSpeedsBecoming = Util.Becoming<WindSpeedsBase, WindSpeedsLocal>;
-  export type WindSpeedsPart = Util.Part<WindSpeedsBase, WindSpeedsLocal, WindSpeedsBecoming[]>;
+  export type WindSpeedsPart = Util.Part<WindSpeedsBase, WindSpeedsLocal>;
 
   export type WindDirectionsLocal = Util.Local<WindDirectionsBase>;
   export type WindDirectionsBecoming = Util.Becoming<WindDirectionsBase, WindDirectionsLocal>;
@@ -164,9 +166,9 @@ export namespace WeatherCommentary {
 
   // イベント 観測データ形式、観測実況形式(M)、観測実況形式(T)、予想
   export interface Event {
-    type: '線状降水帯' | '高潮';
+    type: '線状降水帯' | '高潮' | string;
     sentence?: string;
-    eventName?: '越流' | '越波' | '堤防決壊' | '警戒・注意' | '線状降水帯発生' | '線状降水帯予想';
+    eventName?: '越流' | '越波' | '堤防決壊' | '警戒・注意' | '線状降水帯発生' | '線状降水帯予想' | string;
     eventClass?: string;
     time?: string;
     duration?: string;
@@ -185,7 +187,8 @@ export namespace WeatherCommentary {
     events: EventTimeRef[];
   }
 
-  export type EventPart = EventBase;
+  export type EventLocal = Util.Local<EventBase>;
+  export type EventPart = Util.PartNoBase<EventBase, EventLocal>;
 
   export interface EventsBasePart extends EventsBase {
   }
@@ -219,7 +222,7 @@ export namespace WeatherCommentary {
   export type VisibilitiesPart = Util.Part<VisibilitiesBase, VisibilitiesLocal>;
 
   // 水位 観測実況形式(T)、予想
-  export type WaveHeightTypes = '波高' | 'うちあげ高水位' | '最高うちあげ高水位';
+  export type WaveHeightTypes = '波高' | 'うちあげ高水位' | '最高うちあげ高水位' | string;
 
   export type WaveHeight = Util.ValueElement<WaveHeightTypes, 'm' | 'cm', '以上' | '約' | 'うねり'>;
 
@@ -237,7 +240,7 @@ export namespace WeatherCommentary {
   export type WaveHeightsPart = Util.Part<WaveHeightsBase, WaveHeightsLocal>;
 
   // 潮位 観測実況形式(M)、観測実況形式(T)、予想
-  export type TidalLevelTypes = '潮位' | '最高潮位' | '満潮潮位' | '干潮潮位' | '副振動の山から谷の高さ';
+  export type TidalLevelTypes = '潮位' | '最高潮位' | '満潮潮位' | '干潮潮位' | '副振動の山から谷の高さ' | string;
 
   export type TidalLevel = Util.ValueElement<TidalLevelTypes, 'm' | 'cm', '以上' | '約'>;
   export type TidalPeriod = Util.ValueElement<'副振動の周期', '分', '約'>;
@@ -279,7 +282,7 @@ export namespace WeatherCommentary {
   export type TidalLevelsPart = Util.Part<TidalLevelsBase, TidalLevelsLocal>;
 
   // 気温 観測実況形式(M)、観測実況形式(T)、予想
-  export type TemperatureTypes = '気温' | '最低気温' | '最高気温' | '朝の最低気温' | '日中の最高気温';
+  export type TemperatureTypes = '気温' | '最低気温' | '最高気温' | '朝の最低気温' | '日中の最高気温' | string;
 
   export type Temperature = Util.ValueElement<TemperatureTypes, '度', '以上' | '以下' | '未満'>;
 
@@ -306,7 +309,7 @@ export namespace WeatherCommentary {
   export type TemperaturesPart = Util.Part<TemperaturesBase, TemperaturesLocal>;
 
   // 湿度 観測実況形式(T)、予想
-  export type HumidityTypes = '湿度' | '実効湿度' | '最小湿度';
+  export type HumidityTypes = '湿度' | '実効湿度' | '最小湿度' | string;
 
   export type Humidity = Util.ValueElement<HumidityTypes, '%', '以上' | '以下' | '未満'>;
 
@@ -460,7 +463,7 @@ export namespace WeatherCommentary {
 
   export interface TimeSeriesObservationPropertyHumidity {
     type: '湿度の実況';
-    humidityPart: HumiditiesBasePart;
+    humidityParts: [HumiditiesBasePart];
   }
 
   export interface TimeSeriesObservationPropertyEvent {
@@ -476,6 +479,14 @@ export namespace WeatherCommentary {
   export interface TimeSeriesForecastPropertySnowfallDepth {
     type: '雪の予想';
     snowfallDepthPart: SnowfallDepthsPart;
+  }
+
+  /**
+   *2026年05月現在、運用されないが、将来の拡張のため定義
+   */
+  export interface TimeSeriesForecastPropertySnowDepth {
+    type: '雪の予想';
+    snowDepthPart: SnowDepthsPart;
   }
 
   export interface TimeSeriesForecastPropertyWind {
@@ -506,7 +517,7 @@ export namespace WeatherCommentary {
 
   export interface TimeSeriesForecastPropertyHumidity {
     type: '湿度の実況';
-    humidityPart: HumiditiesPart;
+    humidityParts: [HumiditiesPart];
   }
 
   export interface TimeSeriesForecastPropertyEvent {
@@ -554,6 +565,7 @@ export namespace WeatherCommentary {
     TimeSeriesPropertySentence |
     TimeSeriesForecastPropertyPrecipitation |
     TimeSeriesForecastPropertySnowfallDepth |
+    TimeSeriesForecastPropertySnowDepth |
     TimeSeriesForecastPropertyWind |
     TimeSeriesForecastPropertyWaveHeight |
     TimeSeriesForecastPropertyVisibility |
@@ -595,6 +607,7 @@ export namespace WeatherCommentary {
   export type TimeSeriesObservationPropertiesEvent = [TimeSeriesObservationPropertyEvent];
   export type TimeSeriesForecastPropertiesPrecipitation = [TimeSeriesForecastPropertyPrecipitation];
   export type TimeSeriesForecastPropertiesSnowfallDepth = [TimeSeriesForecastPropertySnowfallDepth];
+  export type TimeSeriesForecastPropertiesSnowDepth = [TimeSeriesForecastPropertySnowDepth];
   export type TimeSeriesForecastPropertiesWind = [TimeSeriesForecastPropertyWind];
   export type TimeSeriesForecastPropertiesWaveHeight = [TimeSeriesForecastPropertyWaveHeight];
   export type TimeSeriesForecastPropertiesVisibility = [TimeSeriesForecastPropertyVisibility];
@@ -630,6 +643,7 @@ export namespace WeatherCommentary {
     TimeSeriesObservationPropertiesEvent |
     TimeSeriesForecastPropertiesPrecipitation |
     TimeSeriesForecastPropertiesSnowfallDepth |
+    TimeSeriesForecastPropertiesSnowDepth |
     TimeSeriesForecastPropertiesWind |
     TimeSeriesForecastPropertiesWaveHeight |
     TimeSeriesForecastPropertiesVisibility |
@@ -663,6 +677,7 @@ export namespace WeatherCommentary {
   export type TimeSeriesObservationKindEvent = TimeSeriesKindBase<TimeSeriesObservationPropertiesEvent>;
   export type TimeSeriesForecastKindPrecipitation = TimeSeriesKindBase<TimeSeriesForecastPropertiesPrecipitation>;
   export type TimeSeriesForecastKindSnowfallDepth = TimeSeriesKindBase<TimeSeriesForecastPropertiesSnowfallDepth>;
+  export type TimeSeriesForecastKindSnowDepth = TimeSeriesKindBase<TimeSeriesForecastPropertiesSnowDepth>;
   export type TimeSeriesForecastKindWind = TimeSeriesKindBase<TimeSeriesForecastPropertiesWind>;
   export type TimeSeriesForecastKindWaveHeight = TimeSeriesKindBase<TimeSeriesForecastPropertiesWaveHeight>;
   export type TimeSeriesForecastKindVisibility = TimeSeriesKindBase<TimeSeriesForecastPropertiesVisibility>;
@@ -701,6 +716,7 @@ export namespace WeatherCommentary {
     TimeSeriesKindSentence |
     TimeSeriesForecastKindPrecipitation |
     TimeSeriesForecastKindSnowfallDepth |
+    TimeSeriesForecastKindSnowDepth |
     TimeSeriesForecastKindWind |
     TimeSeriesForecastKindWaveHeight |
     TimeSeriesForecastKindVisibility |
@@ -716,7 +732,6 @@ export namespace WeatherCommentary {
   export interface AreaSubCity {
     names?: string[];
     codes?: string[];
-
   }
 
   export interface InfoArea<Kinds extends InfoKind[]> {
@@ -783,7 +798,7 @@ export namespace WeatherCommentary {
   export type InfoObservation = InfoBase<[
     InfoSentence<[InfoKindSentence]>,
     ...(InfoArea<[InfoKind]> | InfoStation<[InfoKind]> | InfoSentence<[InfoKindSentence]>)[],
-  ]> | InfoBase<(InfoArea<[InfoKind]> | InfoStation<[InfoKind]>)[ ]>;
+  ]> | InfoBase<(InfoArea<[InfoKind]> | InfoStation<[InfoKind]>)[]>;
 
   export type TimeSeriesObservationItems<Kind extends TimeSeriesObservationKind = TimeSeriesObservationKind> = [
     TimeSeriesSentence<[TimeSeriesKindSentence]>,
