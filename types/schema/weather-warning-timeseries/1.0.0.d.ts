@@ -309,6 +309,34 @@ export namespace WeatherWarningTimeseries {
     TimeSeriesKindDenseFogRisk,
     TimeSeriesKindIceAccretionRisk,
     TimeSeriesKindSnowAccretionRisk
+  ] | [
+    TimeSeriesKindRainRisk,
+    TimeSeriesKindPrecipitation<'１時間最大雨量'>,
+    TimeSeriesKindLandslideRisk,
+    TimeSeriesKindWindRisk,
+    TimeSeriesKindWind,
+    TimeSeriesKindSnowRisk,
+    TimeSeriesKindSnow<'６時間最大降雪量'>,
+    TimeSeriesKindStormSurgeRisk,
+    TimeSeriesKindStormSurge,
+    TimeSeriesKindThunderRisk,
+    TimeSeriesKindSnowMeltingRisk,
+    TimeSeriesKindDenseFogRisk,
+    TimeSeriesKindIceAccretionRisk,
+    TimeSeriesKindSnowAccretionRisk
+  ] | [
+    TimeSeriesKindRainRisk,
+    TimeSeriesKindPrecipitation<'１時間最大雨量'>,
+    TimeSeriesKindLandslideRisk,
+    TimeSeriesKindWindRisk,
+    TimeSeriesKindWind,
+    TimeSeriesKindSnowRisk,
+    TimeSeriesKindSnow<'６時間最大降雪量'>,
+    TimeSeriesKindThunderRisk,
+    TimeSeriesKindSnowMeltingRisk,
+    TimeSeriesKindDenseFogRisk,
+    TimeSeriesKindIceAccretionRisk,
+    TimeSeriesKindSnowAccretionRisk
   ];
 
   export type TimeSeriesCity1 = TimeSeriesBase<TimeSeriesCity1Kinds>;
