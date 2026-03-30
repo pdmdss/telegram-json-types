@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
 
 import { distDir } from './config';
 
@@ -14,7 +14,7 @@ jschemaList.forEach(file => {
   const [, schemaName, schemaVersion] = file.match(/^([\w-]+)_(\w+\.\w+\.\w+)\.json$/) ?? [];
 
   const schemaVersions = schemas.get(schemaName) ?? schemas.set(schemaName, new Map()).get(schemaName);
-  const jschemaFile = pathToFileURL(resolve(distDir, file)).toString();
+  const jschemaFile = resolve(distDir, file);
 
   schemaVersions?.set(schemaVersion, jschemaFile);
   schemaVersions?.set('latest', jschemaFile);
@@ -28,5 +28,5 @@ export async function getJSchema(name: string, version: string = 'latest') {
     return null;
   }
 
-  return await import(filePath);
+  return JSON.parse(await readFile(filePath, 'utf-8'));
 }
