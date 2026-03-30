@@ -18,10 +18,12 @@ const checkSchemaTypes = [
   'forecast-weathermap',
   'tsunami-information',
   'volcano-information',
+  'weather-commentary',
   'weather-information',
   'weather-impact-society',
   'weather-early',
   'weather-warning',
+  'weather-warning-timeseries',
   'weather-tornado',
   'weather-typhoon',
   'weather-landslide',
@@ -53,7 +55,7 @@ for (const schemaType of checkSchemaTypes) {
 
 
 async function getList(schemaType: string) {
-  const query = new URLSearchParams({ prefix: `conversion/json/schema/${schemaType}`, delimiter: '' });
+  const query = new URLSearchParams({ prefix: `conversion/json/schema/${schemaType}/`, delimiter: '' });
   const url = `${sampleUrl}/?` + query.toString();
 
   return await fetch(url, { headers: { accept: 'application/xml' } })
