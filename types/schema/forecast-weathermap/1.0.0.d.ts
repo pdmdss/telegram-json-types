@@ -7,6 +7,18 @@ export namespace ForecastWeathermap {
     version: '1.0.0';
   }
 
+  interface Coordinate {
+    latitude: {
+      text: string;
+      value: string;
+    };
+    longitude: {
+      text: string;
+      value: string;
+    };
+    condition?: '付近';
+  }
+
   export interface Direction {
     type: '移動方向';
     unit: '°';
@@ -54,7 +66,7 @@ export namespace ForecastWeathermap {
 
   export interface WeatherMapItemDisturbanceKindCenter {
     type: '低気圧' | '高気圧' | '熱帯低気圧' | '低圧部';
-    coordinate: Components.Coordinate;
+    coordinate: Coordinate;
     direction: Direction;
     speeds: [SpeedMeter, SpeedKnot];
     pressure: Pressure<'中心'>;
