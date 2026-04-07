@@ -327,7 +327,7 @@ export namespace WeatherCommentary {
   export type HumiditiesPart = Util.Part<HumiditiesBase, HumiditiesLocal>;
 
   // 警報級の可能性 予想
-  export type PossibilityRankOfWarningTypes = `${ '大雨' | '土砂災害' | '風（風雪）' | '波' | '潮位' }の警報級の可能性`;
+  export type PossibilityRankOfWarningTypes = `${'雨' | '大雨' | '土砂災害' | '風（風雪）' | '波' | '潮位'}の警報級の可能性`;
 
   export type PossibilityRankOfWarning = {
     refId: string;
