@@ -4,8 +4,6 @@
   "scripts": {
     "build:jschema": "npx tsc --project jschema/tsconfig.json",
     "build:dist-jschema": "node ./dist/build.js",
-    "prepublishOnly": "npm run build:jschema && npm run build:dist-jschema",
-    "publish:npm": "npm version patch && npm publish --access=public",
     "test": "npx tsx test/sample-schema-check.test.ts",
     "type-test": "npm run build:dist-jschema && npm run test"
   },

@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+
+      - name: npm package install
+        run: npm ci
+
+      - name: build
+        run: npm run build:jschema
+
+      - name: jschema build
+        run: npm run build:dist-jschema
+
+      - name: publish
+        run: npm publish --provenance --access public
