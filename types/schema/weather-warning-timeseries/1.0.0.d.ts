@@ -37,6 +37,7 @@ export namespace WeatherWarningTimeseries {
 
   export interface SignificancesBase {
     significances: Significancy[];
+    additions?: string[];
   }
 
   export type SignificancesLocal = Util.Local<SignificancesBase>;
