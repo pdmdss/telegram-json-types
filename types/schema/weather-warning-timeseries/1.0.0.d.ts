@@ -292,68 +292,40 @@ export namespace WeatherWarningTimeseries {
     items: TimeSeriesCity<Kinds>[];
   }
 
-  export type TimeSeriesCity1Kinds = [
-    TimeSeriesKindRainRisk,
-    TimeSeriesKindPrecipitation<'１時間最大雨量'>,
-    TimeSeriesKindLandslideRisk,
-    TimeSeriesKindWindRisk,
-    TimeSeriesKindWind,
-    TimeSeriesKindSnowRisk,
-    TimeSeriesKindSnow<'６時間最大降雪量'>,
-    TimeSeriesKindWaveRisk,
-    TimeSeriesKindWave,
-    TimeSeriesKindStormSurgeRisk,
-    TimeSeriesKindStormSurge,
-    TimeSeriesKindThunderRisk,
-    TimeSeriesKindSnowMeltingRisk,
-    TimeSeriesKindDenseFogRisk,
-    TimeSeriesKindIceAccretionRisk,
+  export type TimeSeriesCity1Kinds = (
+    TimeSeriesKindRainRisk |
+    TimeSeriesKindPrecipitation<'１時間最大雨量'> |
+    TimeSeriesKindLandslideRisk |
+    TimeSeriesKindWindRisk |
+    TimeSeriesKindWind |
+    TimeSeriesKindSnowRisk |
+    TimeSeriesKindSnow<'６時間最大降雪量'> |
+    TimeSeriesKindWaveRisk |
+    TimeSeriesKindWave |
+    TimeSeriesKindStormSurgeRisk |
+    TimeSeriesKindStormSurge |
+    TimeSeriesKindThunderRisk |
+    TimeSeriesKindSnowMeltingRisk |
+    TimeSeriesKindDenseFogRisk |
+    TimeSeriesKindIceAccretionRisk |
     TimeSeriesKindSnowAccretionRisk
-  ] | [
-    TimeSeriesKindRainRisk,
-    TimeSeriesKindPrecipitation<'１時間最大雨量'>,
-    TimeSeriesKindLandslideRisk,
-    TimeSeriesKindWindRisk,
-    TimeSeriesKindWind,
-    TimeSeriesKindSnowRisk,
-    TimeSeriesKindSnow<'６時間最大降雪量'>,
-    TimeSeriesKindStormSurgeRisk,
-    TimeSeriesKindStormSurge,
-    TimeSeriesKindThunderRisk,
-    TimeSeriesKindSnowMeltingRisk,
-    TimeSeriesKindDenseFogRisk,
-    TimeSeriesKindIceAccretionRisk,
-    TimeSeriesKindSnowAccretionRisk
-  ] | [
-    TimeSeriesKindRainRisk,
-    TimeSeriesKindPrecipitation<'１時間最大雨量'>,
-    TimeSeriesKindLandslideRisk,
-    TimeSeriesKindWindRisk,
-    TimeSeriesKindWind,
-    TimeSeriesKindSnowRisk,
-    TimeSeriesKindSnow<'６時間最大降雪量'>,
-    TimeSeriesKindThunderRisk,
-    TimeSeriesKindSnowMeltingRisk,
-    TimeSeriesKindDenseFogRisk,
-    TimeSeriesKindIceAccretionRisk,
-    TimeSeriesKindSnowAccretionRisk
-  ];
+    )[];
 
   export type TimeSeriesCity1 = TimeSeriesBase<TimeSeriesCity1Kinds>;
 
-  export type TimeSeriesCity2Kinds = [
-    TimeSeriesKindPrecipitation<'２４時間最大雨量'>,
+  export type TimeSeriesCity2Kinds = (
+    TimeSeriesKindPrecipitation<'２４時間最大雨量'> |
     TimeSeriesKindSnow<'２４時間最大降雪量'>
-  ];
+    )[];
   export type TimeSeriesCity2 = TimeSeriesBase<TimeSeriesCity2Kinds>;
 
-  export type TimeSeriesCity3Kinds = [
-    TimeSeriesKindDryAirRisk,
-    TimeSeriesKindDryAir,
-    TimeSeriesKindAvalancheRisk,
-    TimeSeriesKindLowTemperatureRisk,
+  export type TimeSeriesCity3Kinds = (
+    TimeSeriesKindDryAirRisk |
+    TimeSeriesKindDryAir |
+    TimeSeriesKindAvalancheRisk |
+    TimeSeriesKindLowTemperatureRisk |
     TimeSeriesKindFrostRisk
-  ];
+    )[];
   export type TimeSeriesCity3 = TimeSeriesBase<TimeSeriesCity3Kinds>;
 
   export interface QuantitativeForecast {
