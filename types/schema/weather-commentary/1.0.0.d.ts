@@ -898,6 +898,7 @@ export namespace WeatherCommentary {
     '短時間大雪' |
     '大雨' |
     '洪水' |
+    '氾濫' |
     '大雪' |
     '雪' |
     '暴風' |
@@ -911,6 +912,7 @@ export namespace WeatherCommentary {
     '降ひょう' |
     '低温' |
     '高温' |
+    '融雪' |
     'なだれ' |
     '黄砂' |
     '霜' |
@@ -923,7 +925,8 @@ export namespace WeatherCommentary {
     '大潮' |
     '高い潮位' |
     '副振動' |
-    '異常潮位';
+    '異常潮位' |
+    string;
 
   export interface InformationTagArea extends Components.CodeName {
     codeType: '全国・地方予報区等' | '気象情報／府県予報区・細分区域等';
