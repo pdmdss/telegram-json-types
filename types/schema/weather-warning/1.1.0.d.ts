@@ -426,6 +426,7 @@ export namespace WeatherWarning {
 
 
   export interface PublicBodyWarningBase<CityKind extends WarningKindBase<any[]>[] = WarningCityKind[]> {
+    notice?: string;
     prefectures: WarningArea<WarningAreaKind>[];
     regions: WarningArea<WarningAreaKind>[];
     areas: WarningArea<WarningAreaKind>[];
