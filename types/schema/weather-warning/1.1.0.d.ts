@@ -28,13 +28,21 @@ export namespace WeatherWarning {
     '霜危険度' |
     '低温危険度';
 
+  export type RiskCodeNameKey =
+    '50:特別警報級' |
+    '30:警報級' |
+    '20:注意報級' |
+    '01:注意報級未満' |
+    '51:警戒レベル５相当' |
+    '41:警戒レベル４相当' |
+    '31:警戒レベル３相当' |
+    '22:警戒レベル２相当' |
+    '21:警戒レベル２' |
+    '11:警戒レベル２未満' |
+    '00:値なし';
 
   // 危険度
-  export interface Significancy {
-    type: RiskTypes;
-    code: '50' | '30' | '20' | '01' | '51' | '41' | '31' | '22' | '21' | '11' | '00';
-    name: '特別警報級' | '警報級' | '注意報級' | '注意報級未満' | '警戒レベル５相当' | '警戒レベル４相当' | '警戒レベル３相当' | '警戒レベル２相当' | '警戒レベル２' | '警戒レベル２未満' | '値なし';
-  }
+  export type Significancy = { type: RiskTypes; } & Util.CodeNameComb<RiskCodeNameKey>;
 
   export interface PeakTime {
     date: string;
@@ -274,10 +282,20 @@ export namespace WeatherWarning {
     WarningPropertiesIceAccretion |
     WarningPropertiesSnowAccretion;
 
+  type WarningKindBaseStatus =
+    '発表' |
+    '継続' |
+    '特別警報から警報' |
+    '特別警報から注意報' |
+    '警報から注意報' |
+    '特別警報から危険警報' |
+    '危険警報から警報' |
+    '危険警報から注意報';
+
   export type WarningKindBase<P extends WarningProperty[] | never> =
     Components.CodeName & { dateTime?: string; condition?: '氾濫発生'; } & (
     {
-      status: '発表' | '継続' | '特別警報から警報' | '特別警報から注意報' | '警報から注意報' | '特別警報から危険警報' | '危険警報から警報' | '危険警報から注意報';
+      status: WarningKindBaseStatus;
       lastKind?: LastKind;
       additions?: string[];
       properties: P;

@@ -3,6 +3,9 @@ export namespace Util {
   export type ValueElement<T extends string, U extends string, Cv extends string | undefined = never, Cn extends string | undefined = '値なし'> =
     { type: T; value: string; unit: U; condition?: Cv; } | { type: T; value: null; unit: U; condition: Cn; };
 
+  export type CodeNameComb<CN extends `${number}:${string}`> =
+    CN extends `${infer C}:${infer N}` ? { code: C; name: N; } : never;
+
   export type TimeRefID<T extends object> = { refId: string } & T;
   export type Local<T extends object> = { name: string; } & T;
 
