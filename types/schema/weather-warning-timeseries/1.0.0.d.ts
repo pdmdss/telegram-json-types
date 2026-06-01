@@ -90,13 +90,7 @@ export namespace WeatherWarningTimeseries {
   // 雪
   export type SnowfallDepthTypes = '６時間最大降雪量' | '１２時間最大降雪量' | '２４時間最大降雪量';
 
-  export interface SnowfallDepth<Type extends SnowfallDepthTypes = SnowfallDepthTypes> {
-    refId: string;
-    type: Type;
-    unit: 'cm';
-    value: string;
-    condition?: '以下' | '未満';
-  }
+  export type SnowfallDepth<Type extends SnowfallDepthTypes = SnowfallDepthTypes> = Util.TimeRefID<Util.ValueElement<Type, 'cm', '以下' | '未満'>>;
 
   export interface SnowfallDepthsBase<Type extends SnowfallDepthTypes> {
     snowfallDepths: SnowfallDepth<Type>[];
